@@ -1,99 +1,304 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Yaway Tech - Contact</title>
+
+  <!-- Tailwind + Inter -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    .fade-up { transform: translateY(20px); opacity: 0; transition: all 0.6s ease-in-out; }
+    body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+
+    /* Shared visual language (like index) */
+    .text-gradient {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-gradient {
+      background: linear-gradient(135deg,
+        rgba(102,126,234,.9) 0%,
+        rgba(118,75,162,.9) 50%,
+        rgba(55,48,163,.9) 100%);
+    }
+    .btn-enhanced { position:relative; overflow:hidden; transition:all .3s ease; }
+    .btn-enhanced::before {
+      content:''; position:absolute; inset:0; left:-100%;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);
+      transition:left .5s;
+    }
+    .btn-enhanced:hover::before { left:100%; }
+
+    .card { transition: all .4s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; }
+    .card::before {
+      content:''; position:absolute; inset:0; left:-120%;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
+      transition:left .5s ease;
+    }
+    .card:hover::before { left:120%; }
+    .card:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 22px 48px rgba(0,0,0,.12); }
+
+    .fade-up { transform: translateY(20px); opacity: 0; transition: all .6s ease-in-out; }
     .fade-up.visible { transform: translateY(0); opacity: 1; }
+
+    .backdrop-blur-custom { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+
+    /* Mobile menu */
+    .mobile-menu { transform: translateX(100%); transition: transform .3s ease-in-out; }
+    .mobile-menu.open { transform: translateX(0); }
+
+    /* Back to top */
+    #backToTop { transition: transform .2s, opacity .2s; }
+    #backToTop.hidden { opacity:0; transform: translateY(20px); pointer-events:none; }
+
+    /* Subtle background shapes for hero (like index) */
+    .blob { position:absolute; border-radius:50%; opacity:.25; }
   </style>
 </head>
-<body class="flex flex-col min-h-screen bg-gray-50">
+<body class="flex flex-col min-h-screen bg-gray-50 text-gray-800">
 
-  <!-- Header -->
-  <header class="shadow-md p-4 bg-white sticky top-0 z-50">
-    <nav class="container mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold text-blue-700">Yaway Tech</h1>
-      <ul class="flex space-x-6">
-        <li><a href="index.html" class="hover:text-blue-700 font-semibold transition">Home</a></li>
-        <li><a href="services.html" class="hover:text-blue-700 font-semibold transition">Services</a></li>
-        <li><a href="about.html" class="hover:text-blue-700 font-semibold transition">About</a></li>
-        <li><a href="contact.html" class="hover:text-blue-700 font-semibold transition">Contact</a></li>
-      </ul>
-    </nav>
+  <!-- NAVBAR (index style) -->
+  <header class="fixed w-full z-50 bg-white/90 backdrop-blur-custom shadow-lg border-b border-gray-200/20">
+    <div class="container mx-auto flex items-center justify-between px-4 sm:px-6 py-3">
+      <a href="index.html" class="flex items-center gap-3">
+        <!-- You can swap this text with a logo if you have one -->
+        <div class="relative">
+          <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold">YT</div>
+          <div class="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+        </div>
+        <div class="hidden sm:block">
+          <h1 class="text-lg font-bold text-gray-800">SMB</h1>
+          <p class="text-xs text-gray-600">Smart Solutions</p>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center space-x-8">
+        <a href="index.html" class="relative text-gray-700 hover:text-blue-600 font-medium py-2 px-1 group">
+          Home
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="services.html" class="relative text-gray-700 hover:text-blue-600 font-medium py-2 px-1 group">
+          Services
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="about.html" class="relative text-gray-700 hover:text-blue-600 font-medium py-2 px-1 group">
+          About
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="contact.html" class="relative text-blue-600 font-bold py-2 px-1 border-b-2 border-blue-600">
+          Contact
+        </a>
+      </nav>
+
+      <!-- Desktop CTA -->
+      <div class="hidden md:flex items-center">
+        <a href="#form" class="btn-enhanced bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold px-5 py-2 rounded-full hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Say Hello</a>
+      </div>
+
+      <!-- Mobile trigger -->
+      <button id="mobileBtn" class="lg:hidden text-gray-700 hover:text-blue-600 transition-colors duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu (slide-in) -->
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-80 h-full bg-white shadow-2xl lg:hidden">
+      <div class="p-6">
+        <div class="flex justify-between items-center mb-8">
+          <h2 class="text-xl font-bold text-gray-800">Menu</h2>
+          <button id="closeMenu" class="text-gray-700 hover:text-red-500 transition-colors duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          </button>
+        </div>
+        <nav class="space-y-4">
+          <a href="index.html" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-blue-50 transition-all duration-300">Home</a>
+          <a href="services.html" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-blue-50 transition-all duration-300">Services</a>
+          <a href="about.html" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-blue-50 transition-all duration-300">About</a>
+          <a href="contact.html" class="block text-blue-600 font-bold py-3 px-4 rounded-lg bg-blue-50">Contact</a>
+        </nav>
+        <div class="pt-6">
+          <a href="#form" class="btn-enhanced bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold px-6 py-3 rounded-full w-full flex items-center justify-center hover:from-blue-600 hover:to-purple-700 shadow-lg">Say Hello</a>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <!-- Hero -->
-  <section class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-center py-20 fade-up">
-    <h1 class="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h1>
-    <p class="text-lg md:text-xl max-w-2xl mx-auto">We’d love to hear from you! Reach out for queries, support, or project discussions.</p>
-  </section>
+  <main class="pt-20">
 
-  <!-- Contact Info Cards -->
-  <section class="container mx-auto py-16 fade-up">
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition text-center">
-        <h2 class="text-xl font-bold mb-2 text-blue-700">Email</h2>
-        <p class="text-gray-600">info@yawaytech.com</p>
+    <!-- HERO (index-style gradient overlay; content kept exactly) -->
+    <section class="relative text-white py-24 sm:py-32 lg:py-40 overflow-hidden">
+      <div class="absolute inset-0">
+        <img src="asset/Home.png" alt="Contact Hero" class="absolute inset-0 w-full h-full object-cover scale-105 transition-transform duration-1000" id="hero-bg" loading="lazy"/>
+        <div class="hero-gradient absolute inset-0"></div>
       </div>
-      <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition text-center">
-        <h2 class="text-xl font-bold mb-2 text-green-700">Phone</h2>
-        <p class="text-gray-600">+91-XXXXXXXXXX</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition text-center">
-        <h2 class="text-xl font-bold mb-2 text-purple-700">Address</h2>
-        <p class="text-gray-600">123, Smart Meter Road, Tech City, India</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- Contact Form -->
-  <section class="container mx-auto py-16 fade-up">
-    <div class="bg-white p-10 rounded-2xl shadow-lg max-w-4xl mx-auto">
-      <h2 class="text-3xl font-bold mb-6 text-center text-blue-700">Send Us a Message</h2>
-      <form class="space-y-6">
-        <div class="grid md:grid-cols-2 gap-6">
-          <input type="text" placeholder="Your Name" class="border border-gray-300 p-4 rounded-lg w-full focus:ring-2 focus:ring-blue-500 focus:outline-none">
-          <input type="email" placeholder="Your Email" class="border border-gray-300 p-4 rounded-lg w-full focus:ring-2 focus:ring-blue-500 focus:outline-none">
+      <!-- Decorative blobs -->
+      <span class="blob top-10 left-6 w-16 h-16 bg-blue-300"></span>
+      <span class="blob top-1/3 right-10 w-12 h-12 bg-purple-300"></span>
+      <span class="blob bottom-24 left-10 w-20 h-20 bg-indigo-300"></span>
+
+      <div class="relative container mx-auto text-center px-4 sm:px-6 max-w-3xl">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 fade-up">Get in Touch</h1>
+        <p class="text-lg md:text-xl max-w-2xl mx-auto fade-up">We’d love to hear from you! Reach out for queries, support, or project discussions.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT INFO CARDS (content unchanged) -->
+    <section class="container mx-auto py-16 px-4 sm:px-6 fade-up">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition card text-center">
+          <h2 class="text-xl font-bold mb-2 text-blue-700">Email</h2>
+          <p class="text-gray-600">info@yawaytech.com</p>
         </div>
-        <input type="text" placeholder="Subject" class="border border-gray-300 p-4 rounded-lg w-full focus:ring-2 focus:ring-blue-500 focus:outline-none">
-        <textarea placeholder="Your Message" rows="5" class="border border-gray-300 p-4 rounded-lg w-full focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
-        <button type="submit" class="w-full bg-blue-700 text-white py-3 rounded-lg hover:bg-blue-800 transition font-semibold">Send Message</button>
-      </form>
-    </div>
-  </section>
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition card text-center">
+          <h2 class="text-xl font-bold mb-2 text-green-700">Phone</h2>
+          <p class="text-gray-600">+91-XXXXXXXXXX</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition card text-center">
+          <h2 class="text-xl font-bold mb-2 text-purple-700">Address</h2>
+          <p class="text-gray-600">123, Smart Meter Road, Tech City, India</p>
+        </div>
+      </div>
+    </section>
 
-  <!-- Map Section -->
-  <section class="container mx-auto py-16 fade-up">
-    <h2 class="text-3xl font-bold mb-6 text-center text-blue-700">Our Location</h2>
-    <div class="rounded-xl overflow-hidden shadow-lg">
-      <iframe class="w-full h-80 md:h-96" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.123456789!2d72.123456!3d19.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x123456789abcdef!2sYaway%20Tech!5e0!3m2!1sen!2sin!4v1690000000000" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-  </section>
+    <!-- CONTACT FORM (content unchanged) -->
+    <section id="form" class="container mx-auto py-16 px-4 sm:px-6 fade-up">
+      <div class="bg-white p-8 sm:p-10 rounded-3xl shadow-xl max-w-4xl mx-auto card">
+        <h2 class="text-3xl font-bold mb-6 text-center text-blue-700">Send Us a Message</h2>
+        <form class="space-y-6">
+          <div class="grid md:grid-cols-2 gap-6">
+            <input type="text" placeholder="Your Name" class="border border-gray-300 p-4 rounded-lg w-full focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none" />
+            <input type="email" placeholder="Your Email" class="border border-gray-300 p-4 rounded-lg w-full focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none" />
+          </div>
+          <input type="text" placeholder="Subject" class="border border-gray-300 p-4 rounded-lg w-full focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none" />
+          <textarea placeholder="Your Message" rows="5" class="border border-gray-300 p-4 rounded-lg w-full focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none"></textarea>
+          <button type="submit" class="w-full btn-enhanced bg-blue-700 text-white py-3 rounded-lg hover:bg-blue-800 transition font-semibold">Send Message</button>
+        </form>
+      </div>
+    </section>
 
-  <!-- Footer -->
-  <footer class="bg-gray-100 text-center py-8 fade-up mt-auto">
-    <p>© 2025 Yaway Tech. All rights reserved.</p>
-    <p>Email: info@yawaytech.com | Phone: +91-XXXXXXXXXX</p>
+    <!-- MAP (content unchanged) -->
+    <section class="container mx-auto py-16 px-4 sm:px-6 fade-up">
+      <h2 class="text-3xl font-bold mb-6 text-center text-blue-700">Our Location</h2>
+      <div class="rounded-2xl overflow-hidden shadow-xl card">
+        <iframe class="w-full h-80 md:h-96" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.123456789!2d72.123456!3d19.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x123456789abcdef!2sYaway%20Tech!5e0!3m2!1sen!2sin!4v1690000000000" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (keep your footer text, styled cleaner) -->
+  <footer class="bg-gradient-to-br from-gray-900 to-gray-800 text-gray-300 relative overflow-hidden mt-auto">
+    <!-- Geometric accents like index -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-10 left-10 w-32 h-32 border border-gray-600 rounded-full"></div>
+      <div class="absolute bottom-20 right-16 w-40 h-40 border border-gray-600 rounded-full"></div>
+      <div class="absolute top-1/2 left-1/3 w-24 h-24 border border-gray-600 rounded-full"></div>
+    </div>
+
+    <div class="relative container mx-auto px-4 sm:px-6 py-10">
+      <div class="text-center fade-up">
+        <p>© 2025 SMB. All rights reserved.</p>
+        <p class="mt-2">Email: info@yawaytech.com | Phone: +91-XXXXXXXXXX</p>
+      </div>
+    </div>
   </footer>
 
+  <!-- Back to top -->
+  <button id="backToTop" aria-label="Back to top" class="fixed right-4 sm:right-6 bottom-4 sm:bottom-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 hidden">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.293 9.707a1 1 0 001.414 0L9 5.414V17a1 1 0 102 0V5.414l4.293 4.293a1 1 0 101.414-1.414l-6-6a1 1 0 00-1.414 0l-6 6a1 1 0 000 1.414z" clip-rule="evenodd"/></svg>
+  </button>
+
   <script>
-    // Fade-up animation on scroll
-    const faders = document.querySelectorAll('.fade-up');
-    const options = { threshold: 0.3 };
-    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) { 
-          entry.target.classList.add('visible'); 
-          observer.unobserve(entry.target); 
+    // small helper for safe calls
+    const safe = (fn) => { try { fn(); } catch (_) {} };
+
+    // Fade-up on scroll
+    safe(() => {
+      const faders = document.querySelectorAll('.fade-up');
+      const obs = new IntersectionObserver((entries, o) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('visible'); o.unobserve(e.target); }
+        });
+      }, { threshold: 0.25, rootMargin: '0px 0px -40px 0px' });
+      faders.forEach(el => obs.observe(el));
+    });
+
+    // Navbar bg intensity on scroll (like index)
+    safe(() => {
+      const header = document.querySelector('header');
+      const onScroll = () => {
+        if (window.scrollY > 100) {
+          header.classList.add('bg-white/95');
+          header.classList.remove('bg-white/90');
+        } else {
+          header.classList.add('bg-white/90');
+          header.classList.remove('bg-white/95');
         }
-      });
-    }, options);
-    faders.forEach(fader => appearOnScroll.observe(fader));
+      };
+      window.addEventListener('scroll', onScroll); onScroll();
+    });
+
+    // Back to top
+    safe(() => {
+      const btn = document.getElementById('backToTop');
+      const check = () => (window.scrollY > 600 ? btn.classList.remove('hidden') : btn.classList.add('hidden'));
+      window.addEventListener('scroll', check); check();
+      btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    });
+
+    // Parallax hero (desktop only)
+    safe(() => {
+      const bg = document.getElementById('hero-bg');
+      const section = bg?.closest('section');
+      if (!bg || !section) return;
+      let rect = bg.getBoundingClientRect();
+      const max = 16;
+      function onMove(e) {
+        const x = (e.clientX - (rect.left + rect.width/2)) / (rect.width/2);
+        const y = (e.clientY - (rect.top + rect.height/2)) / (rect.height/2);
+        bg.style.transform = `translate3d(${(-x*max)}px, ${(-y*max/2)}px, 0) scale(1.03)`;
+      }
+      function reset(){ bg.style.transform = ''; }
+      window.addEventListener('resize', () => rect = bg.getBoundingClientRect());
+      if (!('ontouchstart' in window)) {
+        section.addEventListener('mousemove', onMove);
+        section.addEventListener('mouseleave', reset);
+      }
+    });
+
+    // Mobile menu toggle
+    safe(() => {
+      const open = document.getElementById('mobileBtn');
+      const close = document.getElementById('closeMenu');
+      const menu = document.getElementById('mobileMenu');
+      const toggle = () => {
+        const willOpen = menu.classList.contains('translate-x-full') || !menu.classList.contains('open');
+        menu.classList.toggle('open', willOpen);
+        document.body.style.overflow = willOpen ? 'hidden' : 'auto';
+      };
+      open?.addEventListener('click', toggle);
+      close?.addEventListener('click', toggle);
+      menu?.addEventListener('click', (e) => { if (e.target === menu) toggle(); });
+    });
+
+     // ---------- Smooth scrolling for anchor links ----------
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
   </script>
 </body>
 </html>
