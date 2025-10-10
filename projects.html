@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — SMB Smart Electrical Solutions</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+.text-gradient { background: linear-gradient(90deg, #3b82f6, #9333ea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.project-card { transition: transform 0.3s, box-shadow 0.3s; }
+.project-card:hover { transform: scale(1.05); box-shadow: 0 15px 25px rgba(0,0,0,0.2); }
+.fade-up { transform: translateY(18px); opacity: 0; transition: all 0.6s ease; }
+.fade-up.visible { transform: translateY(0); opacity: 1; }
+.badge { font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 9999px; color: white; }
+.badge-smart { background: #3b82f6; }
+.badge-sub { background: #8b5cf6; }
+.badge-man { background: #f43f5e; }
+</style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+<!-- NAVBAR -->
+<header class="fixed w-full z-50 bg-white/95 backdrop-blur shadow-sm">
+  <div class="container mx-auto flex items-center justify-between px-6 py-4">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="asset/image.png" alt="SMB Logo" class="w-16 h-16 object-contain shadow-lg" />
+    </a>
+    <nav class="hidden md:flex items-center space-x-6">
+      <a href="index.html" class="hover:text-blue-600 font-medium">Home</a>
+      <a href="services.html" class="hover:text-blue-600 font-medium">Services</a>
+      <a href="#projects" class="hover:text-blue-600 font-medium font-bold">Projects</a>
+      <a href="about.html" class="hover:text-blue-600 font-medium">About</a>
+      
+      <a href="contact.html" class="hover:text-blue-600 font-medium">Contact</a>
+    </nav>
+    <button id="mobileBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="Toggle menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- HERO SECTION -->
+<section class="relative text-white py-32 overflow-hidden">
+  <!-- Background Image -->
+  <div class="absolute inset-0">
+    <img src="asset/Home.png" alt="Our Projects" class="w-full h-full object-cover opacity-40">
+    <!-- Optional gradient overlay for better text visibility -->
+    <div class="absolute inset-0 bg-gradient-to-r from-black/50 via-black/40 to-black/30"></div>
+  </div>
+
+  <div class="relative container mx-auto text-center px-6">
+    <h1 class="text-4xl md:text-5xl font-extrabold mb-6 fade-up">Our Projects</h1>
+    <p class="text-lg md:text-xl opacity-90 mb-8 fade-up delay-200">
+      Explore our extensive portfolio in smart meter manufacturing, substation erection, and manpower management solutions.
+    </p>
+  </div>
+</section>
+
+
+
+<!-- CATEGORY INTRO -->
+<section class="py-12 container mx-auto px-6">
+  <div class="max-w-4xl mx-auto text-center space-y-4 fade-up">
+    <h2 class="text-3xl md:text-4xl font-bold">Project Categories</h2>
+    <p class="text-gray-700 text-lg">
+      SMB projects are designed to meet industry-leading standards. Our work is divided into three categories:
+    </p>
+    <div class="flex flex-col md:flex-row justify-center gap-6 mt-6">
+      <span class="badge badge-smart">Smart Meters</span>
+      <span class="badge badge-sub">Substations</span>
+      <span class="badge badge-man">Manpower</span>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER BUTTONS -->
+<section class="py-6 container mx-auto px-6">
+  <div class="flex justify-center mb-12 space-x-4 fade-up delay-200">
+    <button class="filter-btn px-4 py-2 bg-blue-500 text-white rounded-full font-semibold" data-filter="all">All</button>
+    <button class="filter-btn px-4 py-2 bg-gray-200 text-gray-700 rounded-full font-semibold" data-filter="smart-meters">Smart Meters</button>
+    <button class="filter-btn px-4 py-2 bg-gray-200 text-gray-700 rounded-full font-semibold" data-filter="substations">Substations</button>
+    <button class="filter-btn px-4 py-2 bg-gray-200 text-gray-700 rounded-full font-semibold" data-filter="manpower">Manpower</button>
+  </div>
+</section>
+
+<!-- PROJECTS GRID -->
+<section id="projects" class="py-12 container mx-auto px-6">
+  <div class="grid md:grid-cols-3 gap-8">
+    <!-- Project 1 -->
+    <div class="project-card fade-up smart-meters bg-white rounded-2xl shadow-lg overflow-hidden">
+      <img src="asset/smartmeter1.png" alt="Smart Meter Project" class="w-full h-56 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2">Smart Meter Pilot</h3>
+        <div class="flex gap-2 mb-2">
+          <span class="badge badge-smart">2010</span>
+          <span class="badge badge-smart">Residential</span>
+        </div>
+        <p class="text-gray-600 text-sm">Installed smart meters across multiple residential complexes.</p>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card fade-up substations bg-white rounded-2xl shadow-lg overflow-hidden">
+      <img src="asset/erection2.png" alt="Substation Project" class="w-full h-56 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2">Industrial Substation</h3>
+        <div class="flex gap-2 mb-2">
+          <span class="badge badge-sub">2015</span>
+          <span class="badge badge-sub">Industrial</span>
+        </div>
+        <p class="text-gray-600 text-sm">33/11 kV substation with full compliance.</p>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card fade-up manpower bg-white rounded-2xl shadow-lg overflow-hidden">
+      <img src="asset/Manpower3.png" alt="Manpower Project" class="w-full h-56 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2">Workforce Deployment</h3>
+        <div class="flex gap-2 mb-2">
+          <span class="badge badge-man">2018</span>
+          <span class="badge badge-man">Large-Scale</span>
+        </div>
+        <p class="text-gray-600 text-sm">Managed skilled workforce for multiple infrastructure projects.</p>
+      </div>
+    </div>
+
+    <!-- Project 4 -->
+    <div class="project-card fade-up smart-meters bg-white rounded-2xl shadow-lg overflow-hidden">
+      <img src="asset/smartmeter2.png" alt="Smart Meter Expansion" class="w-full h-56 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2">Smart Meter Expansion</h3>
+        <div class="flex gap-2 mb-2">
+          <span class="badge badge-smart">2020</span>
+          <span class="badge badge-smart">Residential & Commercial</span>
+        </div>
+        <p class="text-gray-600 text-sm">Expanded deployment to over 20,000 households.</p>
+      </div>
+    </div>
+
+    <!-- Project 5 -->
+    <div class="project-card fade-up substations bg-white rounded-2xl shadow-lg overflow-hidden">
+      <img src="asset/erection3.png" alt="Urban Substation" class="w-full h-56 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2">Urban Substation Project</h3>
+        <div class="flex gap-2 mb-2">
+          <span class="badge badge-sub">2021</span>
+          <span class="badge badge-sub">Urban</span>
+        </div>
+        <p class="text-gray-600 text-sm">Executed substation projects in dense city areas.</p>
+      </div>
+    </div>
+
+    <!-- Project 6 -->
+    <div class="project-card fade-up manpower bg-white rounded-2xl shadow-lg overflow-hidden">
+      <img src="asset/manpower4.png" alt="Manpower Large-Scale" class="w-full h-56 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2">Manpower Large-Scale Project</h3>
+        <div class="flex gap-2 mb-2">
+          <span class="badge badge-man">2023</span>
+          <span class="badge badge-man">Industrial</span>
+        </div>
+        <p class="text-gray-600 text-sm">Deployed workforce for simultaneous infrastructure projects.</p>
+      </div>
+    </div>
+
+    <!-- Project 7 -->
+    <div class="project-card fade-up smart-meters bg-white rounded-2xl shadow-lg overflow-hidden">
+      <img src="asset/smartmeter3.png" alt="Smart Meter Corporate" class="w-full h-56 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2">Corporate Smart Meters</h3>
+        <div class="flex gap-2 mb-2">
+          <span class="badge badge-smart">2024</span>
+          <span class="badge badge-smart">Corporate</span>
+        </div>
+        <p class="text-gray-600 text-sm">Implemented smart meters for corporate offices and campuses.</p>
+      </div>
+    </div>
+
+    <!-- Project 8 -->
+    <div class="project-card fade-up substations bg-white rounded-2xl shadow-lg overflow-hidden">
+      <img src="asset/Erection1.png" alt="Rural Substation" class="w-full h-56 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2">Rural Substation Project</h3>
+        <div class="flex gap-2 mb-2">
+          <span class="badge badge-sub">2022</span>
+          <span class="badge badge-sub">Rural</span>
+        </div>
+        <p class="text-gray-600 text-sm">Constructed reliable substations for rural electrification.</p>
+      </div>
+    </div>
+
+    <!-- Project 9 -->
+    <div class="project-card fade-up manpower bg-white rounded-2xl shadow-lg overflow-hidden">
+      <img src="asset/Manpower2.png" alt="Skilled Workforce" class="w-full h-56 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2">Skilled Workforce Deployment</h3>
+        <div class="flex gap-2 mb-2">
+          <span class="badge badge-man">2025</span>
+          <span class="badge badge-man">Commercial</span>
+        </div>
+        <p class="text-gray-600 text-sm">Managed skilled workers across multiple commercial projects.</p>
+      </div>
+    </div>
+
+    <!-- Project 10 -->
+    <!-- <div class="project-card fade-up smart-meters bg-white rounded-2xl shadow-lg overflow-hidden">
+      <img src="asset/project10.jpg" alt="Smart Meter Innovation" class="w-full h-56 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2">Next-Gen Smart Meters</h3>
+        <div class="flex gap-2 mb-2">
+          <span class="badge badge-smart">2025</span>
+          <span class="badge badge-smart">Innovation</span>
+        </div>
+        <p class="text-gray-600 text-sm">Developed and implemented next-gen smart meter solutions.</p>
+      </div>
+    </div> -->
+
+    <!-- Project 11 -->
+    <!-- <div class="project-card fade-up substations bg-white rounded-2xl shadow-lg overflow-hidden">
+      <img src="asset/project11.jpg" alt="Industrial Substation Upgrade" class="w-full h-56 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2">Industrial Substation Upgrade</h3>
+        <div class="flex gap-2 mb-2">
+          <span class="badge badge-sub">2023</span>
+          <span class="badge badge-sub">Industrial</span>
+        </div>
+        <p class="text-gray-600 text-sm">Upgraded existing substations for better efficiency and reliability.</p>
+      </div>
+    </div> -->
+
+    
+    <!-- <div class="project-card fade-up manpower bg-white rounded-2xl shadow-lg overflow-hidden">
+      <img src="asset/Manpower1.png" alt="Manpower Deployment" class="w-full h-56 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2">Manpower Deployment for Mega Projects</h3>
+        <div class="flex gap-2 mb-2">
+          <span class="badge badge-man">2024</span>
+          <span class="badge badge-man">Mega Project</span>
+        </div>
+        <p class="text-gray-600 text-sm">Coordinated manpower across multiple mega infrastructure projects.</p>
+      </div> -->
+
+      
+    </div>
+
+    
+
+  </div>
+</section>
+
+<!-- CONTACT (big form) -->
+    <section id="contact" class="py-20 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-center">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold mb-3 fade-up">Start your project with SMP</h2>
+        <p class="mb-6 max-w-2xl mx-auto opacity-90 fade-up">Tell us about your requirements — meters, erection, or manpower. We’ll propose a scope, timeline and estimate.</p>
+
+        <div class="max-w-3xl mx-auto bg-white rounded-xl p-6 text-left shadow-lg fade-up">
+          <form id="contactForm" novalidate>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                <input id="name" name="name" required class="mt-1 block w-full rounded border px-3 py-2" />
+                <p class="text-xs mt-1 text-red-600 hidden" id="err-name">Please enter your name.</p>
+              </div>
+              <div>
+                <label for="company" class="block text-sm font-medium text-gray-700">Company</label>
+                <input id="company" name="company" class="mt-1 block w-full rounded border px-3 py-2" />
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input id="email" name="email" type="email" required class="mt-1 block w-full rounded border px-3 py-2" />
+                <p class="text-xs mt-1 text-red-600 hidden" id="err-email">Enter a valid email address.</p>
+              </div>
+              <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
+                <input id="phone" name="phone" type="tel" class="mt-1 block w-full rounded border px-3 py-2" />
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <label for="services" class="block text-sm font-medium text-gray-700">Interested In</label>
+              <select id="services" name="services" class="mt-1 block w-full rounded border px-3 py-2">
+                <option>Smart meters & Manufacturing</option>
+                <option>Infrastructure Erection</option>
+                <option>Manpower & Training</option>
+                <option>Maintenance & O&M</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="mt-4">
+              <label for="message" class="block text-sm font-medium text-gray-700">Project details</label>
+              <textarea id="message" name="message" rows="5" class="mt-1 block w-full rounded border px-3 py-2"></textarea>
+            </div>
+
+            <div class="mt-4 flex items-center gap-3">
+              <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded">Request a Quote</button>
+              <span id="formStatus" class="text-sm text-gray-600"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS STRIP -->
+    <section class="py-8">
+      <div class="container mx-auto px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div class="bg-blue-600 text-white p-6 rounded-lg shadow"> <div class="text-2xl font-bold">50k+</div><div class="text-sm opacity-90">Meters Supplied</div></div>
+          <div class="bg-green-600 text-white p-6 rounded-lg shadow"> <div class="text-2xl font-bold">200+</div><div class="text-sm opacity-90">Projects</div></div>
+          <div class="bg-indigo-600 text-white p-6 rounded-lg shadow"> <div class="text-2xl font-bold">120+</div><div class="text-sm opacity-90">Clients</div></div>
+          <div class="bg-gray-800 text-white p-6 rounded-lg shadow"> <div class="text-2xl font-bold">24/7</div><div class="text-sm opacity-90">Support</div></div>
+        </div>
+      </div>
+    </section>
+
+ <!-- FOOTER -->
+  <footer class="bg-gray-900 text-gray-300 mt-12">
+  <div class="container mx-auto px-6 py-12 grid md:grid-cols-3 gap-8">
+    <div class="flex flex-col items-start">
+      <!-- Logo -->
+      <a href="index.html" class="mb-4">
+        <img src="asset/image.png" alt="SMB Logo" class="w-24 h-24 object-contain shadow-lg" />
+      </a>
+      <h3 class="text-white font-bold mb-3">SMB Smart Solution</h3>
+      <p class="text-sm">Smart Meter Manufacturing · Electrical Infrastructure Erection · Manpower Management</p>
+      <p class="text-sm mt-2">&copy; 2025 SMB Smart Electrical Solutions</p>
+    </div>
+    <div>
+      <h3 class="text-white font-bold mb-3">Quick Links</h3>
+      <ul class="text-sm space-y-2">
+        <li><a href="index.html" class="hover:text-white">Home</a></li>
+        <li><a href="about.html" class="hover:text-white">About</a></li>
+        <li><a href="services.html" class="hover:text-white">Services</a></li>
+        <li><a href="resources.html" class="hover:text-white">Resources</a></li>
+        <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-white font-bold mb-3">Contact</h3>
+      <p class="text-sm">Email: info@smbsolutions.com</p>
+      <p class="text-sm">Phone: +91 12345 67890</p>
+      <p class="text-sm">Address: 123 Industrial Park, City, India</p>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPT FOR FILTER AND FADE-UP -->
+<script>
+const faders = document.querySelectorAll('.fade-up');
+const appearOnScroll = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+faders.forEach(fader => appearOnScroll.observe(fader));
+
+// Filter buttons
+const filterBtns = document.querySelectorAll('.filter-btn');
+const projects = document.querySelectorAll('.project-card');
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const filter = btn.getAttribute('data-filter');
+    filterBtns.forEach(b => { b.classList.replace('bg-blue-500','bg-gray-200'); b.classList.replace('text-white','text-gray-700'); });
+    btn.classList.add('bg-blue-500','text-white');
+    projects.forEach(p => {
+      if(filter==='all' || p.classList.contains(filter)) p.style.display='block';
+      else p.style.display='none';
+    });
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — SMB Smart Electrical Solutions</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+.text-gradient { background: linear-gradient(90deg, #3b82f6, #9333ea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.card { transition: transform 0.3s, box-shadow 0.3s; }
+.card:hover { transform: scale(1.05); box-shadow: 0 15px 25px rgba(0,0,0,0.2); }
+.fade-up { transform: translateY(18px); opacity: 0; transition: all 0.6s ease; }
+.fade-up.visible { transform: translateY(0); opacity: 1; }
+</style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+<!-- NAVBAR -->
+<header class="fixed w-full z-50 bg-white/95 backdrop-blur shadow-sm">
+  <div class="container mx-auto flex items-center justify-between px-6 py-4">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="asset/image.png" alt="SMB Logo" class="w-16 h-16 object-contain shadow-lg" />
+    </a>
+    <nav class="hidden md:flex items-center space-x-6">
+      <a href="index.html" class="hover:text-blue-600 font-medium">Home</a>
+      <a href="services.html" class="hover:text-blue-600 font-medium font-bold">Services</a>
+      <a href="projects.html" class="hover:text-blue-600 font-medium">Projects</a>
+      <a href="about.html" class="hover:text-blue-600 font-medium">About</a>
+      <a href="resources.html" class="hover:text-blue-600 font-medium">Resources</a>
+      <a href="contact.html" class="hover:text-blue-600 font-medium">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO SECTION -->
+<section class="relative text-white py-32 overflow-hidden">
+  <!-- Background Image with overlay -->
+  <div class="absolute inset-0">
+    <img src="asset/Home.png" alt="Our Services" class="w-full h-full object-cover">
+    <!-- Gradient overlay for text readability -->
+    <div class="absolute inset-0 bg-black/50"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative container mx-auto text-center px-6">
+    <h1 class="text-4xl md:text-5xl font-extrabold mb-6 fade-up">
+      Our Services
+    </h1>
+    <p class="text-lg md:text-xl opacity-90 mb-8 fade-up delay-200">
+      Comprehensive solutions in smart meter manufacturing, substation erection, and manpower management.
+    </p>
+  </div>
+
+  <!-- Optional decorative shapes -->
+  <div class="absolute top-10 left-10 w-24 h-24 bg-white/20 rounded-full animate-pulse-slow"></div>
+  <div class="absolute bottom-20 right-16 w-32 h-32 bg-white/15 rounded-full animate-pulse-slow"></div>
+</section>
+
+
+<!-- SERVICE CARDS -->
+<section class="py-20 container mx-auto px-6">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 fade-up">
+    
+    <!-- Smart Meters -->
+    <div class="card bg-white rounded-2xl shadow-lg overflow-hidden">
+      <img src="asset/service-smart.jpg" alt="Smart Meters" class="w-full h-56 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2 text-blue-600">Smart Meters</h3>
+        <p class="text-gray-600 text-sm mb-4">
+          Advanced metering solutions for residential, commercial, and industrial clients. Accurate readings, remote monitoring, and seamless integration with energy management systems.
+        </p>
+        <a href="#contact" class="inline-block bg-blue-500 text-white font-semibold px-6 py-2 rounded-full hover:bg-blue-600">Learn More</a>
+      </div>
+    </div>
+
+    <!-- Substations -->
+    <div class="card bg-white rounded-2xl shadow-lg overflow-hidden">
+      <img src="asset/service-substation.jpg" alt="Substations" class="w-full h-56 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2 text-purple-600">Substations</h3>
+        <p class="text-gray-600 text-sm mb-4">
+          Design, erection, and commissioning of substations with compliance-driven operations. Ensuring reliable and safe power distribution for industrial and commercial infrastructure.
+        </p>
+        <a href="#contact" class="inline-block bg-purple-500 text-white font-semibold px-6 py-2 rounded-full hover:bg-purple-600">Learn More</a>
+      </div>
+    </div>
+
+    <!-- Manpower Management -->
+    <div class="card bg-white rounded-2xl shadow-lg overflow-hidden">
+      <img src="asset/service-manpower.jpg" alt="Manpower Management" class="w-full h-56 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2 text-pink-500">Manpower Management</h3>
+        <p class="text-gray-600 text-sm mb-4">
+          Skilled workforce management for smooth execution of electrical projects. Efficient team deployment for large-scale operations ensuring timely and quality deliverables.
+        </p>
+        <a href="#contact" class="inline-block bg-pink-500 text-white font-semibold px-6 py-2 rounded-full hover:bg-pink-600">Learn More</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DETAILED SERVICES INFO -->
+<section class="py-20 bg-gray-50 container mx-auto px-6">
+  <div class="max-w-5xl mx-auto text-center space-y-6 fade-up">
+    <h2 class="text-3xl md:text-4xl font-bold">Why Choose SMB Services?</h2>
+    <p class="text-gray-700 text-lg leading-relaxed">
+      At SMB, we combine innovation, compliance, and operational excellence. Every project, whether a smart meter rollout, a substation erection, or workforce deployment, is executed with precision and commitment to client satisfaction.
+    </p>
+    <div class="grid md:grid-cols-3 gap-6 mt-12">
+      <div class="p-6 bg-white rounded-2xl shadow-lg">
+        <h3 class="text-xl font-semibold mb-2">Innovation</h3>
+        <p class="text-gray-600 text-sm">Leveraging latest technologies to deliver efficient and future-ready solutions.</p>
+      </div>
+      <div class="p-6 bg-white rounded-2xl shadow-lg">
+        <h3 class="text-xl font-semibold mb-2">Compliance</h3>
+        <p class="text-gray-600 text-sm">Strict adherence to national and international electrical safety and operational standards.</p>
+      </div>
+      <div class="p-6 bg-white rounded-2xl shadow-lg">
+        <h3 class="text-xl font-semibold mb-2">Reliability</h3>
+        <p class="text-gray-600 text-sm">Ensuring uninterrupted and high-quality service delivery for projects of any scale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-900 text-gray-300 mt-12">
+  <div class="container mx-auto px-6 py-12 grid md:grid-cols-3 gap-8">
+    <div class="flex flex-col items-start">
+      <a href="index.html" class="mb-4">
+        <img src="asset/image.png" alt="SMB Logo" class="w-24 h-24 object-contain shadow-lg" />
+      </a>
+      <h3 class="text-white font-bold mb-3">SMB Smart Solution</h3>
+      <p class="text-sm">Smart Meter Manufacturing · Electrical Infrastructure Erection · Manpower Management</p>
+      <p class="text-sm mt-2">&copy; 2025 SMB Smart Electrical Solutions</p>
+    </div>
+    <div>
+      <h3 class="text-white font-bold mb-3">Quick Links</h3>
+      <ul class="text-sm space-y-2">
+        <li><a href="index.html" class="hover:text-white">Home</a></li>
+        <li><a href="about.html" class="hover:text-white">About</a></li>
+        <li><a href="services.html" class="hover:text-white">Services</a></li>
+        <li><a href="projects.html" class="hover:text-white">Projects</a></li>
+        <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-white font-bold mb-3">Contact</h3>
+      <p class="text-sm">Email: info@smbsolutions.com</p>
+      <p class="text-sm">Phone: +91 12345 67890</p>
+      <p class="text-sm">Address: 123 Industrial Park, City, India</p>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPT FOR FADE-UP -->
+<script>
+const faders = document.querySelectorAll('.fade-up');
+const appearOnScroll = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+faders.forEach(fader => appearOnScroll.observe(fader));
+</script>
+
+</body>
+</html>

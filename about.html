@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — SMB Smart Electrical Solutions</title>
+
+  <!-- Tailwind + font -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+    .section-title { background: linear-gradient(to right, #6366f1, #8b5cf6); -webkit-background-clip: text; color: transparent; }
+    .founder-img { border-radius: 9999px; transition: transform 0.3s, box-shadow 0.3s; }
+    .founder-img:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+    .timeline::before { content: ''; position: absolute; left: 1rem; top: 0; bottom: 0; width: 4px; background: linear-gradient(to bottom, #6366f1, #8b5cf6); border-radius: 2px; }
+    .timeline-event { position: relative; margin-left: 3rem; margin-bottom: 3rem; }
+    .timeline-event .dot { position: absolute; left: -28px; top: 0; width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(to right, #6366f1, #8b5cf6); display: flex; justify-content: center; align-items: center; color: white; font-weight: bold; font-size: 1.2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+    .timeline-event p { background: #f0f4ff; padding: 1rem; border-radius: 1rem; }
+    .fade-up { transform: translateY(18px); opacity: 0; transition: all 0.6s ease; }
+    .fade-up.visible { transform: translateY(0); opacity: 1; }
+/* 
+ hero */
+    @keyframes slide-up {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .animate-slide-up { animation: slide-up 0.8s ease forwards; }
+  .animate-slide-up.delay-200 { animation-delay: 0.2s; }
+
+  @keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  .animate-fade-in { animation: fade-in 1s ease forwards; }
+  .animate-fade-in.delay-400 { animation-delay: 0.4s; }
+
+  @keyframes pulse-slow {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.1); opacity: 0.5; }
+  }
+  .animate-pulse-slow { animation: pulse-slow 6s ease-in-out infinite; }
+   
+     /* MILESTONES / TIMELINE */
+   @keyframes slideInLeft {
+    0% { opacity: 0; transform: translateX(-50px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes slideInRight {
+    0% { opacity: 0; transform: translateX(50px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.3); opacity: 1; }
+  }
+  .animate-slideInLeft { animation: slideInLeft 0.8s ease forwards; }
+  .animate-slideInRight { animation: slideInRight 0.8s ease forwards; }
+  .animate-pulse { animation: pulse 1.5s infinite; }
+
+   /* Mission & Vision */
+   @keyframes slideUp {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .animate-slideUp {
+    animation: slideUp 0.8s ease forwards;
+  }
+
+
+   
+  /* Floating animation for image */
+  @keyframes floating {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .animate-floating {
+    animation: floating 3s ease-in-out infinite;
+  }
+
+  /* Slide-up animation */
+  @keyframes slide-up {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .animate-slide-up { animation: slide-up 0.8s ease forwards; }
+
+  /* Fade-in animation */
+  @keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  .animate-fade-in { animation: fade-in 1s ease forwards; }
+
+  /* Gradient text fallback */
+  .text-gradient {
+    background: linear-gradient(90deg, #3b82f6, #9333ea);
+    
+    -webkit-text-fill-color: transparent;
+  }
+
+/* Company Overview */ */
+ 
+  .animate-slide-up { animation: slide-up 0.8s ease forwards; }
+  .animate-slide-up.delay-200 { animation-delay: 0.2s; }
+  .animate-slide-up.delay-400 { animation-delay: 0.4s; }
+
+  @keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  .animate-fade-in { animation: fade-in 1s ease forwards; }
+
+  @keyframes pulse-slow {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.1); opacity: 0.5; }
+  }
+  .animate-pulse-slow { animation: pulse-slow 6s ease-in-out infinite; }
+
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- NAVBAR -->
+   <header id="siteHeader" class="fixed w-full z-40 bg-white/95 backdrop-blur shadow-sm">
+    <div class="container mx-auto flex items-center justify-between px-6 py-4">
+      <a href="#home" class="flex items-center gap-3" aria-label="SMP homepage">
+        <div class="w-20 h-20 rounded-full bg-blue-600 flex items-center justify-center">
+          <img src="asset/image.png" alt="SMP Logo" class="w-16 h-16 object-contain rounded-full shadow-lg" />
+        </div>
+    
+      </a>
+
+      <nav id="mainNav" class="hidden md:flex items-center space-x-6" aria-label="Main navigation">
+  <a href="#home" class="hover:text-blue-600 font-medium">Home</a>
+  <a href="services.html" class="hover:text-blue-600 font-medium">Services</a>
+  <a href="projects.html" class="hover:text-blue-600 font-medium">Projects</a>
+  
+ 
+  <a href="about.html" class="hover:text-blue-600 font-medium">About</a>
+  <a href="contact.html" class="hover:text-blue-600 font-medium">Contact</a>
+
+  
+</nav>
+
+
+      <div class="hidden md:flex items-center space-x-4">
+        <button id="openNewsletter" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700">Subscribe</button>
+        <a href="#contact" class="px-4 py-2 rounded-lg border border-blue-600 text-blue-600 font-semibold hover:bg-blue-50">Request Quote</a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <button id="mobileBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
+        <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t" role="menu" aria-label="Mobile menu">
+      <div class="px-6 py-4 flex flex-col gap-3">
+        <a href="index.html" class="py-2" role="menuitem">Home</a>
+        <a href="services.html" class="py-2" role="menuitem">Services</a>
+        <a href="projects.html" class="py-2" role="menuitem">Projects</a>
+      
+        <a href="about.html" class="py-2" role="menuitem">About</a>
+        <a href="#contact" class="py-2" role="menuitem">Contact</a>
+        <a href="#contact" class="mt-2 inline-block px-4 py-2 bg-blue-600 text-white rounded">Request Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-28">
+
+   <!-- HERO SECTION -->
+<section class="relative text-white py-32 overflow-hidden">
+  <!-- Background Image with overlay -->
+  <div class="absolute inset-0">
+    <img src="asset/Home.png" alt="Smart Electrical Solutions" class="w-full h-full object-cover">
+    <!-- Gradient overlay for text readability -->
+    <div class="absolute inset-0 bg-black/50"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative container mx-auto text-center px-6">
+    <h1 class="text-4xl md:text-5xl font-extrabold mb-6 animate-slide-up">
+      About SMB Smart Electrical Solutions
+    </h1>
+    <p class="text-lg md:text-xl opacity-90 mb-8 animate-slide-up delay-200">
+      Innovating smart meter manufacturing, turnkey electrical infrastructure erection, and manpower management solutions with quality and compliance at the core.
+    </p>
+    <a href="#company" class="inline-block bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold px-8 py-4 rounded-full shadow-lg transform transition hover:scale-105 hover:shadow-xl animate-fade-in delay-400">
+      Learn More
+    </a>
+  </div>
+
+  <!-- Decorative floating shapes -->
+  <div class="absolute top-10 left-10 w-24 h-24 bg-white/20 rounded-full animate-pulse-slow"></div>
+  <div class="absolute bottom-20 right-16 w-32 h-32 bg-white/15 rounded-full animate-pulse-slow"></div>
+</section>
+
+
+
+
+    <!-- COMPANY OVERVIEW -->
+<section id="company" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
+  <!-- Decorative shapes -->
+  <div class="absolute top-0 left-0 w-40 h-40 bg-blue-200 rounded-full mix-blend-multiply opacity-30 animate-pulse-slow"></div>
+  <div class="absolute bottom-0 right-0 w-60 h-60 bg-purple-200 rounded-full mix-blend-multiply opacity-30 animate-pulse-slow"></div>
+
+  <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center text-gray-800 drop-shadow-md animate-fade-in">
+    Company Overview
+  </h2>
+
+  <div class="max-w-5xl mx-auto text-center space-y-6">
+    <p class="text-gray-700 text-lg leading-relaxed animate-slide-up">
+      SMB has been a pioneering provider of smart electrical solutions since its inception. We specialize in smart meter manufacturing, substation erection, and skilled manpower management for industrial, commercial, and residential projects.
+    </p>
+    <p class="text-gray-700 text-lg leading-relaxed animate-slide-up delay-200">
+      Our mission is to combine innovation, operational excellence, and strict compliance to deliver reliable, safe, and efficient energy solutions. From planning to execution, we ensure each project meets the highest standards of quality and client satisfaction.
+    </p>
+
+    <!-- Key Points -->
+    <div class="grid md:grid-cols-3 gap-6 mt-8 animate-slide-up delay-400">
+      <div class="p-6 bg-white rounded-2xl shadow-lg transform transition duration-700 hover:scale-105">
+        <h3 class="text-xl font-semibold mb-2 text-blue-600">Smart Meters</h3>
+        <p class="text-gray-600 text-sm">Advanced metering solutions for accurate energy monitoring and management.</p>
+      </div>
+      <div class="p-6 bg-white rounded-2xl shadow-lg transform transition duration-700 hover:scale-105">
+        <h3 class="text-xl font-semibold mb-2 text-purple-600">Substations</h3>
+        <p class="text-gray-600 text-sm">End-to-end substation erection with compliance-driven designs and operations.</p>
+      </div>
+      <div class="p-6 bg-white rounded-2xl shadow-lg transform transition duration-700 hover:scale-105">
+        <h3 class="text-xl font-semibold mb-2 text-pink-500">Manpower</h3>
+        <p class="text-gray-600 text-sm">Skilled workforce management for smooth and efficient project execution.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- FOUNDER / CHAIRMAN -->
+<section id="chairman" class="py-20 bg-gradient-to-r from-gray-100 to-gray-200">
+  <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-800 drop-shadow-md animate-fade-in">
+    Founder & Chairman
+  </h2>
+
+  <div class="flex flex-col md:flex-row items-center justify-center gap-12 max-w-5xl mx-auto">
+    
+    <!-- Founder Image with gradient border -->
+    <div class="relative rounded-full p-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-floating transform transition duration-700 ease-in-out hover:scale-105 hover:-translate-y-2 shadow-2xl">
+      <div class="rounded-full overflow-hidden w-48 h-48">
+        <img src="asset/image.png" alt="Founder" class="w-full h-full object-cover">
+      </div>
+    </div>
+    
+    <!-- Founder Details Card -->
+    <div class="max-w-xl bg-white rounded-2xl p-8 shadow-2xl transform transition duration-700 ease-in-out hover:scale-105 hover:-translate-y-2 animate-slide-up">
+      <h3 class="text-2xl font-bold mb-2 text-gradient bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600">Mr. John Doe</h3>
+      <h4 class="text-md font-semibold text-gray-500 mb-4">Founder & Chairman</h4>
+      <p class="text-gray-700 leading-relaxed">
+        Mr. John Doe founded SMB with a vision to revolutionize the smart meter and electrical infrastructure sector in India. Under his guidance, SMB has grown into a trusted provider of quality, compliance-driven solutions with a strong commitment to client satisfaction.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+<!-- MISSION & VISION -->
+<section id="mission" class="py-20 relative overflow-hidden">
+  <!-- Background image -->
+  <div class="absolute inset-0 -z-10">
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80" 
+         alt="Mission Background" 
+         class="w-full h-full object-cover opacity-70">
+  </div>
+
+  <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-white drop-shadow-lg">
+    Mission & Vision
+  </h2>
+  
+  <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+    
+    <!-- Mission Card -->
+    <div class="p-6 rounded-xl shadow-lg transform transition duration-700 ease-in-out hover:scale-105 animate-slide-up bg-gradient-to-br from-blue-500 to-cyan-400">
+      <h3 class="text-xl font-semibold mb-2 text-white">Mission</h3>
+      <p class="text-white">
+        Deliver high-quality, compliant smart electrical solutions that empower industries and communities with reliable, safe, and efficient power management.
+      </p>
+    </div>
+
+    <!-- Vision Card -->
+    <div class="p-6 rounded-xl shadow-lg transform transition duration-700 ease-in-out hover:scale-105 animate-slide-up bg-gradient-to-br from-purple-600 to-pink-400">
+      <h3 class="text-xl font-semibold mb-2 text-white">Vision</h3>
+      <p class="text-white">
+        Be the most trusted and innovative partner in the smart electrical solutions industry, recognized for excellence, sustainability, and impactful contributions to energy infrastructure.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- MILESTONES / TIMELINE -->
+<section id="milestones" class="py-20 bg-gray-50">
+  <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Milestones</h2>
+  
+  <div class="relative max-w-4xl mx-auto">
+    <!-- Vertical gradient line -->
+    <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-2 rounded-lg bg-gradient-to-b from-blue-500 to-purple-600"></div>
+
+    <div class="space-y-12">
+      
+      <!-- Event 1 (Left) -->
+      <div class="relative flex justify-between items-center w-full">
+        <div class="w-1/2 pr-8 text-right">
+          <div class="p-4 rounded-lg shadow-lg text-white bg-gradient-to-br from-cyan-400 to-blue-500 animate-slide-left">
+            <h4 class="font-bold text-lg">2010</h4>
+            <p>SMB founded, first smart meters produced, initial pilot projects launched.</p>
+          </div>
+        </div>
+        <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full border-4 border-white bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 animate-pulse"></div>
+        <div class="w-1/2"></div>
+      </div>
+
+      <!-- Event 2 (Right) -->
+      <div class="relative flex justify-between items-center w-full">
+        <div class="w-1/2"></div>
+        <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full border-4 border-white bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 animate-pulse"></div>
+        <div class="w-1/2 pl-8">
+          <div class="p-4 rounded-lg shadow-lg text-white bg-gradient-to-br from-yellow-400 to-orange-500 animate-slide-right">
+            <h4 class="font-bold text-lg">2015</h4>
+            <p>Expanded manufacturing capacity, executed first large-scale substation project.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event 3 (Left) -->
+      <div class="relative flex justify-between items-center w-full">
+        <div class="w-1/2 pr-8 text-right">
+          <div class="p-4 rounded-lg shadow-lg text-white bg-gradient-to-br from-green-500 to-emerald-700 animate-slide-left">
+            <h4 class="font-bold text-lg">2020</h4>
+            <p>Over 50,000 meters delivered, national recognition for compliance and safety.</p>
+          </div>
+        </div>
+        <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full border-4 border-white bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 animate-pulse"></div>
+        <div class="w-1/2"></div>
+      </div>
+
+      <!-- Event 4 (Right) -->
+      <div class="relative flex justify-between items-center w-full">
+        <div class="w-1/2"></div>
+        <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full border-4 border-white bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 animate-pulse"></div>
+        <div class="w-1/2 pl-8">
+          <div class="p-4 rounded-lg shadow-lg text-white bg-gradient-to-br from-pink-400 to-pink-600 animate-slide-right">
+            <h4 class="font-bold text-lg">2025</h4>
+            <p>Launched next-gen smart meter solutions and expanded manpower management services.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    
+  </main>
+
+  <!-- CONTACT (big form) -->
+    <section id="contact" class="py-20 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-center">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold mb-3 fade-up">Start your project with SMP</h2>
+        <p class="mb-6 max-w-2xl mx-auto opacity-90 fade-up">Tell us about your requirements — meters, erection, or manpower. We’ll propose a scope, timeline and estimate.</p>
+
+        <div class="max-w-3xl mx-auto bg-white rounded-xl p-6 text-left shadow-lg fade-up">
+          <form id="contactForm" novalidate>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                <input id="name" name="name" required class="mt-1 block w-full rounded border px-3 py-2" />
+                <p class="text-xs mt-1 text-red-600 hidden" id="err-name">Please enter your name.</p>
+              </div>
+              <div>
+                <label for="company" class="block text-sm font-medium text-gray-700">Company</label>
+                <input id="company" name="company" class="mt-1 block w-full rounded border px-3 py-2" />
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input id="email" name="email" type="email" required class="mt-1 block w-full rounded border px-3 py-2" />
+                <p class="text-xs mt-1 text-red-600 hidden" id="err-email">Enter a valid email address.</p>
+              </div>
+              <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
+                <input id="phone" name="phone" type="tel" class="mt-1 block w-full rounded border px-3 py-2" />
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <label for="services" class="block text-sm font-medium text-black-700">Interested In</label>
+              <select id="services" name="services" class="mt-1 block w-full rounded border px-3 py-2">
+                <option>Smart meters & Manufacturing</option>
+                <option>Infrastructure Erection</option>
+                <option>Manpower & Training</option>
+                <option>Maintenance & O&M</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="mt-4">
+              <label for="message" class="block text-sm font-medium text-gray-700">Project details</label>
+              <textarea id="message" name="message" rows="5" class="mt-1 block w-full rounded border px-3 py-2"></textarea>
+            </div>
+
+            <div class="mt-4 flex items-center gap-3">
+              <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded">Request a Quote</button>
+              <span id="formStatus" class="text-sm text-gray-600"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS STRIP -->
+    <section class="py-8">
+      <div class="container mx-auto px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div class="bg-blue-600 text-white p-6 rounded-lg shadow"> <div class="text-2xl font-bold">50k+</div><div class="text-sm opacity-90">Meters Supplied</div></div>
+          <div class="bg-green-600 text-white p-6 rounded-lg shadow"> <div class="text-2xl font-bold">200+</div><div class="text-sm opacity-90">Projects</div></div>
+          <div class="bg-indigo-600 text-white p-6 rounded-lg shadow"> <div class="text-2xl font-bold">120+</div><div class="text-sm opacity-90">Clients</div></div>
+          <div class="bg-gray-800 text-white p-6 rounded-lg shadow"> <div class="text-2xl font-bold">24/7</div><div class="text-sm opacity-90">Support</div></div>
+        </div>
+      </div>
+    </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-gray-300 mt-12">
+  <div class="container mx-auto px-6 py-12 grid md:grid-cols-3 gap-8">
+    <div class="flex flex-col items-start">
+      <!-- Logo -->
+      <a href="index.html" class="mb-4">
+        <img src="asset/image.png" alt="SMB Logo" class="w-24 h-24 object-contain shadow-lg" />
+      </a>
+      <h3 class="text-white font-bold mb-3">SMB Smart Solution</h3>
+      <p class="text-sm">Smart Meter Manufacturing · Electrical Infrastructure Erection · Manpower Management</p>
+      <p class="text-sm mt-2">&copy; 2025 SMB Smart Electrical Solutions</p>
+    </div>
+    <div>
+      <h3 class="text-white font-bold mb-3">Quick Links</h3>
+      <ul class="text-sm space-y-2">
+        <li><a href="index.html" class="hover:text-white">Home</a></li>
+        <li><a href="about.html" class="hover:text-white">About</a></li>
+        <li><a href="services.html" class="hover:text-white">Services</a></li>
+        <li><a href="resources.html" class="hover:text-white">Resources</a></li>
+        <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-white font-bold mb-3">Contact</h3>
+      <p class="text-sm">Email: info@smbsolutions.com</p>
+      <p class="text-sm">Phone: +91 12345 67890</p>
+      <p class="text-sm">Address: 123 Industrial Park, City, India</p>
+    </div>
+  </div>
+</footer>
+
+
+  <!-- SCRIPT FOR FADE UP ANIMATION -->
+  <script>
+    const faders = document.querySelectorAll('.fade-up');
+    const options = { threshold: 0.1 };
+    const appearOnScroll = new IntersectionObserver(function(entries, observer){
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, options);
+
+    faders.forEach(fader => { appearOnScroll.observe(fader); });
+
+
+
+   
+document.addEventListener("DOMContentLoaded", () => {
+
+  // --- Newsletter Subscribe Modal ---
+  const openNewsletter = document.getElementById("openNewsletter");
+  const newsletterModal = document.getElementById("newsletterModal");
+  const closeNewsletter = document.getElementById("closeNewsletter");
+  const cancelNews = document.getElementById("cancelNews");
+  const newsletterForm = document.getElementById("newsletterForm");
+
+  if (openNewsletter && newsletterModal) {
+    openNewsletter.addEventListener("click", () => {
+      newsletterModal.classList.remove("hidden");
+      newsletterModal.setAttribute("aria-hidden", "false");
+      const input = document.getElementById("newsEmail");
+      if (input) input.focus();
+    });
+  }
+
+  if (closeNewsletter && newsletterModal) {
+    closeNewsletter.addEventListener("click", () => {
+      newsletterModal.classList.add("hidden");
+      newsletterModal.setAttribute("aria-hidden", "true");
+    });
+  }
+
+  if (cancelNews && newsletterModal) {
+    cancelNews.addEventListener("click", () => {
+      newsletterModal.classList.add("hidden");
+      newsletterModal.setAttribute("aria-hidden", "true");
+    });
+  }
+
+  if (newsletterForm && newsletterModal) {
+    newsletterForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = (document.getElementById("newsEmail") || {}).value || "";
+      if (!/^\S+@\S+\.\S+$/.test(email)) {
+        alert("Please enter a valid email");
+        return;
+      }
+      alert("Thank you for subscribing!");
+      newsletterModal.classList.add("hidden");
+      if (document.getElementById("newsEmail")) document.getElementById("newsEmail").value = "";
+    });
+  }
+
+  // --- Header Request Quote scroll ---
+  const requestQuoteBtns = document.querySelectorAll("a[href='#contact'], button.requestQuote");
+  requestQuoteBtns.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const contactSection = document.getElementById("contact");
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  });
+
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const openNewsletter = document.getElementById("openNewsletter");
+  const newsletterModal = document.getElementById("newsletterModal");
+  const closeNewsletter = document.getElementById("closeNewsletter");
+  const newsletterForm = document.getElementById("newsletterForm");
+
+  openNewsletter.addEventListener("click", () => {
+    newsletterModal.classList.remove("hidden");
+    document.getElementById("newsEmail").focus();
+  });
+
+  closeNewsletter.addEventListener("click", () => {
+    newsletterModal.classList.add("hidden");
+  });
+
+  newsletterForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = document.getElementById("newsEmail").value;
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+      alert("Enter a valid email");
+      return;
+    }
+
+    // Send email to backend
+    fetch("/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email })
+    }).then(res => {
+      if (res.ok) alert("Thanks for subscribing!");
+      else alert("Subscription failed, try again.");
+      newsletterModal.classList.add("hidden");
+      newsletterForm.reset();
+    }).catch(err => {
+      alert("Something went wrong!");
+      console.error(err);
+    });
+  });
+});
+
+
+  </script>
+
+</body>
+</html>

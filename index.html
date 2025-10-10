@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SMB — Smart Electrical Solutions</title>
+
+  <!-- Basic SEO / Social -->
+  <meta name="description" content="SMP — Smart meter manufacturing, turnkey electrical infrastructure erection and manpower management. ISO/IEC compliant solutions, 24/7 support." />
+  <meta name="keywords" content="smart meter, smart meters, electrical infrastructure, manpower, substation, erection, NB-IoT, LoRaWAN" />
+  <meta name="author" content="SMP" />
+  <meta property="og:title" content="SMP — Smart Electrical Solutions" />
+  <meta property="og:description" content="End-to-end smart meter manufacturing, electrical infrastructure erection and manpower management." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=5b6b8df1e5c78f0f2f2d6b4b8e3a6f1a" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Tailwind + font -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+    .fade-up { transform: translateY(18px); opacity: 0; transition: all 0.6s ease; }
+    .fade-up.visible { transform: translateY(0); opacity: 1; }
+    /* accessible focus ring */
+    :focus { outline: 3px solid rgba(59,130,246,0.35); outline-offset: 2px; }
+    /* small animation for back to top */
+    #backToTop { transition: transform .2s, opacity .2s; }
+    #backToTop.hidden { opacity: 0; transform: translateY(20px); pointer-events: none; }
+    /* small max width for content */
+    .container { max-width: 1200px; }
+  </style>
+
+  <!-- Structured data (JSON-LD) for organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "SMB",
+    "url": "https://example.com/",
+    "logo": "https://example.com/logo.png",
+    "sameAs": [],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "+91-XXXXXXXXXX",
+      "contactType": "customer service",
+      "areaServed": "IN"
+    }]
+  }
+  </script>
+</head>
+<body class="text-gray-800 bg-white antialiased">
+
+  <!-- NAVBAR -->
+  <header id="siteHeader" class="fixed w-full z-40 bg-white/95 backdrop-blur shadow-sm">
+    <div class="container mx-auto flex items-center justify-between px-6 py-4">
+      <a href="#home" class="flex items-center gap-3" aria-label="SMP homepage">
+        <div class="w-20 h-20 rounded-full bg-blue-600 flex items-center justify-center">
+          <img src="asset/image.png" alt="SMP Logo" class="w-16 h-16 object-contain rounded-full shadow-lg" />
+        </div>
+    
+      </a>
+
+      <nav id="mainNav" class="hidden md:flex items-center space-x-6" aria-label="Main navigation">
+  <a href="#home" class="hover:text-blue-600 font-medium">Home</a>
+  <a href="services.html" class="hover:text-blue-600 font-medium">Services</a>
+  <a href="projects.html" class="hover:text-blue-600 font-medium">Projects</a>
+  
+ 
+  <a href="about.html" class="hover:text-blue-600 font-medium">About</a>
+  <a href="contact.html" class="hover:text-blue-600 font-medium">Contact</a>
+
+  
+</nav>
+
+
+      <div class="hidden md:flex items-center space-x-4">
+        <button id="openNewsletter" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700">Subscribe</button>
+        <a href="#contact" class="px-4 py-2 rounded-lg border border-blue-600 text-blue-600 font-semibold hover:bg-blue-50">Request Quote</a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <button id="mobileBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
+        <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t" role="menu" aria-label="Mobile menu">
+      <div class="px-6 py-4 flex flex-col gap-3">
+        <a href="#home" class="py-2" role="menuitem">Home</a>
+        <a href="#services" class="py-2" role="menuitem">Services</a>
+        <a href="#projects" class="py-2" role="menuitem">Projects</a>
+      
+        <a href="#about" class="py-2" role="menuitem">About</a>
+        <a href="#contact" class="py-2" role="menuitem">Contact</a>
+        <a href="#contact" class="mt-2 inline-block px-4 py-2 bg-blue-600 text-white rounded">Request Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-24">
+
+    <!-- HERO - animated & creative -->
+<section id="home" class="relative overflow-hidden">
+  <style>
+    /* Keyframes */
+    @keyframes floatY {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+    @keyframes pulseShadow {
+      0% { box-shadow: 0 6px 18px rgba(0,0,0,0.35); }
+      50% { box-shadow: 0 18px 48px rgba(0,0,0,0.45); }
+      100% { box-shadow: 0 6px 18px rgba(0,0,0,0.35); }
+    }
+    /* Typewriter cursor */
+    .typewriter-cursor {
+      display:inline-block;
+      width:2px;
+      height:1.1em;
+      background:rgba(255,255,255,0.9);
+      margin-left:6px;
+      animation: blink 1s steps(2, start) infinite;
+      vertical-align:middle;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .animated, .floaty, .counter { animation: none !important; transition: none !important; }
+    }
+  </style>
+
+  <div class="h-[72vh] md:h-[84vh] relative">
+    <!-- Background image (parallax) -->
+    <img id="hero-bg"
+         src="asset/Home.png"
+         alt="electrical infrastructure"
+         class="absolute inset-0 w-full h-full object-cover brightness-75 transition-transform duration-700 will-change-transform"
+         loading="lazy" />
+
+    <!-- Gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/40 pointer-events-none"></div>
+
+    <!-- Floating decorative SVGs -->
+    <svg class="absolute left-6 top-10 w-28 opacity-30 floaty" style="animation: floatY 6s ease-in-out infinite;" viewBox="0 0 100 100" aria-hidden="true">
+      <circle cx="50" cy="50" r="40" fill="#0ea5e9"/>
+    </svg>
+
+    <svg class="absolute right-6 bottom-20 w-36 opacity-25 floaty" style="animation: floatY 7.5s ease-in-out infinite;" viewBox="0 0 100 100" aria-hidden="true">
+      <rect x="10" y="10" width="80" height="80" rx="16" fill="#60a5fa"/>
+    </svg>
+
+    <!-- Content -->
+    <div class="relative z-10 container mx-auto px-6 h-full flex flex-col justify-center items-center text-center text-white">
+      <div class="max-w-3xl">
+        <!-- Headline with typewriter -->
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-4">
+          <span class="sr-only">Smart Meter Manufacturing · Electrical Infrastructure · Manpower Management</span>
+          <span id="headline-static" class="inline-block md:hidden">
+            Smart Meter Manufacturing · Electrical Infrastructure · Manpower Management
+          </span>
+
+          <!-- visible on md+ -->
+          <span id="typewriter" class="hidden md:inline-block" aria-live="polite" title="Smart solutions">
+            <span id="type-text" class="align-middle">Smart Meter Manufacturing</span>
+            <span class="typewriter-cursor" aria-hidden="true"></span>
+          </span>
+        </h1>
+
+        <p class="text-lg md:text-xl mb-6 opacity-90">End-to-end solutions — from precision smart meters to turnkey erection & reliable manpower deployment. Quality, compliance and safety baked in.</p>
+
+        <div class="flex flex-col sm:flex-row gap-3 justify-center items-center mb-6">
+          <a href="#services" class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg font-semibold hover:scale-[1.02] transform transition focus:outline-none focus:ring-4 focus:ring-blue-300">
+            Explore Services
+          </a>
+          <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 border border-white/30 rounded-lg hover:bg-white/10 transition focus:outline-none focus:ring-4 focus:ring-white/20">
+            Contact Sales
+          </a>
+        </div>
+
+        <!-- Quick stats badges -->
+        <div class="mt-6 grid grid-cols-3 gap-3 md:grid-cols-6">
+          <div class="bg-white/10 rounded-lg px-4 py-3">
+            <div class="text-sm opacity-80">Years</div>
+            <div class="text-xl md:text-lg font-bold"><span class="counter" data-target="15">0</span>+</div>
+          </div>
+
+          <div class="bg-white/10 rounded-lg px-4 py-3">
+            <div class="text-sm opacity-80">Meters Delivered</div>
+            <div class="text-xl md:text-lg font-bold"><span class="counter" data-target="50000">0</span>+</div>
+          </div>
+
+          <div class="bg-white/10 rounded-lg px-4 py-3">
+            <div class="text-sm opacity-80">Projects</div>
+            <div class="text-xl md:text-lg font-bold"><span class="counter" data-target="200">0</span>+</div>
+          </div>
+
+          <div class="bg-white/10 rounded-lg px-4 py-3">
+            <div class="text-sm opacity-80">Clients</div>
+            <div class="text-xl md:text-lg font-bold"><span class="counter" data-target="120">0</span>+</div>
+          </div>
+
+          <div class="bg-white/10 rounded-lg px-4 py-3">
+            <div class="text-sm opacity-80">Compliance</div>
+            <div class="text-xl md:text-lg font-bold">ISO &amp; IEC</div>
+          </div>
+
+          <div class="bg-white/10 rounded-lg px-4 py-3">
+            <div class="text-sm opacity-80">Support</div>
+            <div class="text-xl md:text-lg font-bold">24/7</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- SERVICES (detailed) -->
+    <section id="services" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold fade-up">Services</h2>
+      <p class="text-gray-600 mt-2 max-w-2xl mx-auto fade-up">Comprehensive offerings covering manufacturing, construction and manpower — designed for performance and compliance.</p>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-3">
+      <!-- Smart Meter -->
+      <article class="service-card bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 fade-up" data-delay="0">
+        <img
+          src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=800&q=80"
+          alt="smart meter"
+          class="w-full h-48 object-cover rounded-xl mx-auto mb-4"
+          loading="lazy"
+        />
+        <h3 class="text-xl font-semibold mb-3">Smart Meter Manufacturing</h3>
+        <p class="text-gray-600 mb-3">
+          High-quality smart meters for residential, commercial, and industrial use. Compliant with relevant standards (IEC, ANSI, MID where applicable).
+        </p>
+        <ul class="text-gray-600 list-disc list-inside mb-4">
+          <li>Precision measurement & tamper-resistance</li>
+          <li>Multiple communication options: NB-IoT, LoRaWAN, RF, PLC</li>
+          <li>Custom firmware, calibration & factory testing</li>
+        </ul>
+        <div class="flex gap-3">
+          <a class="px-4 py-2 bg-blue-600 text-white rounded-md text-sm hover:scale-105 transition transform" href="#contact">Request Quote</a>
+          <a class="px-4 py-2 border rounded-md text-sm hover:scale-105 transition transform" href="#" aria-label="Download datasheet">Datasheet</a>
+        </div>
+      </article>
+
+      <!-- Infrastructure -->
+      <article class="service-card bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 fade-up" data-delay="150">
+        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80" alt="electrical infrastructure" class="w-full h-48 object-cover rounded-xl mx-auto mb-4" loading="lazy" />
+        <h3 class="text-xl font-semibold mb-3">Electrical Infrastructure Erection</h3>
+        <p class="text-gray-600 mb-3">Substation erection, transmission & distribution lines, turnkey electrical projects, and operation & maintenance services.</p>
+        <ul class="text-gray-600 list-disc list-inside mb-4">
+          <li>Substation civil, electrical & protection integration</li>
+          <li>Transmission & distribution line erection</li>
+          <li>Turnkey project management and post-deployment O&M</li>
+        </ul>
+        <div class="flex gap-3">
+          <a class="px-4 py-2 bg-blue-600 text-white rounded-md text-sm hover:scale-105 transition transform" href="#contact">Consult with Us</a>
+          <a class="px-4 py-2 border rounded-md text-sm hover:scale-105 transition transform" href="#">Project Portfolio</a>
+        </div>
+      </article>
+
+      <!-- Manpower -->
+      <article class="service-card bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 fade-up" data-delay="300">
+        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80" alt="manpower" class="w-full h-48 object-cover rounded-xl mx-auto mb-4" loading="lazy" />
+        <h3 class="text-xl font-semibold mb-3">Manpower Management</h3>
+        <p class="text-gray-600 mb-3">Skilled workforce for electrical projects, recruitment, deployment, and training — tailored to the project lifecycle.</p>
+        <ul class="text-gray-600 list-disc list-inside mb-4">
+          <li>Skilled technicians, engineers and supervisors</li>
+          <li>On-site team management, safety training & certifications</li>
+          <li>Temporary & long-term staffing with logistics support</li>
+        </ul>
+        <div class="flex gap-3">
+          <a class="px-4 py-2 bg-blue-600 text-white rounded-md text-sm hover:scale-105 transition transform" href="#contact">Hire Workforce</a>
+          <a class="px-4 py-2 border rounded-md text-sm hover:scale-105 transition transform" href="#">Training Programs</a>
+        </div>
+      </article>
+    </div>
+  </div>
+    </section>
+
+    <!-- PROJECTS / CASE STUDIES -->
+    <section id="projects" class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="text-3xl font-bold fade-up">Projects & Case Studies</h2>
+          <a href="#" class="text-blue-600 fade-up">View all projects →</a>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-3">
+          <figure class="group relative overflow-hidden rounded-xl shadow-lg fade-up">
+            <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=abc" alt="Substation project in Mumbai" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-400" loading="lazy" />
+            <figcaption class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/70 text-white">
+              <h3 class="font-semibold">Substation Upgrade — Mumbai</h3>
+              <p class="text-sm opacity-90">Complete erection & commissioning delivered under 6 months.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="group relative overflow-hidden rounded-xl shadow-lg fade-up">
+            <img src="https://images.unsplash.com/photo-1495433324511-bf8e92934d90?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=def" alt="Smart meter rollout Gujarat" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-400" loading="lazy" />
+            <figcaption class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/70 text-white">
+              <h3 class="font-semibold">Smart Meter Rollout — Gujarat</h3>
+              <p class="text-sm opacity-90">50,000+ meters deployed across residential & commercial sectors.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="group relative overflow-hidden rounded-xl shadow-lg fade-up">
+            <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=ghi" alt="O&M industrial park" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-400" loading="lazy" />
+            <figcaption class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/70 text-white">
+              <h3 class="font-semibold">O&M Contract — Industrial Park</h3>
+              <p class="text-sm opacity-90">Ongoing operations & maintenance for 24/7 reliability.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLIENTS / PARTNERS -->
+<section id="clients" class="py-16 bg-gray-50">
+  <div class="container mx-auto px-6">
+    <!-- Heading -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold fade-up">
+        Our Clients & Partners
+      </h2>
+      <p
+        class="text-gray-600 mt-2 max-w-2xl mx-auto fade-up text-sm sm:text-base"
+      >
+        Trusted by leading companies across power, infrastructure, and
+        technology sectors.
+      </p>
+    </div>
+
+    <!-- Clients Grid -->
+    <div
+      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 sm:gap-8 md:gap-10 items-center fade-up"
+    >
+      <!-- Venus Infrastructure -->
+      <div
+        class="flex justify-center items-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+      >
+        <img
+          src="asset/venus.png"
+          alt="Venus Infrastructure"
+          class="w-full max-h-14 sm:max-h-16 md:max-h-20 object-contain"
+        />
+      </div>
+
+      <!-- Adani Electrical -->
+      <div
+        class="flex justify-center items-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+      >
+        <img
+          src="asset/Adani.png"
+          alt="Adani Electrical"
+          class="w-full max-h-14 sm:max-h-16 md:max-h-20 object-contain"
+        />
+      </div>
+
+      <!-- Tata Power -->
+      <div
+        class="flex justify-center items-center p-4 bg-gradient-to-b from-gray-100 to-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+      >
+        <img
+          src="asset/tatapower.png"
+          alt="Tata Power"
+          class="w-full max-h-14 sm:max-h-16 md:max-h-20 object-contain"
+        />
+      </div>
+
+      <!-- L&T Infrastructure -->
+      <div
+        class="flex justify-center items-center p-4 bg-black rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+      >
+        <img
+          src="asset/L&T.png"
+          alt="L&T Infrastructure"
+          class="w-full max-h-14 sm:max-h-16 md:max-h-20 object-contain brightness-200"
+        />
+      </div>
+
+      <!-- Add more clients easily -->
+      <div
+        class="flex justify-center items-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+      >
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/4/41/Reliance_Industries_Logo.svg"
+          alt="Reliance Industries"
+          class="w-full max-h-14 sm:max-h-16 md:max-h-20 object-contain"
+        />
+      </div>
+
+      <div
+        class="flex justify-center items-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
+      >
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Siemens_AG_logo.svg"
+          alt="Siemens"
+          class="w-full max-h-14 sm:max-h-16 md:max-h-20 object-contain"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+    <!-- CERTIFICATIONS / QUALITY -->
+    <section id="certs" class="py-16">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+          <div class="flex-1 fade-up">
+            <h3 class="text-2xl font-bold">Quality & Compliance</h3>
+            <p class="text-gray-600 mt-2">We follow industry best practices and hold certifications that demonstrate our commitment to quality and safety.</p>
+            <ul class="mt-4 text-gray-600 list-disc list-inside">
+              <li>ISO 9001 — Quality Management</li>
+              <li>ISO 45001 — Occupational Health & Safety</li>
+              <li>IEC testing & certified meter production lines</li>
+            </ul>
+          </div>
+
+          <div class="grid grid-cols-3 gap-4 flex-1 fade-up">
+            <img src="https://via.placeholder.com/200x120?text=ISO+9001" alt="ISO 9001" class="rounded-md shadow" loading="lazy" />
+            <img src="https://via.placeholder.com/200x120?text=ISO+45001" alt="ISO 45001" class="rounded-md shadow" loading="lazy" />
+            <img src="https://via.placeholder.com/200x120?text=IEC" alt="IEC tested" class="rounded-md shadow" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESOURCES / BLOG -->
+    <section id="resources" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="text-3xl font-bold fade-up">Resources & Insights</h2>
+          <a href="#" class="text-blue-600 fade-up">View all posts →</a>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-3">
+         <article class="bg-white rounded-xl p-6 shadow fade-up">
+  <img
+    src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=1200&q=80"
+    alt="Smart meter close-up"
+    class="w-full h-40 object-cover rounded-md mb-4"
+    loading="lazy"
+  />
+  <h3 class="font-semibold">Choosing the right smart meter for utilities</h3>
+  <p class="text-sm text-gray-600 mt-2">
+    A short guide to communication options, tamper resistance and lifecycle costs.
+  </p>
+  <div class="mt-4 text-sm text-gray-500">Oct 2025 • 4 min read</div>
+</article>
+
+
+
+
+<article class="bg-white rounded-xl p-6 shadow fade-up">
+  <img
+    src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1200&q=80"
+    alt="Electrical substation infrastructure"
+    class="w-full h-40 object-cover rounded-md mb-4"
+    loading="lazy"
+  />
+  <h3 class="font-semibold">Best practices for substation erection</h3>
+  <p class="text-sm text-gray-600 mt-2">
+    Design, commissioning checklist and safety considerations for large projects.
+  </p>
+  <div class="mt-4 text-sm text-gray-500">Sep 2025 • 6 min read</div>
+</article>
+
+
+          <article class="bg-white rounded-xl p-6 shadow fade-up">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=post3" alt="blog 3" class="w-full h-40 object-cover rounded-md mb-4" loading="lazy" />
+            <h3 class="font-semibold">Training & certification for on-site teams</h3>
+            <p class="text-sm text-gray-600 mt-2">How we upskill technicians and minimize downtime during rollouts.</p>
+            <div class="mt-4 text-sm text-gray-500">Aug 2025 • 5 min read</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-20">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-6 fade-up">Frequently Asked Questions</h2>
+
+        <div class="grid gap-6 md:grid-cols-2">
+          <!-- accordion -->
+          <div class="space-y-4 fade-up" id="faqList" role="list">
+            <div class="border rounded-lg overflow-hidden">
+              <button class="w-full text-left px-6 py-4 flex justify-between items-center faq-btn" aria-expanded="false">
+                <span class="font-medium">What communication technologies do your meters support?</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+              <div class="px-6 py-4 hidden faq-panel">
+                We support NB-IoT, LoRaWAN, RF and PLC depending on project needs and coverage.
+              </div>
+            </div>
+
+            <div class="border rounded-lg overflow-hidden">
+              <button class="w-full text-left px-6 py-4 flex justify-between items-center faq-btn" aria-expanded="false">
+                <span class="font-medium">Do you provide post-deployment O&M?</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+              <div class="px-6 py-4 hidden faq-panel">
+                Yes — we offer SLAs tailored to availability, spares provisioning and preventive maintenance.
+              </div>
+            </div>
+
+            <div class="border rounded-lg overflow-hidden">
+              <button class="w-full text-left px-6 py-4 flex justify-between items-center faq-btn" aria-expanded="false">
+                <span class="font-medium">What safety standards does your workforce follow?</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+              <div class="px-6 py-4 hidden faq-panel">
+                Our teams are trained to ISO 45001 practices, plus project-specific inductions and PPE enforcement.
+              </div>
+            </div>
+          </div>
+
+          <!-- support / contact quick form -->
+          <div class="bg-white p-6 rounded-xl shadow fade-up">
+            <h3 class="font-semibold mb-3">Need bespoke answers?</h3>
+            <p class="text-sm text-gray-600 mb-4">Send us a short message and our specialist will respond within one business day.</p>
+            <form id="quickContact" class="space-y-3" novalidate>
+              <div>
+                <label class="sr-only" for="qcName">Name</label>
+                <input id="qcName" name="name" required placeholder="Your name" class="w-full rounded px-3 py-2 border" />
+              </div>
+              <div>
+                <label class="sr-only" for="qcEmail">Email</label>
+                <input id="qcEmail" name="email" type="email" required placeholder="Email address" class="w-full rounded px-3 py-2 border" />
+              </div>
+              <div>
+                <label class="sr-only" for="qcMsg">Message</label>
+                <textarea id="qcMsg" name="message" rows="3" required placeholder="How can we help?" class="w-full rounded px-3 py-2 border"></textarea>
+              </div>
+              <div class="flex items-center gap-2">
+                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">Send</button>
+                <span id="qcStatus" class="text-sm text-gray-500"></span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <!-- CONTACT (big form) -->
+    <section id="contact" class="py-20 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-center">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold mb-3 fade-up">Start your project with SMP</h2>
+        <p class="mb-6 max-w-2xl mx-auto opacity-90 fade-up">Tell us about your requirements — meters, erection, or manpower. We’ll propose a scope, timeline and estimate.</p>
+
+        <div class="max-w-3xl mx-auto bg-white rounded-xl p-6 text-left shadow-lg fade-up">
+          <form id="contactForm" novalidate>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                <input id="name" name="name" required class="mt-1 block w-full rounded border px-3 py-2" />
+                <p class="text-xs mt-1 text-red-600 hidden" id="err-name">Please enter your name.</p>
+              </div>
+              <div>
+                <label for="company" class="block text-sm font-medium text-gray-700">Company</label>
+                <input id="company" name="company" class="mt-1 block w-full rounded border px-3 py-2" />
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input id="email" name="email" type="email" required class="mt-1 block w-full rounded border px-3 py-2" />
+                <p class="text-xs mt-1 text-red-600 hidden" id="err-email">Enter a valid email address.</p>
+              </div>
+              <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
+                <input id="phone" name="phone" type="tel" class="mt-1 block w-full rounded border px-3 py-2" />
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <label for="services" class="block text-sm font-medium text-gray-700">Interested In</label>
+              <select id="services" name="services" class="mt-1 block w-full rounded border px-3 py-2">
+                <option>Smart meters & Manufacturing</option>
+                <option>Infrastructure Erection</option>
+                <option>Manpower & Training</option>
+                <option>Maintenance & O&M</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="mt-4">
+              <label for="message" class="block text-sm font-medium text-gray-700">Project details</label>
+              <textarea id="message" name="message" rows="5" class="mt-1 block w-full rounded border px-3 py-2"></textarea>
+            </div>
+
+            <div class="mt-4 flex items-center gap-3">
+              <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded">Request a Quote</button>
+              <span id="formStatus" class="text-sm text-gray-600"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS STRIP -->
+    <section class="py-8">
+      <div class="container mx-auto px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div class="bg-blue-600 text-white p-6 rounded-lg shadow"> <div class="text-2xl font-bold">50k+</div><div class="text-sm opacity-90">Meters Supplied</div></div>
+          <div class="bg-green-600 text-white p-6 rounded-lg shadow"> <div class="text-2xl font-bold">200+</div><div class="text-sm opacity-90">Projects</div></div>
+          <div class="bg-indigo-600 text-white p-6 rounded-lg shadow"> <div class="text-2xl font-bold">120+</div><div class="text-sm opacity-90">Clients</div></div>
+          <div class="bg-gray-800 text-white p-6 rounded-lg shadow"> <div class="text-2xl font-bold">24/7</div><div class="text-sm opacity-90">Support</div></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+ 
+  <!-- FOOTER -->
+<footer class="bg-gray-900 text-gray-300 mt-12">
+  <div class="container mx-auto px-6 py-12 grid md:grid-cols-3 gap-8">
+    
+    <!-- Logo & Company Info -->
+    <div class="flex flex-col items-start">
+      <img src="asset/image.png" alt="SMP Logo" class="w-16 h-16 object-contain rounded-full shadow-lg mb-4" />
+      <h3 class="text-white font-bold mb-3">SMB Smart Solution</h3>
+      <p class="text-sm">Smart Meter Manufacturing · Electrical Infrastructure Erection · Manpower Management</p>
+      <p class="text-sm mt-4">Email: info@smp.com<br/>Phone: +91-XXXXXxXXXxx</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h4 class="text-white font-semibold mb-3">Quick Links</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="#services" class="hover:text-white">Services</a></li>
+        <li><a href="#projects" class="hover:text-white">Projects</a></li>
+        <li><a href="#team" class="hover:text-white">Team</a></li>
+        <li><a href="#careers" class="hover:text-white">Careers</a></li>
+      </ul>
+    </div>
+
+    <!-- Newsletter -->
+    <div>
+      <h4 class="text-white font-semibold mb-3">Newsletter</h4>
+      <p class="text-sm mb-3">Subscribe for product updates and project news.</p>
+      <form id="footerSubscribe" class="flex gap-2" novalidate>
+        <input id="subsEmail" class="flex-1 rounded px-3 py-2 text-gray-900" placeholder="Email address" type="email" required />
+        <button class="bg-blue-600 text-white rounded px-4 py-2">Subscribe</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="border-t border-gray-800 py-4 text-sm text-center">
+    © <span id="year"></span> SMB. All rights reserved.
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button id="backToTop" aria-label="Back to top" class="fixed right-6 bottom-6 bg-blue-600 text-white p-3 rounded-full shadow hidden">
+  ↑
+</button>
+
+<!-- Newsletter Modal (simple) -->
+<div id="newsletterModal" class="fixed inset-0 bg-black/60 flex items-center justify-center hidden z-50" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="bg-white rounded-xl max-w-md w-full p-6">
+    <div class="flex justify-between items-start">
+      <h3 class="text-xl font-semibold">Subscribe to product updates</h3>
+      <button id="closeNewsletter" aria-label="Close" class="text-gray-500">✕</button>
+    </div>
+    <p class="text-sm text-gray-600 mt-2">Get release notes, datasheets and project announcements.</p>
+    <form id="newsletterForm" class="mt-4" novalidate>
+      <input id="newsEmail" type="email" placeholder="Email address" required class="w-full rounded border px-3 py-2" />
+      <div class="flex justify-end mt-4 gap-2">
+        <button type="button" id="cancelNews" class="px-4 py-2">Cancel</button>
+        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">Subscribe</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+  <!-- SCRIPTS -->
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  // --- Helper ---
+  const safe = (fn) => { try { fn(); } catch (e) { /* swallow safely */ } };
+
+  // ---------- Mobile Menu ----------
+  safe(() => {
+    const mobileBtn = document.getElementById("mobileBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        const expanded = mobileBtn.getAttribute("aria-expanded") === "true";
+        mobileBtn.setAttribute("aria-expanded", (!expanded).toString());
+      });
+    }
+  });
+
+  // ---------- Back to Top ----------
+  safe(() => {
+    const backToTop = document.getElementById("backToTop");
+    if (backToTop) {
+      const check = () => {
+        if (window.scrollY > 600) backToTop.classList.remove("hidden");
+        else backToTop.classList.add("hidden");
+      };
+      window.addEventListener("scroll", check);
+      check();
+      backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+    }
+  });
+
+  // ---------- Newsletter Modal ----------
+  safe(() => {
+    const openNewsletter = document.getElementById("openNewsletter");
+    const newsletterModal = document.getElementById("newsletterModal");
+    const closeNewsletter = document.getElementById("closeNewsletter");
+    const cancelNews = document.getElementById("cancelNews");
+    if (openNewsletter && newsletterModal) {
+      openNewsletter.addEventListener("click", () => {
+        newsletterModal.classList.remove("hidden");
+        newsletterModal.setAttribute("aria-hidden", "false");
+        const input = document.getElementById("newsEmail");
+        if (input) input.focus();
+      });
+    }
+    if (closeNewsletter && newsletterModal) {
+      closeNewsletter.addEventListener("click", () => {
+        newsletterModal.classList.add("hidden");
+        newsletterModal.setAttribute("aria-hidden", "true");
+      });
+    }
+    if (cancelNews && newsletterModal) {
+      cancelNews.addEventListener("click", () => {
+        newsletterModal.classList.add("hidden");
+        newsletterModal.setAttribute("aria-hidden", "true");
+      });
+    }
+    // newsletter form submit (if present)
+    const newsletterForm = document.getElementById("newsletterForm");
+    if (newsletterForm && newsletterModal) {
+      newsletterForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const v = (document.getElementById("newsEmail") || {}).value || "";
+        if (!/^\S+@\S+\.\S+$/.test(v)) { alert("Enter a valid email"); return; }
+        alert("Thanks for subscribing!");
+        newsletterModal.classList.add("hidden");
+        if (document.getElementById("newsEmail")) document.getElementById("newsEmail").value = "";
+      });
+    }
+  });
+
+  // ---------- Typewriter (safe) ----------
+  safe(() => {
+    const textEl = document.getElementById("type-text");
+    const typeElContainer = document.getElementById("typewriter");
+    if (!textEl || !typeElContainer) return;
+    const phrases = [
+      "Smart Meter Manufacturing",
+      "Turnkey Electrical Infrastructure",
+      "Reliable Manpower Management",
+      "Compliance & Safety First"
+    ];
+    let idx = 0, char = 0, forward = true, pause = false;
+
+    function step() {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        textEl.textContent = phrases[0];
+        return;
+      }
+      if (pause) { setTimeout(step, 350); return; }
+      const current = phrases[idx];
+      if (forward) {
+        char++;
+        textEl.textContent = current.slice(0, char);
+        if (char === current.length) { forward = false; pause = true; setTimeout(()=>pause=false, 900); }
+      } else {
+        char--;
+        textEl.textContent = current.slice(0, char);
+        if (char === 0) { forward = true; idx = (idx+1) % phrases.length; }
+      }
+      setTimeout(step, forward ? 60 : 30);
+    }
+
+    // start when visible OR immediately if IntersectionObserver not available
+    if ("IntersectionObserver" in window) {
+      const obs = new IntersectionObserver((entries, o) => {
+        if (entries[0].isIntersecting) { step(); o.disconnect(); }
+      }, { threshold: 0.25 });
+      obs.observe(typeElContainer);
+    } else {
+      step();
+    }
+  });
+
+  // ---------- Parallax hero background (safe) ----------
+  safe(() => {
+    const bg = document.getElementById('hero-bg');
+    const home = document.getElementById('home');
+    if (!bg || !home) return;
+    const maxTranslate = 16;
+    let bound = bg.getBoundingClientRect();
+    function onMove(e) {
+      const x = (e.clientX - (bound.left + bound.width/2)) / (bound.width/2);
+      const y = (e.clientY - (bound.top + bound.height/2)) / (bound.height/2);
+      const tx = -x * maxTranslate;
+      const ty = -y * maxTranslate / 2;
+      bg.style.transform = `translate3d(${tx}px, ${ty}px, 0) scale(1.03)`;
+    }
+    function reset() { bg.style.transform = ''; }
+    window.addEventListener('resize', ()=> bound = bg.getBoundingClientRect());
+    if (!('ontouchstart' in window)) {
+      home.addEventListener('mousemove', onMove);
+      home.addEventListener('mouseleave', reset);
+    }
+  });
+
+  // ---------- Counters (IntersectionObserver safe) ----------
+  safe(() => {
+    const counters = document.querySelectorAll('.counter');
+    if (!counters.length) return;
+    function animateCounter(el, target) {
+      const duration = 1400;
+      const startTime = performance.now();
+      function frame(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const value = Math.floor(progress * target);
+        el.textContent = value.toLocaleString();
+        if (progress < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.dataset.target?.replace(/,/g,'') || "0", 10);
+            animateCounter(el, target);
+            observer.unobserve(el);
+          }
+        });
+      }, {threshold: 0.6});
+      counters.forEach(c => io.observe(c));
+    } else {
+      counters.forEach(c => {
+        const target = parseInt(c.dataset.target?.replace(/,/g,'') || "0", 10);
+        animateCounter(c, target);
+      });
+    }
+  });
+
+  // ---------- Fade-up intersection observer (safe) ----------
+  safe(() => {
+    const faders = document.querySelectorAll('.fade-up');
+    if (!faders.length || !("IntersectionObserver" in window)) {
+      // if no IO, just reveal
+      faders.forEach(f => f.classList.add('visible'));
+      return;
+    }
+    const obs = new IntersectionObserver((entries, o) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); o.unobserve(e.target); }
+      });
+    }, { threshold: 0.18 });
+    faders.forEach(f => obs.observe(f));
+  });
+
+  // ---------- Service-card stagger (safe) ----------
+  safe(() => {
+    const cards = document.querySelectorAll('.service-card');
+    if (!cards.length || !("IntersectionObserver" in window)) return;
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const delay = parseInt(entry.target.dataset.delay || 0, 10);
+          setTimeout(() => { entry.target.classList.add('animate-fadeUp'); }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.25});
+    cards.forEach(card => observer.observe(card));
+  });
+
+  // ---------- FAQ accordion (safe) ----------
+  safe(() => {
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        // close others
+        document.querySelectorAll('.faq-btn').forEach(b => {
+          b.setAttribute('aria-expanded', 'false');
+          const p = b.nextElementSibling;
+          if (p) p.classList.add('hidden');
+        });
+        // toggle current
+        const panel = btn.nextElementSibling;
+        if (!expanded && panel) panel.classList.remove('hidden');
+        btn.setAttribute('aria-expanded', (!expanded).toString());
+      });
+    });
+  });
+
+  // ---------- Quick contact (safe) ----------
+  safe(() => {
+    const quickForm = document.getElementById('quickContact');
+    const qcStatus = document.getElementById('qcStatus');
+    if (quickForm && qcStatus) {
+      quickForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        qcStatus.textContent = 'Sending...';
+        setTimeout(() => {
+          qcStatus.textContent = 'Thank you — we will respond within one business day.';
+          quickForm.reset();
+        }, 900);
+      });
+    }
+  });
+
+  // ---------- Contact form validation (safe) ----------
+  safe(() => {
+    const contactForm = document.getElementById('contactForm');
+    if (!contactForm) return;
+    const name = document.getElementById('name');
+    const email = document.getElementById('email');
+    const errName = document.getElementById('err-name');
+    const errEmail = document.getElementById('err-email');
+    const status = document.getElementById('formStatus');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let ok = true;
+      if (name && errName) {
+        if (!name.value.trim()) { errName.classList.remove('hidden'); ok = false; } else errName.classList.add('hidden');
+      }
+      if (email && errEmail) {
+        if (!/^\S+@\S+\.\S+$/.test(email.value)) { errEmail.classList.remove('hidden'); ok = false; } else errEmail.classList.add('hidden');
+      }
+      if (!ok) return;
+      if (status) status.textContent = 'Submitting...';
+      setTimeout(() => {
+        if (status) status.textContent = 'Thanks! We will contact you shortly.';
+        contactForm.reset();
+      }, 900);
+    });
+  });
+
+  // ---------- Footer subscribe (safe) ----------
+  safe(() => {
+    const footerSubscribe = document.getElementById('footerSubscribe');
+    if (!footerSubscribe) return;
+    footerSubscribe.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('subsEmail');
+      if (!email) return;
+      if (!/^\S+@\S+\.\S+$/.test(email.value)) { email.focus(); return; }
+      alert('Subscribed — thank you!');
+      email.value = '';
+    });
+  });
+
+  // ---------- Footer year (safe) ----------
+  safe(() => {
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  });
+
+  // ---------- Defensive Escape key handling for modal ----------
+  safe(() => {
+    const newsletterModal = document.getElementById('newsletterModal');
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && newsletterModal && !newsletterModal.classList.contains('hidden')) {
+        newsletterModal.classList.add('hidden');
+        newsletterModal.setAttribute('aria-hidden', 'true');
+      }
+    });
+  });
+});
+</script>
+
+
+  <!-- End body -->
+</body>
+</html>
