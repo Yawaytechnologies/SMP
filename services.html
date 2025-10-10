@@ -5,169 +5,724 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Services — SMB Smart Electrical Solutions</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-.text-gradient { background: linear-gradient(90deg, #3b82f6, #9333ea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.card { transition: transform 0.3s, box-shadow 0.3s; }
-.card:hover { transform: scale(1.05); box-shadow: 0 15px 25px rgba(0,0,0,0.2); }
-.fade-up { transform: translateY(18px); opacity: 0; transition: all 0.6s ease; }
-.fade-up.visible { transform: translateY(0); opacity: 1; }
+body { 
+  font-family: 'Inter', sans-serif; 
+  scroll-behavior: smooth; 
+}
+
+/* Enhanced Text Gradient */
+.text-gradient { 
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent; 
+  background-clip: text;
+}
+
+/* Advanced Card Animations */
+.card { 
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.5s;
+}
+
+.card:hover::before {
+  left: 100%;
+}
+
+.card:hover { 
+  transform: translateY(-8px) scale(1.02); 
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+}
+
+/* Enhanced Fade Animations */
+.fade-up { 
+  transform: translateY(30px); 
+  opacity: 0; 
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+.fade-up.visible { 
+  transform: translateY(0); 
+  opacity: 1; 
+}
+
+.fade-left { 
+  transform: translateX(-30px); 
+  opacity: 0; 
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+.fade-left.visible { 
+  transform: translateX(0); 
+  opacity: 1; 
+}
+
+.fade-right { 
+  transform: translateX(30px); 
+  opacity: 0; 
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+.fade-right.visible { 
+  transform: translateX(0); 
+  opacity: 1; 
+}
+
+/* Staggered Animation Delays */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.float { animation: float 3s ease-in-out infinite; }
+
+/* Pulse Animation */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.05); }
+}
+
+.animate-pulse-slow { animation: pulse-slow 4s ease-in-out infinite; }
+
+/* Button Enhancements */
+.btn-enhanced {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-enhanced:hover::before {
+  left: 100%;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+}
+
+/* Mobile Navbar */
+.mobile-menu {
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+/* Enhanced Backdrop Blur */
+.backdrop-blur-custom {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Service Icon Styles */
+.service-icon {
+  transition: all 0.3s ease;
+}
+
+.service-icon:hover {
+  transform: rotate(360deg) scale(1.1);
+}
+
+/* Gradient Background for Hero */
+.hero-gradient {
+  background: linear-gradient(135deg, 
+    rgba(102, 126, 234, 0.9) 0%, 
+    rgba(118, 75, 162, 0.9) 50%, 
+    rgba(55, 48, 163, 0.9) 100%);
+}
 </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-<!-- NAVBAR -->
-<header class="fixed w-full z-50 bg-white/95 backdrop-blur shadow-sm">
-  <div class="container mx-auto flex items-center justify-between px-6 py-4">
-    <a href="index.html" class="flex items-center gap-3">
-      <img src="asset/image.png" alt="SMB Logo" class="w-16 h-16 object-contain shadow-lg" />
+<!-- ENHANCED NAVBAR -->
+<header class="fixed w-full z-50 bg-white/90 backdrop-blur-custom shadow-lg border-b border-gray-200/20">
+  <div class="container mx-auto flex items-center justify-between px-4 sm:px-6 py-3">
+    <a href="index.html" class="flex items-center gap-3 fade-right">
+      <div class="relative">
+        <img src="asset/image.png" alt="SMB Logo" class="w-12 h-12 sm:w-16 sm:h-16 object-contain shadow-lg rounded-lg transition-transform duration-300 hover:scale-110" />
+        <div class="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+      </div>
+      <div class="hidden sm:block">
+        <h1 class="text-lg font-bold text-gray-800">SMB</h1>
+        <p class="text-xs text-gray-600">Smart Solutions</p>
+      </div>
     </a>
-    <nav class="hidden md:flex items-center space-x-6">
-      <a href="index.html" class="hover:text-blue-600 font-medium">Home</a>
-      <a href="services.html" class="hover:text-blue-600 font-medium font-bold">Services</a>
-      <a href="projects.html" class="hover:text-blue-600 font-medium">Projects</a>
-      <a href="about.html" class="hover:text-blue-600 font-medium">About</a>
-      <a href="resources.html" class="hover:text-blue-600 font-medium">Resources</a>
-      <a href="contact.html" class="hover:text-blue-600 font-medium">Contact</a>
+    
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:flex items-center space-x-8 fade-left">
+      <a href="index.html" class="relative text-gray-700 hover:text-blue-600 font-medium transition-all duration-300 py-2 px-1 group">
+        Home
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="services.html" class="relative text-blue-600 font-bold py-2 px-1 border-b-2 border-blue-600">
+        Services
+      </a>
+      <a href="projects.html" class="relative text-gray-700 hover:text-blue-600 font-medium transition-all duration-300 py-2 px-1 group">
+        Projects
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="about.html" class="relative text-gray-700 hover:text-blue-600 font-medium transition-all duration-300 py-2 px-1 group">
+        About
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="resources.html" class="relative text-gray-700 hover:text-blue-600 font-medium transition-all duration-300 py-2 px-1 group">
+        Resources
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="contact.html" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold px-6 py-2 rounded-full hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+        Contact
+      </a>
     </nav>
+
+    <!-- Mobile Menu Button -->
+    <button class="lg:hidden text-gray-700 hover:text-blue-600 transition-colors duration-300" id="mobile-menu-btn">
+      <i class="fas fa-bars text-xl"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-menu fixed top-0 right-0 w-80 h-full bg-white shadow-2xl lg:hidden" id="mobile-menu">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="text-xl font-bold text-gray-800">Menu</h2>
+        <button class="text-gray-700 hover:text-red-500 transition-colors duration-300" id="close-menu-btn">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+      </div>
+      <nav class="space-y-4">
+        <a href="index.html" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-blue-50 transition-all duration-300">Home</a>
+        <a href="services.html" class="block text-blue-600 font-bold py-3 px-4 rounded-lg bg-blue-50">Services</a>
+        <a href="projects.html" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-blue-50 transition-all duration-300">Projects</a>
+        <a href="about.html" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-blue-50 transition-all duration-300">About</a>
+        <a href="resources.html" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-blue-50 transition-all duration-300">Resources</a>
+        <a href="contact.html" class="block bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold py-3 px-4 rounded-lg text-center hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg">Contact</a>
+      </nav>
+    </div>
   </div>
 </header>
 
-<!-- HERO SECTION -->
-<section class="relative text-white py-32 overflow-hidden">
-  <!-- Background Image with overlay -->
+<!-- ENHANCED HERO SECTION -->
+<section class="relative text-white py-24 sm:py-32 lg:py-40 overflow-hidden">
+  <!-- Background Image with enhanced overlay -->
   <div class="absolute inset-0">
-    <img src="asset/Home.png" alt="Our Services" class="w-full h-full object-cover">
-    <!-- Gradient overlay for text readability -->
-    <div class="absolute inset-0 bg-black/50"></div>
+    <img src="asset/Home.png" alt="Our Services" class="w-full h-full object-cover scale-105 transition-transform duration-1000">
+    <div class="hero-gradient absolute inset-0"></div>
   </div>
+
+  <!-- Animated Background Elements -->
+  <div class="absolute top-10 left-4 sm:left-10 w-16 sm:w-24 h-16 sm:h-24 bg-white/20 rounded-full animate-pulse-slow float"></div>
+  <div class="absolute top-1/3 right-4 sm:right-16 w-12 sm:w-20 h-12 sm:h-20 bg-blue-300/30 rounded-full animate-pulse-slow" style="animation-delay: 2s;"></div>
+  <div class="absolute bottom-20 right-8 sm:right-16 w-20 sm:w-32 h-20 sm:h-32 bg-purple-300/20 rounded-full animate-pulse-slow float" style="animation-delay: 1s;"></div>
+  <div class="absolute bottom-1/4 left-4 sm:left-12 w-8 sm:w-16 h-8 sm:h-16 bg-pink-300/25 rounded-full animate-pulse-slow"></div>
 
   <!-- Content -->
-  <div class="relative container mx-auto text-center px-6">
-    <h1 class="text-4xl md:text-5xl font-extrabold mb-6 fade-up">
-      Our Services
-    </h1>
-    <p class="text-lg md:text-xl opacity-90 mb-8 fade-up delay-200">
-      Comprehensive solutions in smart meter manufacturing, substation erection, and manpower management.
-    </p>
-  </div>
-
-  <!-- Optional decorative shapes -->
-  <div class="absolute top-10 left-10 w-24 h-24 bg-white/20 rounded-full animate-pulse-slow"></div>
-  <div class="absolute bottom-20 right-16 w-32 h-32 bg-white/15 rounded-full animate-pulse-slow"></div>
-</section>
-
-
-<!-- SERVICE CARDS -->
-<section class="py-20 container mx-auto px-6">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 fade-up">
-    
-    <!-- Smart Meters -->
-    <div class="card bg-white rounded-2xl shadow-lg overflow-hidden">
-      <img src="asset/service-smart.jpg" alt="Smart Meters" class="w-full h-56 object-cover">
-      <div class="p-6">
-        <h3 class="text-xl font-semibold mb-2 text-blue-600">Smart Meters</h3>
-        <p class="text-gray-600 text-sm mb-4">
-          Advanced metering solutions for residential, commercial, and industrial clients. Accurate readings, remote monitoring, and seamless integration with energy management systems.
-        </p>
-        <a href="#contact" class="inline-block bg-blue-500 text-white font-semibold px-6 py-2 rounded-full hover:bg-blue-600">Learn More</a>
-      </div>
+  <div class="relative container mx-auto text-center px-4 sm:px-6 max-w-4xl">
+    <div class="fade-up">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 leading-tight">
+        Our <span class="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-pink-500">Services</span>
+      </h1>
     </div>
-
-    <!-- Substations -->
-    <div class="card bg-white rounded-2xl shadow-lg overflow-hidden">
-      <img src="asset/service-substation.jpg" alt="Substations" class="w-full h-56 object-cover">
-      <div class="p-6">
-        <h3 class="text-xl font-semibold mb-2 text-purple-600">Substations</h3>
-        <p class="text-gray-600 text-sm mb-4">
-          Design, erection, and commissioning of substations with compliance-driven operations. Ensuring reliable and safe power distribution for industrial and commercial infrastructure.
-        </p>
-        <a href="#contact" class="inline-block bg-purple-500 text-white font-semibold px-6 py-2 rounded-full hover:bg-purple-600">Learn More</a>
-      </div>
+    <div class="fade-up delay-200">
+      <p class="text-base sm:text-lg md:text-xl opacity-90 mb-6 sm:mb-8 leading-relaxed max-w-3xl mx-auto">
+        Comprehensive solutions in smart meter manufacturing, substation erection, and manpower management.
+      </p>
     </div>
-
-    <!-- Manpower Management -->
-    <div class="card bg-white rounded-2xl shadow-lg overflow-hidden">
-      <img src="asset/service-manpower.jpg" alt="Manpower Management" class="w-full h-56 object-cover">
-      <div class="p-6">
-        <h3 class="text-xl font-semibold mb-2 text-pink-500">Manpower Management</h3>
-        <p class="text-gray-600 text-sm mb-4">
-          Skilled workforce management for smooth execution of electrical projects. Efficient team deployment for large-scale operations ensuring timely and quality deliverables.
-        </p>
-        <a href="#contact" class="inline-block bg-pink-500 text-white font-semibold px-6 py-2 rounded-full hover:bg-pink-600">Learn More</a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- DETAILED SERVICES INFO -->
-<section class="py-20 bg-gray-50 container mx-auto px-6">
-  <div class="max-w-5xl mx-auto text-center space-y-6 fade-up">
-    <h2 class="text-3xl md:text-4xl font-bold">Why Choose SMB Services?</h2>
-    <p class="text-gray-700 text-lg leading-relaxed">
-      At SMB, we combine innovation, compliance, and operational excellence. Every project, whether a smart meter rollout, a substation erection, or workforce deployment, is executed with precision and commitment to client satisfaction.
-    </p>
-    <div class="grid md:grid-cols-3 gap-6 mt-12">
-      <div class="p-6 bg-white rounded-2xl shadow-lg">
-        <h3 class="text-xl font-semibold mb-2">Innovation</h3>
-        <p class="text-gray-600 text-sm">Leveraging latest technologies to deliver efficient and future-ready solutions.</p>
-      </div>
-      <div class="p-6 bg-white rounded-2xl shadow-lg">
-        <h3 class="text-xl font-semibold mb-2">Compliance</h3>
-        <p class="text-gray-600 text-sm">Strict adherence to national and international electrical safety and operational standards.</p>
-      </div>
-      <div class="p-6 bg-white rounded-2xl shadow-lg">
-        <h3 class="text-xl font-semibold mb-2">Reliability</h3>
-        <p class="text-gray-600 text-sm">Ensuring uninterrupted and high-quality service delivery for projects of any scale.</p>
+    <div class="fade-up delay-400">
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="#services" class="btn-enhanced bg-white text-gray-800 font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 w-full sm:w-auto">
+          <i class="fas fa-arrow-down mr-2"></i>
+          Explore Services
+        </a>
+        <a href="#contact" class="btn-enhanced border-2 border-white text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-white hover:text-gray-800 transition-all duration-300 w-full sm:w-auto">
+          <i class="fas fa-phone mr-2"></i>
+          Contact Us
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="bg-gray-900 text-gray-300 mt-12">
-  <div class="container mx-auto px-6 py-12 grid md:grid-cols-3 gap-8">
-    <div class="flex flex-col items-start">
-      <a href="index.html" class="mb-4">
-        <img src="asset/image.png" alt="SMB Logo" class="w-24 h-24 object-contain shadow-lg" />
-      </a>
-      <h3 class="text-white font-bold mb-3">SMB Smart Solution</h3>
-      <p class="text-sm">Smart Meter Manufacturing · Electrical Infrastructure Erection · Manpower Management</p>
-      <p class="text-sm mt-2">&copy; 2025 SMB Smart Electrical Solutions</p>
+<!-- ENHANCED SERVICE CARDS -->
+<section id="services" class="py-16 sm:py-20 lg:py-24 container mx-auto px-4 sm:px-6">
+  <div class="max-w-7xl mx-auto">
+    <!-- Section Header -->
+    <div class="text-center mb-12 sm:mb-16 fade-up">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
+        Our <span class="text-gradient">Premium Services</span>
+      </h2>
+      <p class="text-gray-600 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
+        Delivering excellence across smart electrical solutions with cutting-edge technology and expert craftsmanship.
+      </p>
     </div>
-    <div>
-      <h3 class="text-white font-bold mb-3">Quick Links</h3>
-      <ul class="text-sm space-y-2">
-        <li><a href="index.html" class="hover:text-white">Home</a></li>
-        <li><a href="about.html" class="hover:text-white">About</a></li>
-        <li><a href="services.html" class="hover:text-white">Services</a></li>
-        <li><a href="projects.html" class="hover:text-white">Projects</a></li>
-        <li><a href="contact.html" class="hover:text-white">Contact</a></li>
-      </ul>
+
+    <!-- Service Cards Grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      
+      <!-- Smart Meters Card -->
+      <div class="card bg-white rounded-3xl shadow-xl overflow-hidden fade-up delay-100 group">
+        <div class="relative overflow-hidden">
+          <img src="asset/service-smart.jpg" alt="Smart Meters" class="w-full h-56 sm:h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute top-4 left-4 bg-blue-500 text-white p-3 rounded-full shadow-lg">
+            <i class="fas fa-tachometer-alt service-icon text-xl"></i>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+        <div class="p-6 sm:p-8">
+          <h3 class="text-xl sm:text-2xl font-bold mb-3 text-blue-600 group-hover:text-blue-700 transition-colors duration-300">
+            Smart Meters
+          </h3>
+          <p class="text-gray-600 text-sm sm:text-base mb-6 leading-relaxed">
+            Advanced metering solutions for residential, commercial, and industrial clients. Accurate readings, remote monitoring, and seamless integration with energy management systems.
+          </p>
+          <div class="flex items-center justify-between">
+            <a href="#contact" class="btn-enhanced bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold px-6 py-3 rounded-full hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+              Learn More
+            </a>
+            <div class="flex items-center space-x-1 text-yellow-400">
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Substations Card -->
+      <div class="card bg-white rounded-3xl shadow-xl overflow-hidden fade-up delay-200 group">
+        <div class="relative overflow-hidden">
+          <img src="asset/service-substation.jpg" alt="Substations" class="w-full h-56 sm:h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute top-4 left-4 bg-purple-500 text-white p-3 rounded-full shadow-lg">
+            <i class="fas fa-bolt service-icon text-xl"></i>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+        <div class="p-6 sm:p-8">
+          <h3 class="text-xl sm:text-2xl font-bold mb-3 text-purple-600 group-hover:text-purple-700 transition-colors duration-300">
+            Substations
+          </h3>
+          <p class="text-gray-600 text-sm sm:text-base mb-6 leading-relaxed">
+            Design, erection, and commissioning of substations with compliance-driven operations. Ensuring reliable and safe power distribution for industrial and commercial infrastructure.
+          </p>
+          <div class="flex items-center justify-between">
+            <a href="#contact" class="btn-enhanced bg-gradient-to-r from-purple-500 to-purple-600 text-white font-semibold px-6 py-3 rounded-full hover:from-purple-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+              Learn More
+            </a>
+            <div class="flex items-center space-x-1 text-yellow-400">
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Manpower Management Card -->
+      <div class="card bg-white rounded-3xl shadow-xl overflow-hidden fade-up delay-300 group sm:col-span-2 lg:col-span-1">
+        <div class="relative overflow-hidden">
+          <img src="asset/service-manpower.jpg" alt="Manpower Management" class="w-full h-56 sm:h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute top-4 left-4 bg-pink-500 text-white p-3 rounded-full shadow-lg">
+            <i class="fas fa-users service-icon text-xl"></i>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+        <div class="p-6 sm:p-8">
+          <h3 class="text-xl sm:text-2xl font-bold mb-3 text-pink-500 group-hover:text-pink-600 transition-colors duration-300">
+            Manpower Management
+          </h3>
+          <p class="text-gray-600 text-sm sm:text-base mb-6 leading-relaxed">
+            Skilled workforce management for smooth execution of electrical projects. Efficient team deployment for large-scale operations ensuring timely and quality deliverables.
+          </p>
+          <div class="flex items-center justify-between">
+            <a href="#contact" class="btn-enhanced bg-gradient-to-r from-pink-500 to-pink-600 text-white font-semibold px-6 py-3 rounded-full hover:from-pink-600 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+              Learn More
+            </a>
+            <div class="flex items-center space-x-1 text-yellow-400">
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+              <i class="fas fa-star text-sm"></i>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div>
-      <h3 class="text-white font-bold mb-3">Contact</h3>
-      <p class="text-sm">Email: info@smbsolutions.com</p>
-      <p class="text-sm">Phone: +91 12345 67890</p>
-      <p class="text-sm">Address: 123 Industrial Park, City, India</p>
+  </div>
+</section>
+
+<!-- ENHANCED DETAILED SERVICES INFO -->
+<section class="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-gray-50 to-blue-50">
+  <div class="container mx-auto px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto">
+      <!-- Section Header -->
+      <div class="text-center space-y-4 sm:space-y-6 mb-12 sm:mb-16 fade-up">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold">
+          Why Choose <span class="text-gradient">SMB Services?</span>
+        </h2>
+        <p class="text-gray-700 text-lg sm:text-xl leading-relaxed max-w-4xl mx-auto">
+          At SMB, we combine innovation, compliance, and operational excellence. Every project, whether a smart meter rollout, a substation erection, or workforce deployment, is executed with precision and commitment to client satisfaction.
+        </p>
+      </div>
+
+      <!-- Features Grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        
+        <!-- Innovation -->
+        <div class="fade-up delay-100">
+          <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 h-full">
+            <div class="bg-gradient-to-r from-blue-500 to-purple-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 float">
+              <i class="fas fa-lightbulb text-white text-2xl"></i>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold mb-4 text-gray-800">Innovation</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Leveraging latest technologies to deliver efficient and future-ready solutions that transform the electrical industry.
+            </p>
+            <div class="mt-6 flex items-center text-blue-600">
+              <span class="text-sm font-semibold">Learn More</span>
+              <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-2"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Compliance -->
+        <div class="fade-up delay-200">
+          <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 h-full">
+            <div class="bg-gradient-to-r from-green-500 to-emerald-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 float" style="animation-delay: 1s;">
+              <i class="fas fa-shield-alt text-white text-2xl"></i>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold mb-4 text-gray-800">Compliance</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Strict adherence to national and international electrical safety and operational standards ensuring complete regulatory compliance.
+            </p>
+            <div class="mt-6 flex items-center text-green-600">
+              <span class="text-sm font-semibold">Learn More</span>
+              <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-2"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reliability -->
+        <div class="fade-up delay-300 sm:col-span-2 lg:col-span-1">
+          <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 h-full">
+            <div class="bg-gradient-to-r from-orange-500 to-red-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 float" style="animation-delay: 2s;">
+              <i class="fas fa-award text-white text-2xl"></i>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold mb-4 text-gray-800">Reliability</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Ensuring uninterrupted and high-quality service delivery for projects of any scale with 24/7 support and monitoring.
+            </p>
+            <div class="mt-6 flex items-center text-orange-600">
+              <span class="text-sm font-semibold">Learn More</span>
+              <i class="fas fa-arrow-right ml-2 transition-transform duration-300 group-hover:translate-x-2"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Section -->
+      <div class="mt-16 sm:mt-20 fade-up">
+        <div class="bg-white rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12">
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            <div class="text-center">
+              <div class="text-3xl sm:text-4xl font-bold text-blue-600 mb-2">500+</div>
+              <div class="text-gray-600 text-sm sm:text-base">Projects Completed</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl sm:text-4xl font-bold text-purple-600 mb-2">50+</div>
+              <div class="text-gray-600 text-sm sm:text-base">Expert Engineers</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl sm:text-4xl font-bold text-green-600 mb-2">99.9%</div>
+              <div class="text-gray-600 text-sm sm:text-base">Uptime Guaranteed</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl sm:text-4xl font-bold text-orange-600 mb-2">24/7</div>
+              <div class="text-gray-600 text-sm sm:text-base">Support Available</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENHANCED FOOTER -->
+<footer class="bg-gradient-to-br from-gray-900 to-gray-800 text-gray-300 relative overflow-hidden">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-10 left-10 w-32 h-32 border border-gray-600 rounded-full"></div>
+    <div class="absolute bottom-20 right-16 w-40 h-40 border border-gray-600 rounded-full"></div>
+    <div class="absolute top-1/2 left-1/3 w-24 h-24 border border-gray-600 rounded-full"></div>
+  </div>
+
+  <div class="relative container mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      
+      <!-- Company Info -->
+      <div class="lg:col-span-2 fade-up">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="relative">
+            <img src="asset/image.png" alt="SMB Logo" class="w-16 sm:w-20 h-16 sm:h-20 object-contain shadow-lg rounded-lg" />
+            <div class="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full animate-pulse"></div>
+          </div>
+          <div>
+            <h3 class="text-white font-bold text-xl sm:text-2xl">SMB Smart Solution</h3>
+            <p class="text-gray-400 text-sm">Powering Tomorrow's World</p>
+          </div>
+        </div>
+        <p class="text-sm sm:text-base mb-4 leading-relaxed">
+          Smart Meter Manufacturing · Electrical Infrastructure Erection · Manpower Management
+        </p>
+        <p class="text-sm text-gray-400 mb-6">
+          Leading the electrical industry with innovative solutions and unmatched expertise since our founding.
+        </p>
+        <div class="flex space-x-4">
+          <a href="#" class="bg-gray-700 hover:bg-blue-600 p-3 rounded-full transition-all duration-300 transform hover:scale-110">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="bg-gray-700 hover:bg-blue-400 p-3 rounded-full transition-all duration-300 transform hover:scale-110">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="bg-gray-700 hover:bg-blue-700 p-3 rounded-full transition-all duration-300 transform hover:scale-110">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="bg-gray-700 hover:bg-pink-600 p-3 rounded-full transition-all duration-300 transform hover:scale-110">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="fade-up delay-100">
+        <h3 class="text-white font-bold mb-6 text-lg">Quick Links</h3>
+        <ul class="space-y-3">
+          <li><a href="index.html" class="hover:text-white transition-all duration-300 hover:translate-x-2 inline-block">Home</a></li>
+          <li><a href="about.html" class="hover:text-white transition-all duration-300 hover:translate-x-2 inline-block">About</a></li>
+          <li><a href="services.html" class="text-blue-400 hover:text-blue-300 transition-all duration-300 hover:translate-x-2 inline-block">Services</a></li>
+          <li><a href="projects.html" class="hover:text-white transition-all duration-300 hover:translate-x-2 inline-block">Projects</a></li>
+          <li><a href="contact.html" class="hover:text-white transition-all duration-300 hover:translate-x-2 inline-block">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="fade-up delay-200">
+        <h3 class="text-white font-bold mb-6 text-lg">Get In Touch</h3>
+        <div class="space-y-4">
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-envelope text-blue-400 w-5"></i>
+            <span class="text-sm">info@smbsolutions.com</span>
+          </div>
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-phone text-green-400 w-5"></i>
+            <span class="text-sm">+91 12345 67890</span>
+          </div>
+          <div class="flex items-start space-x-3">
+            <i class="fas fa-map-marker-alt text-red-400 w-5 mt-1"></i>
+            <span class="text-sm">123 Industrial Park, City, India</span>
+          </div>
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-clock text-purple-400 w-5"></i>
+            <span class="text-sm">24/7 Support Available</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="border-t border-gray-700 mt-12 pt-8 text-center fade-up delay-300">
+      <p class="text-sm text-gray-400">
+        &copy; 2025 SMB Smart Electrical Solutions. All rights reserved. | 
+        <a href="#" class="hover:text-white transition-colors duration-300">Privacy Policy</a> | 
+        <a href="#" class="hover:text-white transition-colors duration-300">Terms of Service</a>
+      </p>
     </div>
   </div>
 </footer>
 
-<!-- SCRIPT FOR FADE-UP -->
+<!-- ENHANCED JAVASCRIPT -->
 <script>
-const faders = document.querySelectorAll('.fade-up');
-const appearOnScroll = new IntersectionObserver((entries, observer) => {
+// Enhanced Intersection Observer for animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if(entry.isIntersecting){
+    if (entry.isIntersecting) {
       entry.target.classList.add('visible');
       observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1 });
-faders.forEach(fader => appearOnScroll.observe(fader));
+}, observerOptions);
+
+// Observe all animated elements
+document.querySelectorAll('.fade-up, .fade-left, .fade-right').forEach(el => {
+  observer.observe(el);
+});
+
+// Mobile menu functionality
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+const closeMenuBtn = document.getElementById('close-menu-btn');
+
+mobileMenuBtn.addEventListener('click', () => {
+  mobileMenu.classList.add('open');
+  document.body.style.overflow = 'hidden';
+});
+
+closeMenuBtn.addEventListener('click', () => {
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = 'auto';
+});
+
+// Close mobile menu when clicking outside
+mobileMenu.addEventListener('click', (e) => {
+  if (e.target === mobileMenu) {
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = 'auto';
+  }
+});
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+
+// Add scroll effect to navbar
+window.addEventListener('scroll', () => {
+  const header = document.querySelector('header');
+  if (window.scrollY > 100) {
+    header.classList.add('bg-white/95');
+    header.classList.remove('bg-white/90');
+  } else {
+    header.classList.add('bg-white/90');
+    header.classList.remove('bg-white/95');
+  }
+});
+
+// Add loading animation
+window.addEventListener('load', () => {
+  document.body.style.opacity = '0';
+  document.body.style.transition = 'opacity 0.5s ease-in-out';
+  
+  setTimeout(() => {
+    document.body.style.opacity = '1';
+  }, 100);
+});
+
+// Parallax effect for hero section
+window.addEventListener('scroll', () => {
+  const scrolled = window.pageYOffset;
+  const heroImage = document.querySelector('.hero-gradient').previousElementSibling.querySelector('img');
+  if (heroImage) {
+    heroImage.style.transform = `translateY(${scrolled * 0.5}px) scale(1.05)`;
+  }
+});
+
+// Add counter animation
+function animateCounter(element, target, duration = 2000) {
+  const start = 0;
+  const increment = target / (duration / 16);
+  let current = start;
+  
+  const timer = setInterval(() => {
+    current += increment;
+    if (current >= target) {
+      current = target;
+      clearInterval(timer);
+    }
+    
+    if (target >= 1000) {
+      element.textContent = Math.floor(current / 1000) + 'K+';
+    } else if (target === 99.9) {
+      element.textContent = current.toFixed(1) + '%';
+    } else if (target === 24) {
+      element.textContent = Math.floor(current) + '/7';
+    } else {
+      element.textContent = Math.floor(current) + '+';
+    }
+  }, 16);
+}
+
+// Trigger counter animations when stats section is visible
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const counters = entry.target.querySelectorAll('.text-3xl, .text-4xl');
+      counters.forEach((counter, index) => {
+        const targets = [500, 50, 99.9, 24];
+        animateCounter(counter, targets[index]);
+      });
+      statsObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+const statsSection = document.querySelector('.grid.grid-cols-2.lg\\:grid-cols-4');
+if (statsSection) {
+  statsObserver.observe(statsSection.parentElement);
+}
 </script>
 
 </body>
