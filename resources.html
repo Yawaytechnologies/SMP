@@ -77,84 +77,141 @@
     #backToTop.hidden { opacity:0; transform: translateY(20px); pointer-events:none; }
 
     .container { max-width: 1200px; }
+
+    .hamb-line{
+  position: relative;
+  display:block;
+  width:22px;height:2px;background:#111;border-radius:2px;
+  transition:transform .25s ease, opacity .2s ease, top .25s ease, bottom .25s ease;
+}
+.hamb-line:nth-child(1){ top:-6px; position:relative; }
+.hamb-line:nth-child(2){ }
+.hamb-line:nth-child(3){ bottom:-6px; position:relative; }
+button[aria-expanded="true"] .hamb-line:nth-child(1){ transform:translateY(6px) rotate(45deg); }
+button[aria-expanded="true"] .hamb-line:nth-child(2){ opacity:0; }
+button[aria-expanded="true"] .hamb-line:nth-child(3){ transform:translateY(-6px) rotate(-45deg); }
+
+/* Mobile drawer links */
+.mob-link{
+  display:flex; align-items:center; gap:.6rem;
+  font-weight:600; padding:.9rem 1rem; border-radius:.9rem;
+  background:linear-gradient(180deg,#ffffff, #fafafa); border:1px solid #eee;
+  color:#374151; transition:transform .15s ease, box-shadow .2s ease, background .2s ease;
+}
+.mob-link i{ width:18px; text-align:center; }
+.mob-link:hover{ transform:translateY(-1px); box-shadow:0 10px 18px rgba(0,0,0,.06); }
+.mob-link.active{ background:linear-gradient(180deg,#eef2ff,#e0e7ff); border-color:#c7d2fe; color:#1d4ed8; }
+
+/* Quick chips */
+.quick-chip{
+  display:flex; align-items:center; justify-content:center; gap:.5rem;
+  padding:.7rem .8rem; border-radius:.8rem; font-weight:600;
+  background:#f8fafc; border:1px solid #eef2f7; color:#0f172a;
+}
+.quick-chip:hover{ background:#eef2f7; }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
   <!-- NAVBAR (mirrors home) -->
-  <header class="fixed w-full z-50 bg-white/90 backdrop-blur-custom shadow-lg border-b border-gray-200/20">
-    <div class="container mx-auto flex items-center justify-between px-4 sm:px-6 py-3">
-      <a href="index.html" class="flex items-center gap-3">
-        <div class="relative">
-          <img src="asset/image.png" alt="SMB Logo" class="w-12 h-12 sm:w-16 sm:h-16 object-contain shadow-lg rounded-lg transition-transform duration-300 hover:scale-110"/>
-          <div class="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-        </div>
-        <div class="hidden sm:block">
-          <h1 class="text-lg font-bold text-gray-800">SMB</h1>
-          <p class="text-xs text-gray-600">Smart Solutions</p>
-        </div>
-      </a>
-
-      <!-- Desktop nav -->
-      <nav class="hidden lg:flex items-center space-x-8">
-        <a href="index.html#home" class="relative text-gray-700 hover:text-blue-600 font-medium py-2 px-1 group">
-          Home
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-        </a>
-        <a href="index.html#services" class="relative text-gray-700 hover:text-blue-600 font-medium py-2 px-1 group">
-          Services
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-        </a>
-        <a href="index.html#projects" class="relative text-gray-700 hover:text-blue-600 font-medium py-2 px-1 group">
-          Projects
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-        </a>
-
-        <a href="about.html" class="relative text-gray-700 hover:text-blue-600 font-medium py-2 px-1">About</a>
-
-        
-        <a href="resources.html" class="relative text-blue-600 font-bold py-2 px-1 border-b-2 border-blue-600">
-          Resources
-        </a>
-        
-      </nav>
-
-      <!-- Contact btn (desktop) -->
-      <div class="hidden md:flex items-center">
-        <a href="#contact" class="btn-enhanced bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold px-5 py-2 rounded-full hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
-          <i class="fas fa-phone mr-2"></i>Contact
-        </a>
+ <header class="fixed inset-x-0 top-0 z-50 bg-white/80 backdrop-blur-md border-b border-white/40 shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
+  <div class="container mx-auto flex items-center justify-between px-4 sm:px-6 py-3">
+    <!-- Brand -->
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="relative">
+        <img src="asset/SMB logo.png" alt="SMB Logo" class="w-12 h-12 object-contain rounded-lg shadow-lg" />
+        <span class="absolute -top-0.5 -right-0.5 w-3 h-3 bg-emerald-400 rounded-full ring-2 ring-white"></span>
       </div>
+      <div class="hidden sm:block">
+        <h1 class="text-lg font-extrabold tracking-tight text-gray-900">SMB</h1>
+        <p class="text-xs text-gray-600 -mt-0.5">Smart Solutions</p>
+      </div>
+    </a>
 
-      <!-- Mobile trigger -->
-      <button id="mobileBtn" class="lg:hidden text-gray-700 hover:text-blue-600 transition-colors duration-300">
-        <i class="fas fa-bars text-xl"></i>
+    <!-- Desktop Nav -->
+    <nav class="hidden lg:flex items-center gap-8">
+      <a href="index.html" class="group relative font-medium text-gray-700 hover:text-blue-600">
+        Home
+        <span class="absolute -bottom-1 left-0 h-0.5 w-0 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="services.html" class="group relative font-medium text-gray-700 hover:text-blue-600">
+        Services
+        <span class="absolute -bottom-1 left-0 h-0.5 w-0 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="projects.html" class="group relative font-medium text-gray-700 hover:text-blue-600">
+        Projects
+        <span class="absolute -bottom-1 left-0 h-0.5 w-0 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="about.html" class="group relative font-medium text-gray-700 hover:text-blue-600">About
+        <span class="absolute -bottom-1 left-0 h-0.5 w-0 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="resources.html" class="group relative font-medium text-gray-700 hover:text-blue-600">
+        Resources
+        <span class="absolute -bottom-1 left-0 h-0.5 w-0 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+    </nav>
+
+    <!-- Desktop CTA -->
+    <div class="hidden md:flex">
+      <a href="#contact" class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 py-2.5 font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]">
+        <i class="fas fa-phone"></i> Contact
+      </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button id="mobile-menu-btn"
+      class="lg:hidden relative w-11 h-11 grid place-items-center rounded-xl border border-gray-200 bg-white/70 hover:bg-white shadow-md transition"
+      aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+      <!-- Hamburger (animated) -->
+      <span class="hamb-line"></span>
+      <span class="hamb-line"></span>
+      <span class="hamb-line"></span>
+    </button>
+  </div>
+
+  <!-- Backdrop -->
+  <div id="mobile-backdrop" class="fixed inset-0 z-40 bg-black/50 opacity-0 pointer-events-none transition-opacity"></div>
+
+  <!-- Mobile Drawer -->
+  <aside id="mobile-menu"
+         class="fixed right-0 top-0 z-50 h-screen w-80 max-w-[88vw] translate-x-full bg-white shadow-2xl transition-transform duration-300 will-change-transform lg:hidden">
+    <div class="flex items-center justify-between px-6 py-4 border-b">
+      <div class="flex items-center gap-3">
+        <img src="asset/SMB logo.png" alt="SMB" class="w-10 h-10 rounded-lg shadow" />
+        <div>
+          <p class="font-bold text-gray-900 leading-tight">SMB Smart Solutions</p>
+          <p class="text-xs text-gray-500 -mt-0.5">Powering Tomorrow's World</p>
+        </div>
+      </div>
+      <button id="close-menu-btn" class="p-2 rounded-lg hover:bg-gray-100" aria-label="Close menu">
+        <i class="fas fa-times text-xl text-gray-700"></i>
       </button>
     </div>
 
-    <!-- Mobile menu -->
-    <div id="mobileMenu" class="fixed top-0 right-0 w-80 h-full bg-white shadow-2xl lg:hidden transform translate-x-full transition-transform">
-      <div class="p-6">
-        <div class="flex justify-between items-center mb-8">
-          <h2 class="text-xl font-bold text-gray-800">Menu</h2>
-          <button class="text-gray-700 hover:text-red-500 transition-colors duration-300" id="closeMenu">
-            <i class="fas fa-times text-xl"></i>
-          </button>
-        </div>
-        <nav class="space-y-4">
-          <a href="index.html#home" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-blue-50 transition-all duration-300">Home</a>
-          <a href="index.html#services" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-blue-50 transition-all duration-300">Services</a>
-          <a href="index.html#projects" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-blue-50 transition-all duration-300">Projects</a>
-          <a href="index.html#clients" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-blue-50 transition-all duration-300">Clients</a>
-          <a href="resources.html" class="block text-blue-600 font-bold py-3 px-4 rounded-lg bg-blue-50">Resources</a>
-          <a href="index.html#contact" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-blue-50 transition-all duration-300">Contact</a>
-        </nav>
-        <div class="pt-6">
-          <a href="index.html#contact" class="btn-enhanced bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold px-6 py-3 rounded-full w-full flex items-center justify-center hover:from-blue-600 hover:to-purple-700 shadow-lg">Contact Us</a>
-        </div>
+    <nav class="px-4 py-5 space-y-2">
+      <a href="index.html" class="mob-link"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="services.html" class="mob-link"><i class="fa-solid fa-screwdriver-wrench"></i> Services</a>
+      <a href="projects.html" class="mob-link"><i class="fa-solid fa-diagram-project"></i> Projects</a>
+      <a href="about.html" class="mob-link "><i class="fa-solid fa-id-card"></i> About</a>
+      <a href="resources.html" class="mob-link"><i class="fa-solid fa-book-open"></i> Resources</a>
+
+      <!-- Quick Actions -->
+      <div class="mt-4 grid grid-cols-2 gap-3">
+        <a href="#contact" class="quick-chip"><i class="fa-solid fa-paper-plane"></i> Enquiry</a>
+        <a href="tel:+919032632464" class="quick-chip"><i class="fa-solid fa-phone"></i> Call</a>
       </div>
+    </nav>
+
+    <!-- Sticky CTA -->
+    <div class="absolute inset-x-0 bottom-0 p-4 border-t bg-white">
+      <a href="https://wa.me/919032632464"
+         class="flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white py-3 font-semibold shadow-lg hover:shadow-xl transition">
+        <i class="fa-brands fa-whatsapp text-xl"></i>
+        Chat on WhatsApp
+      </a>
     </div>
-  </header>
+  </aside>
+</header>
 
   <main class="pt-20">
     <!-- HERO (matches home pattern with gradient overlay) -->
@@ -172,7 +229,7 @@
 
       <!-- Content -->
       <div class="relative container mx-auto px-4 sm:px-6 text-center max-w-3xl">
-        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-4 fade-up">Resources & <span class="text-gradient">Insights</span></h1>
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-4 fade-up">Resources & <span class="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-pink-500">Insights</span></h1>
         <p class="text-lg md:text-xl opacity-90 fade-up">
           Explore our technical guides, whitepapers, and industry insights on smart meters and electrical infrastructure.
         </p>
@@ -306,7 +363,7 @@
 
 
   <!-- ENHANCED CONTACT SECTION -->
-  <section id="contact" class="py-12 sm:py-16 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-center">
+ <section id="contact" class="py-12 sm:py-16 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-center">
   <div class="container mx-auto px-4 sm:px-6">
     <div class="fade-up">
       <h2 class="text-2xl md:text-3xl font-bold mb-2">Start your project with SMB</h2>
@@ -422,7 +479,7 @@
       <div class="lg:col-span-2 fade-up">
         <div class="flex items-center gap-4 mb-6">
           <div class="relative">
-            <img src="asset/image.png" alt="SMB Logo" class="w-16 sm:w-20 h-16 sm:h-20 object-contain shadow-lg rounded-lg" />
+            <img src="asset/SMB logo.png" alt="SMB Logo" class="w-16 sm:w-20 h-16 sm:h-20 object-contain shadow-lg rounded-lg" />
             <div class="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full animate-pulse"></div>
           </div>
           <div>
@@ -470,15 +527,15 @@
         <div class="space-y-4">
           <div class="flex items-center space-x-3">
             <i class="fas fa-envelope text-blue-400 w-5"></i>
-            <span class="text-sm">info@smb.com</span>
+            <span class="text-sm">smbsmartmd@gmail.com</span>
           </div>
           <div class="flex items-center space-x-3">
             <i class="fas fa-phone text-green-400 w-5"></i>
-            <span class="text-sm">+91-XXXXXxXXXxx</span>
+            <span class="text-sm">+91-9032632464</span>
           </div>
           <div class="flex items-start space-x-3">
             <i class="fas fa-map-marker-alt text-red-400 w-5 mt-1"></i>
-            <span class="text-sm">123 Industrial Park, City, India</span>
+            <span class="text-sm">405, 5th floor, AIMS Business Center, Botcha square, Murali Nagar, Visakhapatnam - 530007</span>
           </div>
           <div class="flex items-center space-x-3">
             <i class="fas fa-clock text-purple-400 w-5"></i>
@@ -613,6 +670,117 @@
       }
     });
   });
+
+   // ===== CONFIG =====
+  const OWNER_WHATSAPP = "+919032632464"; // <-- change to your number (with country code)
+  const OWNER_EMAIL = "smbsmartmd@gmail.com"; // <-- optional email fallback
+  const PRIMARY_CHANNEL = "whatsapp"; // "whatsapp" or "email"
+
+  // ===== HELPERS =====
+  const $ = (id) => document.getElementById(id);
+  const toggle = (id, show) => { const n = $(id); if (n) n.classList.toggle("hidden", !show); };
+
+  function buildMessage({ name, company, email, phone, services, message }) {
+    return `New Project Request (SMB Website)
+Name: ${name}
+Company: ${company || "-"}
+Email: ${email}
+Phone: ${phone || "-"}
+Interested In: ${services || "-"}
+Details:
+${message || "-"}
+
+Source: SMB Contact Form`;
+  }
+
+  function sendViaWhatsApp(text) {
+    const digits = OWNER_WHATSAPP.replace(/\D/g, "");
+    const url = `https://wa.me/${digits}?text=${encodeURIComponent(text)}`;
+    const win = window.open(url, "_blank");
+    if (!win) window.location.href = url; // popup blocked fallback
+  }
+
+  function sendViaEmail(name, text) {
+    const subject = `New Project Request — ${name || "SMB Website"}`;
+    const url = `mailto:${encodeURIComponent(OWNER_EMAIL)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
+    window.location.href = url;
+  }
+
+  (function initContactForm() {
+    const form = $("contactForm");
+    if (!form) return;
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = ($("name")?.value || "").trim();
+      const company = ($("company")?.value || "").trim();
+      const email = ($("email")?.value || "").trim();
+      const phone = ($("phone")?.value || "").trim();
+      const services = ($("services")?.value || "").trim();
+      const message = ($("message")?.value || "").trim();
+
+      // basic validation using your hints
+      let ok = true;
+      if (!name) { toggle("err-name", true); ok = false; } else { toggle("err-name", false); }
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRe.test(email)) { toggle("err-email", true); ok = false; } else { toggle("err-email", false); }
+      if (!ok) return;
+
+      const btn = form.querySelector('button[type="submit"]');
+      const status = $("formStatus");
+      if (btn) { btn.disabled = true; btn.classList.add("opacity-70","cursor-not-allowed"); }
+      if (status) status.textContent = PRIMARY_CHANNEL === "whatsapp" ? "Opening WhatsApp…" : "Opening your email app…";
+
+      const text = buildMessage({ name, company, email, phone, services, message });
+
+      try {
+        if (PRIMARY_CHANNEL === "email") {
+          sendViaEmail(name, text);
+        } else {
+          sendViaWhatsApp(text);
+        }
+      } finally {
+        setTimeout(() => {
+          form.reset();
+          if (btn) { btn.disabled = false; btn.classList.remove("opacity-70","cursor-not-allowed"); }
+          if (status) status.textContent = "Request prepared. Review & send from the opened app.";
+        }, 600);
+      }
+    });
+  })();
+
+  (function(){
+    const btn = document.getElementById('mobile-menu-btn');
+    const closeBtn = document.getElementById('close-menu-btn');
+    const drawer = document.getElementById('mobile-menu');
+    const backdrop = document.getElementById('mobile-backdrop');
+
+    function openMenu(){
+      drawer.classList.remove('translate-x-full');
+      backdrop.classList.remove('pointer-events-none');
+      backdrop.classList.add('opacity-100');
+      document.body.style.overflow = 'hidden';
+      btn.setAttribute('aria-expanded','true');
+    }
+    function closeMenu(){
+      drawer.classList.add('translate-x-full');
+      backdrop.classList.add('pointer-events-none');
+      backdrop.classList.remove('opacity-100');
+      document.body.style.overflow = '';
+      btn.setAttribute('aria-expanded','false');
+    }
+
+    btn?.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      expanded ? closeMenu() : openMenu();
+    });
+    closeBtn?.addEventListener('click', closeMenu);
+    backdrop?.addEventListener('click', closeMenu);
+
+    // ESC to close
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeMenu(); });
+  })();
   </script>
 </body>
 </html>

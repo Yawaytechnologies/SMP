@@ -22,9 +22,7 @@
     }
 
     /* Buttons */
-    .btn-enhanced {
-      position:relative; overflow:hidden; transition:all .3s ease;
-    }
+    .btn-enhanced { position:relative; overflow:hidden; transition:all .3s ease; }
     .btn-enhanced::before {
       content:''; position:absolute; top:0; left:-100%;
       width:100%; height:100%; background:rgba(255,255,255,.2); transition:left .5s;
@@ -66,357 +64,398 @@
     /* Mobile menu */
     .mobile-menu { transform:translateX(100%); transition:transform .3s ease-in-out; }
     .mobile-menu.open { transform:translateX(0); }
+
+    /* Animated hamburger lines */
+.hamb-line{
+  position: relative;
+  display:block;
+  width:22px;height:2px;background:#111;border-radius:2px;
+  transition:transform .25s ease, opacity .2s ease, top .25s ease, bottom .25s ease;
+}
+.hamb-line:nth-child(1){ top:-6px; position:relative; }
+.hamb-line:nth-child(2){ }
+.hamb-line:nth-child(3){ bottom:-6px; position:relative; }
+button[aria-expanded="true"] .hamb-line:nth-child(1){ transform:translateY(6px) rotate(45deg); }
+button[aria-expanded="true"] .hamb-line:nth-child(2){ opacity:0; }
+button[aria-expanded="true"] .hamb-line:nth-child(3){ transform:translateY(-6px) rotate(-45deg); }
+
+/* Mobile drawer links */
+.mob-link{
+  display:flex; align-items:center; gap:.6rem;
+  font-weight:600; padding:.9rem 1rem; border-radius:.9rem;
+  background:linear-gradient(180deg,#ffffff, #fafafa); border:1px solid #eee;
+  color:#374151; transition:transform .15s ease, box-shadow .2s ease, background .2s ease;
+}
+.mob-link i{ width:18px; text-align:center; }
+.mob-link:hover{ transform:translateY(-1px); box-shadow:0 10px 18px rgba(0,0,0,.06); }
+.mob-link.active{ background:linear-gradient(180deg,#eef2ff,#e0e7ff); border-color:#c7d2fe; color:#1d4ed8; }
+
+/* Quick chips */
+.quick-chip{
+  display:flex; align-items:center; justify-content:center; gap:.5rem;
+  padding:.7rem .8rem; border-radius:.8rem; font-weight:600;
+  background:#f8fafc; border:1px solid #eef2f7; color:#0f172a;
+}
+.quick-chip:hover{ background:#eef2f7; }
+
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
   <!-- ENHANCED NAVBAR -->
-<header class="fixed w-full z-50 bg-white/90 backdrop-blur-custom shadow-lg border-b border-gray-200/20">
+<header class="fixed inset-x-0 top-0 z-50 bg-white/80 backdrop-blur-md border-b border-white/40 shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
   <div class="container mx-auto flex items-center justify-between px-4 sm:px-6 py-3">
-    <a href="index.html" class="flex items-center gap-3 fade-right">
+    <!-- Brand -->
+    <a href="index.html" class="flex items-center gap-3">
       <div class="relative">
-        <img src="asset/image.png" alt="SMB Logo" class="w-12 h-12 sm:w-16 sm:h-16 object-contain shadow-lg rounded-lg transition-transform duration-300 hover:scale-110" />
-        <div class="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+        <img src="asset/SMB logo.png" alt="SMB Logo" class="w-12 h-12 object-contain rounded-lg shadow-lg" />
+        <span class="absolute -top-0.5 -right-0.5 w-3 h-3 bg-emerald-400 rounded-full ring-2 ring-white"></span>
       </div>
       <div class="hidden sm:block">
-        <h1 class="text-lg font-bold text-gray-800">SMB</h1>
-        <p class="text-xs text-gray-600">Smart Solutions</p>
+        <h1 class="text-lg font-extrabold tracking-tight text-gray-900">SMB</h1>
+        <p class="text-xs text-gray-600 -mt-0.5">Smart Solutions</p>
       </div>
     </a>
-    
-    <!-- Desktop Navigation -->
-    <nav class="hidden lg:flex items-center space-x-8 fade-left">
-      <a href="index.html" class="relative text-gray-700 hover:text-blue-600 font-medium transition-all duration-300 py-2 px-1 group">
+
+    <!-- Desktop Nav -->
+    <nav class="hidden lg:flex items-center gap-8">
+      <a href="index.html" class="group relative font-medium text-gray-700 hover:text-blue-600">
         Home
-        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+        <span class="absolute -bottom-1 left-0 h-0.5 w-0 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
       </a>
-      <a href="services.html" class="relative text-gray-700 hover:text-blue-600 font-medium transition-all duration-300 py-2 px-1 group">
+      <a href="services.html" class="group relative font-medium text-gray-700 hover:text-blue-600">
         Services
-        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+        <span class="absolute -bottom-1 left-0 h-0.5 w-0 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
       </a>
-      <a href="projects.html" class="relative text-gray-700 hover:text-blue-600 font-medium transition-all duration-300 py-2 px-1 group">
+      <a href="projects.html" class="group relative font-medium text-gray-700 hover:text-blue-600">
         Projects
-        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+        <span class="absolute -bottom-1 left-0 h-0.5 w-0 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
       </a>
-<a href="about.html" class="relative text-gray-700 hover:text-blue-600 font-medium py-2 px-1">About</a>
-       
-      <a href="resources.html" class="relative text-gray-700 hover:text-blue-600 font-medium transition-all duration-300 py-2 px-1 group">
+      <a href="about.html" class="group relative font-medium text-gray-700 hover:text-blue-600">About
+        <span class="absolute -bottom-1 left-0 h-0.5 w-0 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="resources.html" class="group relative font-medium text-gray-700 hover:text-blue-600">
         Resources
-        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+        <span class="absolute -bottom-1 left-0 h-0.5 w-0 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
       </a>
     </nav>
 
-    <!-- Contact Button -->
-    <div class="hidden md:flex items-center space-x-4">
-      <a href="#contact" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold px-6 py-2 rounded-full hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
-        <i class="fas fa-phone mr-2"></i>
-        Contact
+    <!-- Desktop CTA -->
+    <div class="hidden md:flex">
+      <a href="#contact" class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 py-2.5 font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]">
+        <i class="fas fa-phone"></i> Contact
       </a>
     </div>
 
     <!-- Mobile Menu Button -->
-    <button class="lg:hidden text-gray-700 hover:text-blue-600 transition-colors duration-300" id="mobile-menu-btn">
-      <i class="fas fa-bars text-xl"></i>
+    <button id="mobile-menu-btn"
+      class="lg:hidden relative w-11 h-11 grid place-items-center rounded-xl border border-gray-200 bg-white/70 hover:bg-white shadow-md transition"
+      aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+      <!-- Hamburger (animated) -->
+      <span class="hamb-line"></span>
+      <span class="hamb-line"></span>
+      <span class="hamb-line"></span>
     </button>
   </div>
 
-  <!-- Mobile Navigation -->
-  <div class="mobile-menu fixed top-0 right-0 w-80 h-full bg-white shadow-2xl lg:hidden" id="mobile-menu">
-    <div class="p-6">
-      <div class="flex justify-between items-center mb-8">
-        <h2 class="text-xl font-bold text-gray-800">Menu</h2>
-        <button class="text-gray-700 hover:text-red-500 transition-colors duration-300" id="close-menu-btn">
-          <i class="fas fa-times text-xl"></i>
-        </button>
+  <!-- Backdrop -->
+  <div id="mobile-backdrop" class="fixed inset-0 z-40 bg-black/50 opacity-0 pointer-events-none transition-opacity"></div>
+
+  <!-- Mobile Drawer -->
+  <aside id="mobile-menu"
+         class="fixed right-0 top-0 z-50 h-screen w-80 max-w-[88vw] translate-x-full bg-white shadow-2xl transition-transform duration-300 will-change-transform lg:hidden">
+    <div class="flex items-center justify-between px-6 py-4 border-b">
+      <div class="flex items-center gap-3">
+        <img src="asset/SMB logo.png" alt="SMB" class="w-10 h-10 rounded-lg shadow" />
+        <div>
+          <p class="font-bold text-gray-900 leading-tight">SMB Smart Solutions</p>
+          <p class="text-xs text-gray-500 -mt-0.5">Powering Tomorrow's World</p>
+        </div>
       </div>
-      <nav class="space-y-4">
-        <a href="index.html" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-blue-50 transition-all duration-300">Home</a>
-        <a href="services.html" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-blue-50 transition-all duration-300">Services</a>
-        <a href="projects.html" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-blue-50 transition-all duration-300">Projects</a>
-        <a href="about.html" class="block text-blue-600 font-bold py-3 px-4 rounded-lg bg-blue-50">About</a>
-        <a href="resources.html" class="block text-gray-700 hover:text-blue-600 font-medium py-3 px-4 rounded-lg hover:bg-blue-50 transition-all duration-300">Resources</a>
-        
-        <!-- Mobile contact button -->
-        <div class="pt-4">
-          <a href="#contact" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold px-6 py-3 rounded-full w-full justify-center flex items-center hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg">
+      <button id="close-menu-btn" class="p-2 rounded-lg hover:bg-gray-100" aria-label="Close menu">
+        <i class="fas fa-times text-xl text-gray-700"></i>
+      </button>
+    </div>
+
+    <nav class="px-4 py-5 space-y-2">
+      <a href="index.html" class="mob-link"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="services.html" class="mob-link"><i class="fa-solid fa-screwdriver-wrench"></i> Services</a>
+      <a href="projects.html" class="mob-link"><i class="fa-solid fa-diagram-project"></i> Projects</a>
+      <a href="about.html" class="mob-link "><i class="fa-solid fa-id-card"></i> About</a>
+      <a href="resources.html" class="mob-link"><i class="fa-solid fa-book-open"></i> Resources</a>
+
+      <!-- Quick Actions -->
+      <div class="mt-4 grid grid-cols-2 gap-3">
+        <a href="#contact" class="quick-chip"><i class="fa-solid fa-paper-plane"></i> Enquiry</a>
+        <a href="tel:+919032632464" class="quick-chip"><i class="fa-solid fa-phone"></i> Call</a>
+      </div>
+    </nav>
+
+    <!-- Sticky CTA -->
+    <div class="absolute inset-x-0 bottom-0 p-4 border-t bg-white">
+      <a href="https://wa.me/919032632464"
+         class="flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white py-3 font-semibold shadow-lg hover:shadow-xl transition">
+        <i class="fa-brands fa-whatsapp text-xl"></i>
+        Chat on WhatsApp
+      </a>
+    </div>
+  </aside>
+</header>
+
+
+<main class="pt-20">
+
+  <!-- HERO -->
+  <section class="relative text-white py-24 sm:py-32 lg:py-40 overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="asset/Home.png" alt="Our Projects" class="w-full h-full object-cover scale-105 transition-transform duration-1000">
+      <div class="hero-gradient absolute inset-0"></div>
+    </div>
+
+    <div class="absolute top-10 left-4 sm:left-10 w-16 sm:w-24 h-16 sm:h-24 bg-white/20 rounded-full animate-pulse-slow"></div>
+    <div class="absolute top-1/3 right-4 sm:right-16 w-12 sm:w-20 h-12 sm:h-20 bg-blue-300/30 rounded-full animate-pulse-slow" style="animation-delay: 2s;"></div>
+    <div class="absolute bottom-20 right-8 sm:right-16 w-20 sm:w-32 h-20 sm:h-32 bg-purple-300/20 rounded-full animate-pulse-slow" style="animation-delay: 1s;"></div>
+    <div class="absolute bottom-1/4 left-4 sm:left-12 w-8 sm:w-16 h-8 sm:h-16 bg-pink-300/25 rounded-full animate-pulse-slow"></div>
+
+    <div class="relative container mx-auto text-center px-4 sm:px-6 max-w-4xl">
+      <div class="fade-up">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 leading-tight">
+          Our <span class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-pink-500">Projects</span>
+        </h1>
+      </div>
+      <div class="fade-up delay-200">
+        <p class="text-base sm:text-lg md:text-xl opacity-90 mb-6 sm:mb-8 leading-relaxed max-w-3xl mx-auto">
+          Explore our extensive portfolio in smart meter manufacturing, substation erection, and manpower management solutions.
+        </p>
+      </div>
+      <div class="fade-up delay-400">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a href="#projects" class="btn-enhanced bg-white text-gray-800 font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 w-full sm:w-auto">
+            <i class="fas fa-arrow-down mr-2"></i>
+            View Projects
+          </a>
+          <a href="#contact" class="btn-enhanced border-2 border-white text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-white hover:text-gray-800 transition-all duration-300 w-full sm:w-auto">
             <i class="fas fa-phone mr-2"></i>
             Contact Us
           </a>
         </div>
-      </nav>
+      </div>
+    </div>
+  </section>
 
-      <!-- Mobile footer -->
-      <div class="mt-8 pt-6 border-t border-gray-200">
-        <div class="text-center text-sm text-gray-600">
-          <p class="font-medium">SMB Smart Solutions</p>
-          <p class="text-xs">Powering Tomorrow's World</p>
+  <!-- CATEGORIES -->
+  <section class="py-12 container mx-auto px-6">
+    <div class="max-w-4xl mx-auto text-center fade-up">
+      <h2 class="text-3xl md:text-4xl font-bold mb-2">Project Categories</h2>
+      <p class="text-gray-700 mb-4">Our work spans three core areas:</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <span class="badge badge-smart">Smart Meters</span>
+        <span class="badge badge-sub">Substations</span>
+        <span class="badge badge-man">Manpower</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTER -->
+  <section class="py-6 container mx-auto px-6">
+    <div class="flex justify-center gap-4 fade-up delay-200">
+      <button class="filter-btn btn-enhanced px-4 py-2 bg-blue-500 text-white rounded-full font-semibold active" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter-btn btn-enhanced px-4 py-2 bg-gray-200 text-gray-700 rounded-full font-semibold" data-filter="smart-meters" aria-pressed="false">Smart Meters</button>
+      <button class="filter-btn btn-enhanced px-4 py-2 bg-gray-200 text-gray-700 rounded-full font-semibold" data-filter="substations" aria-pressed="false">Substations</button>
+      <button class="filter-btn btn-enhanced px-4 py-2 bg-gray-200 text-gray-700 rounded-full font-semibold" data-filter="manpower" aria-pressed="false">Manpower</button>
+    </div>
+  </section>
+
+  <!-- PROJECTS GRID -->
+  <section id="projects" class="py-12 container mx-auto px-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
+      <!-- Card 1 -->
+      <div class="card fade-up smart-meters">
+        <img src="asset/Smartmeter4.png" alt="Smart Meter Pilot" class="w-full h-56 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Smart Meter Pilot</h3>
+          <div class="flex gap-2 mb-2">
+            <span class="badge badge-smart">2023</span>
+            <span class="badge badge-smart">Residential</span>
+          </div>
+          <p class="text-gray-600 text-sm">Installed smart meters across multiple residential complexes.</p>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="card fade-up substations">
+        <img src="asset/erection4.png" alt="Industrial Substation" class="w-full h-56 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Industrial Substation</h3>
+          <div class="flex gap-2 mb-2">
+            <span class="badge badge-sub">2023</span>
+            <span class="badge badge-sub">Industrial</span>
+          </div>
+          <p class="text-gray-600 text-sm">33/11 kV substation with full compliance.</p>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="card fade-up manpower">
+        <img src="asset/Manpower3.png" alt="Workforce Deployment" class="w-full h-56 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Workforce Deployment</h3>
+          <div class="flex gap-2 mb-2">
+            <span class="badge badge-man">2024</span>
+            <span class="badge badge-man">Large-Scale</span>
+          </div>
+          <p class="text-gray-600 text-sm">Managed skilled workforce for multiple infrastructure projects.</p>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="card fade-up smart-meters">
+        <img src="asset/smartmeter2.png" alt="Smart Meter Expansion" class="w-full h-56 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Smart Meter Expansion</h3>
+          <div class="flex gap-2 mb-2">
+            <span class="badge badge-smart">2023</span>
+            <span class="badge badge-smart">Residential & Commercial</span>
+          </div>
+          <p class="text-gray-600 text-sm">Expanded deployment to over 20,000 households.</p>
+        </div>
+      </div>
+      <!-- Card 5 -->
+      <div class="card fade-up substations">
+        <img src="asset/erection3.png" alt="Urban Substation Project" class="w-full h-56 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Urban Substation Project</h3>
+          <div class="flex gap-2 mb-2">
+            <span class="badge badge-sub">2024</span>
+            <span class="badge badge-sub">Urban</span>
+          </div>
+          <p class="text-gray-600 text-sm">Executed substation projects in dense city areas.</p>
+        </div>
+      </div>
+      <!-- Card 6 -->
+      <div class="card fade-up manpower">
+        <img src="asset/manpower4.png" alt="Manpower Large-Scale Project" class="w-full h-56 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Manpower Large-Scale Project</h3>
+          <div class="flex gap-2 mb-2">
+            <span class="badge badge-man">2025</span>
+            <span class="badge badge-man">Industrial</span>
+          </div>
+          <p class="text-gray-600 text-sm">Deployed workforce for simultaneous infrastructure projects.</p>
+        </div>
+      </div>
+      <!-- Card 7 -->
+      <div class="card fade-up smart-meters">
+        <img src="asset/smartmeter3.png" alt="Corporate Smart Meters" class="w-full h-56 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Corporate Smart Meters</h3>
+          <div class="flex gap-2 mb-2">
+            <span class="badge badge-smart">2024</span>
+            <span class="badge badge-smart">Corporate</span>
+          </div>
+          <p class="text-gray-600 text-sm">Implemented smart meters for corporate offices and campuses.</p>
+        </div>
+      </div>
+      <!-- Card 8 -->
+      <div class="card fade-up substations">
+        <img src="asset/erection1.png" alt="Rural Substation Project" class="w-full h-56 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Rural Substation Project</h3>
+          <div class="flex gap-2 mb-2">
+            <span class="badge badge-sub">2023</span>
+            <span class="badge badge-sub">Rural</span>
+          </div>
+          <p class="text-gray-600 text-sm">Constructed reliable substations for rural electrification.</p>
+        </div>
+      </div>
+      <!-- Card 9 -->
+      <div class="card fade-up manpower">
+        <img src="asset/Manpower2.png" alt="Skilled Workforce Deployment" class="w-full h-56 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Skilled Workforce Deployment</h3>
+          <div class="flex gap-2 mb-2">
+            <span class="badge badge-man">2025</span>
+            <span class="badge badge-man">Commercial</span>
+          </div>
+          <p class="text-gray-600 text-sm">Managed skilled workers across multiple commercial projects.</p>
         </div>
       </div>
     </div>
-  </div>
-</header>
+  </section>
 
-<main class="pt-20">
+  <!-- CONTACT -->
+  <section id="contact" class="py-12 sm:py-16 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-center">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="fade-up">
+        <h2 class="text-2xl md:text-3xl font-bold mb-2">Start your project with SMB</h2>
+        <p class="mb-6 max-w-2xl mx-auto opacity-90 text-base">Tell us about your requirements — meters, erection, or manpower. We'll propose a scope, timeline and estimate.</p>
+      </div>
 
+      <div class="max-w-3xl mx-auto bg-white rounded-2xl p-5 sm:p-6 text-left shadow-2xl fade-up delay-200">
+        <form id="contactForm" novalidate>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+            <div>
+              <label for="name" class="block text-xs font-medium text-gray-700 mb-1.5">Name *</label>
+              <input id="name" name="name" required
+                class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 placeholder-gray-500 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300" />
+              <p class="text-[11px] mt-1 text-red-600 hidden" id="err-name">Please enter your name.</p>
+            </div>
 
-    <!-- ENHANCED HERO SECTION FOR PROJECTS -->
-<section class="relative text-white py-24 sm:py-32 lg:py-40 overflow-hidden">
-  <!-- Background Image with enhanced overlay -->
-  <div class="absolute inset-0">
-    <img src="asset/Home.png" alt="Our Projects" class="w-full h-full object-cover scale-105 transition-transform duration-1000">
-    <div class="hero-gradient absolute inset-0"></div>
-  </div>
+            <div>
+              <label for="company" class="block text-xs font-medium text-gray-700 mb-1.5">Company</label>
+              <input id="company" name="company"
+                class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 placeholder-gray-500 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300" />
+            </div>
 
-  <!-- Animated Background Elements -->
-  <div class="absolute top-10 left-4 sm:left-10 w-16 sm:w-24 h-16 sm:h-24 bg-white/20 rounded-full animate-pulse-slow float"></div>
-  <div class="absolute top-1/3 right-4 sm:right-16 w-12 sm:w-20 h-12 sm:h-20 bg-blue-300/30 rounded-full animate-pulse-slow" style="animation-delay: 2s;"></div>
-  <div class="absolute bottom-20 right-8 sm:right-16 w-20 sm:w-32 h-20 sm:h-32 bg-purple-300/20 rounded-full animate-pulse-slow float" style="animation-delay: 1s;"></div>
-  <div class="absolute bottom-1/4 left-4 sm:left-12 w-8 sm:w-16 h-8 sm:h-16 bg-pink-300/25 rounded-full animate-pulse-slow"></div>
+            <div>
+              <label for="email" class="block text-xs font-medium text-gray-700 mb-1.5">Email *</label>
+              <input id="email" name="email" type="email" required
+                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                inputmode="email"
+                placeholder="your@email.com"
+                class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 placeholder-gray-500 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300" />
+              <p class="text-[11px] mt-1 text-red-600 hidden" id="err-email">Enter a valid email address.</p>
+            </div>
 
-  <!-- Content -->
-  <div class="relative container mx-auto text-center px-4 sm:px-6 max-w-4xl">
-    <div class="fade-up">
-      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 leading-tight">
-        Our <span class="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-pink-500">Projects</span>
-      </h1>
-    </div>
-    <div class="fade-up delay-200">
-      <p class="text-base sm:text-lg md:text-xl opacity-90 mb-6 sm:mb-8 leading-relaxed max-w-3xl mx-auto">
-        Explore our extensive portfolio in smart meter manufacturing, substation erection, and manpower management solutions.
-      </p>
-    </div>
-    <div class="fade-up delay-400">
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <a href="#projects" class="btn-enhanced bg-white text-gray-800 font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 w-full sm:w-auto">
-          <i class="fas fa-arrow-down mr-2"></i>
-          View Projects
-        </a>
-        <a href="#contact" class="btn-enhanced border-2 border-white text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-white hover:text-gray-800 transition-all duration-300 w-full sm:w-auto">
-          <i class="fas fa-phone mr-2"></i>
-          Contact Us
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-    <!-- CATEGORIES -->
-    <section class="py-12 container mx-auto px-6">
-      <div class="max-w-4xl mx-auto text-center fade-up">
-        <h2 class="text-3xl md:text-4xl font-bold mb-2">Project Categories</h2>
-        <p class="text-gray-700 mb-4">Our work spans three core areas:</p>
-        <div class="flex flex-wrap justify-center gap-4">
-          <span class="badge badge-smart">Smart Meters</span>
-          <span class="badge badge-sub">Substations</span>
-          <span class="badge badge-man">Manpower</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- FILTER -->
-    <section class="py-6 container mx-auto px-6">
-      <div class="flex justify-center gap-4 fade-up delay-200">
-        <button class="filter-btn btn-enhanced px-4 py-2 bg-blue-500 text-white rounded-full font-semibold active" data-filter="all">All</button>
-        <button class="filter-btn btn-enhanced px-4 py-2 bg-gray-200 text-gray-700 rounded-full font-semibold" data-filter="smart-meters">Smart Meters</button>
-        <button class="filter-btn btn-enhanced px-4 py-2 bg-gray-200 text-gray-700 rounded-full font-semibold" data-filter="substations">Substations</button>
-        <button class="filter-btn btn-enhanced px-4 py-2 bg-gray-200 text-gray-700 rounded-full font-semibold" data-filter="manpower">Manpower</button>
-      </div>
-    </section>
-
-    <!-- PROJECTS GRID -->
-   <!-- PROJECTS GRID -->
-<section id="projects" class="py-12 container mx-auto px-6">
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
-    <!-- Card 1 -->
-    <div class="card fade-up smart-meters">
-      <img src="asset/smartmeter1.png" alt="Smart Meter Pilot" class="w-full h-56 object-cover">
-      <div class="p-6">
-        <h3 class="text-xl font-semibold mb-2">Smart Meter Pilot</h3>
-        <div class="flex gap-2 mb-2">
-          <span class="badge badge-smart">2010</span>
-          <span class="badge badge-smart">Residential</span>
-        </div>
-        <p class="text-gray-600 text-sm">Installed smart meters across multiple residential complexes.</p>
-      </div>
-    </div>
-    <!-- Card 2 -->
-    <div class="card fade-up substations">
-      <img src="asset/erection2.png" alt="Industrial Substation" class="w-full h-56 object-cover">
-      <div class="p-6">
-        <h3 class="text-xl font-semibold mb-2">Industrial Substation</h3>
-        <div class="flex gap-2 mb-2">
-          <span class="badge badge-sub">2015</span>
-          <span class="badge badge-sub">Industrial</span>
-        </div>
-        <p class="text-gray-600 text-sm">33/11 kV substation with full compliance.</p>
-      </div>
-    </div>
-    <!-- Card 3 -->
-    <div class="card fade-up manpower">
-      <img src="asset/Manpower3.png" alt="Workforce Deployment" class="w-full h-56 object-cover">
-      <div class="p-6">
-        <h3 class="text-xl font-semibold mb-2">Workforce Deployment</h3>
-        <div class="flex gap-2 mb-2">
-          <span class="badge badge-man">2018</span>
-          <span class="badge badge-man">Large-Scale</span>
-        </div>
-        <p class="text-gray-600 text-sm">Managed skilled workforce for multiple infrastructure projects.</p>
-      </div>
-    </div>
-    <!-- Card 4 -->
-    <div class="card fade-up smart-meters">
-      <img src="asset/smartmeter2.png" alt="Smart Meter Expansion" class="w-full h-56 object-cover">
-      <div class="p-6">
-        <h3 class="text-xl font-semibold mb-2">Smart Meter Expansion</h3>
-        <div class="flex gap-2 mb-2">
-          <span class="badge badge-smart">2020</span>
-          <span class="badge badge-smart">Residential & Commercial</span>
-        </div>
-        <p class="text-gray-600 text-sm">Expanded deployment to over 20,000 households.</p>
-      </div>
-    </div>
-    <!-- Card 5 -->
-    <div class="card fade-up substations">
-      <img src="asset/erection3.png" alt="Urban Substation Project" class="w-full h-56 object-cover">
-      <div class="p-6">
-        <h3 class="text-xl font-semibold mb-2">Urban Substation Project</h3>
-        <div class="flex gap-2 mb-2">
-          <span class="badge badge-sub">2021</span>
-          <span class="badge badge-sub">Urban</span>
-        </div>
-        <p class="text-gray-600 text-sm">Executed substation projects in dense city areas.</p>
-      </div>
-    </div>
-    <!-- Card 6 -->
-    <div class="card fade-up manpower">
-      <img src="asset/manpower4.png" alt="Manpower Large-Scale Project" class="w-full h-56 object-cover">
-      <div class="p-6">
-        <h3 class="text-xl font-semibold mb-2">Manpower Large-Scale Project</h3>
-        <div class="flex gap-2 mb-2">
-          <span class="badge badge-man">2023</span>
-          <span class="badge badge-man">Industrial</span>
-        </div>
-        <p class="text-gray-600 text-sm">Deployed workforce for simultaneous infrastructure projects.</p>
-      </div>
-    </div>
-    <!-- Card 7 -->
-    <div class="card fade-up smart-meters">
-      <img src="asset/smartmeter3.png" alt="Corporate Smart Meters" class="w-full h-56 object-cover">
-      <div class="p-6">
-        <h3 class="text-xl font-semibold mb-2">Corporate Smart Meters</h3>
-        <div class="flex gap-2 mb-2">
-          <span class="badge badge-smart">2024</span>
-          <span class="badge badge-smart">Corporate</span>
-        </div>
-        <p class="text-gray-600 text-sm">Implemented smart meters for corporate offices and campuses.</p>
-      </div>
-    </div>
-    <!-- Card 8 -->
-    <div class="card fade-up substations">
-      <img src="asset/erection1.png" alt="Rural Substation Project" class="w-full h-56 object-cover">
-      <div class="p-6">
-        <h3 class="text-xl font-semibold mb-2">Rural Substation Project</h3>
-        <div class="flex gap-2 mb-2">
-          <span class="badge badge-sub">2022</span>
-          <span class="badge badge-sub">Rural</span>
-        </div>
-        <p class="text-gray-600 text-sm">Constructed reliable substations for rural electrification.</p>
-      </div>
-    </div>
-    <!-- Card 9 -->
-    <div class="card fade-up manpower">
-      <img src="asset/Manpower2.png" alt="Skilled Workforce Deployment" class="w-full h-56 object-cover">
-      <div class="p-6">
-        <h3 class="text-xl font-semibold mb-2">Skilled Workforce Deployment</h3>
-        <div class="flex gap-2 mb-2">
-          <span class="badge badge-man">2025</span>
-          <span class="badge badge-man">Commercial</span>
-        </div>
-        <p class="text-gray-600 text-sm">Managed skilled workers across multiple commercial projects.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-    <!-- ENHANCED CONTACT SECTION -->
- 
-
-   <section id="contact" class="py-12 sm:py-16 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-center">
-  <div class="container mx-auto px-4 sm:px-6">
-    <div class="fade-up">
-      <h2 class="text-2xl md:text-3xl font-bold mb-2">Start your project with SMB</h2>
-      <p class="mb-6 max-w-2xl mx-auto opacity-90 text-base">Tell us about your requirements — meters, erection, or manpower. We'll propose a scope, timeline and estimate.</p>
-    </div>
-
-    <div class="max-w-3xl mx-auto bg-white rounded-2xl p-5 sm:p-6 text-left shadow-2xl fade-up delay-200">
-      <form id="contactForm" novalidate>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
-          <div>
-            <label for="name" class="block text-xs font-medium text-gray-700 mb-1.5">Name *</label>
-            <input id="name" name="name" required
-              class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 placeholder-gray-500 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300" />
-            <p class="text-[11px] mt-1 text-red-600 hidden" id="err-name">Please enter your name.</p>
+            <div>
+              <label for="phone" class="block text-xs font-medium text-gray-700 mb-1.5">Phone</label>
+              <input id="phone" name="phone" type="tel" maxlength="15"
+                pattern="[0-9]{10,15}"
+                inputmode="numeric"
+                placeholder="Enter phone number"
+                oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 placeholder-gray-500 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300" />
+            </div>
           </div>
 
-          <div>
-            <label for="company" class="block text-xs font-medium text-gray-700 mb-1.5">Company</label>
-            <input id="company" name="company"
-              class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 placeholder-gray-500 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300" />
+          <div class="mt-5">
+            <label for="services" class="block text-xs font-medium text-gray-700 mb-1.5">Interested In</label>
+            <select id="services" name="services"
+              class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300">
+              <option>Smart meters & Manufacturing</option>
+              <option>Infrastructure Erection</option>
+              <option>Manpower & Training</option>
+              <option>Maintenance & O&M</option>
+              <option>Other</option>
+            </select>
           </div>
 
-          <div>
-            <label for="email" class="block text-xs font-medium text-gray-700 mb-1.5">Email *</label>
-            <input id="email" name="email" type="email" required
-              pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-              inputmode="email"
-              placeholder="your@email.com"
-              class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 placeholder-gray-500 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300" />
-            <p class="text-[11px] mt-1 text-red-600 hidden" id="err-email">Enter a valid email address.</p>
+          <div class="mt-5">
+            <label for="message" class="block text-xs font-medium text-gray-700 mb-1.5">Project details</label>
+            <textarea id="message" name="message" rows="5"
+              class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 placeholder-gray-500 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300"></textarea>
           </div>
 
-          <div>
-            <label for="phone" class="block text-xs font-medium text-gray-700 mb-1.5">Phone</label>
-            <input id="phone" name="phone" type="tel" maxlength="15"
-              pattern="[0-9]{10,15}"
-              inputmode="numeric"
-              placeholder="Enter phone number"
-              oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-              class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 placeholder-gray-500 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300" />
+          <div class="mt-6 flex items-center gap-3">
+            <button type="submit"
+              class="btn-enhanced bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold px-6 py-3 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl">
+              Request a Quote
+            </button>
+            <span id="formStatus" class="text-sm text-gray-600"></span>
           </div>
-        </div>
-
-        <div class="mt-5">
-          <label for="services" class="block text-xs font-medium text-gray-700 mb-1.5">Interested In</label>
-          <select id="services" name="services"
-            class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300">
-            <option>Smart meters & Manufacturing</option>
-            <option>Infrastructure Erection</option>
-            <option>Manpower & Training</option>
-            <option>Maintenance & O&M</option>
-            <option>Other</option>
-          </select>
-        </div>
-
-        <div class="mt-5">
-          <label for="message" class="block text-xs font-medium text-gray-700 mb-1.5">Project details</label>
-          <textarea id="message" name="message" rows="5"
-            class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 placeholder-gray-500 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300"></textarea>
-        </div>
-
-        <div class="mt-6 flex items-center gap-3">
-          <button type="submit"
-            class="btn-enhanced bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold px-6 py-3 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl">
-            Request a Quote
-          </button>
-          <span id="formStatus" class="text-sm text-gray-600"></span>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-  <!-- ENHANCED STATS STRIP -->
+  <!-- STATS -->
   <section class="py-8 sm:py-12">
     <div class="container mx-auto px-4 sm:px-6">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
@@ -440,10 +479,9 @@
     </div>
   </section>
 
+</main>
 
-  </main>
-
- <footer class="bg-gradient-to-br from-gray-900 to-gray-800 text-gray-300 relative overflow-hidden">
+<footer class="bg-gradient-to-br from-gray-900 to-gray-800 text-gray-300 relative overflow-hidden">
   <!-- Background Pattern -->
   <div class="absolute inset-0 opacity-10">
     <div class="absolute top-10 left-10 w-32 h-32 border border-gray-600 rounded-full"></div>
@@ -458,7 +496,7 @@
       <div class="lg:col-span-2 fade-up">
         <div class="flex items-center gap-4 mb-6">
           <div class="relative">
-            <img src="asset/image.png" alt="SMB Logo" class="w-16 sm:w-20 h-16 sm:h-20 object-contain shadow-lg rounded-lg" />
+            <img src="asset/SMB logo.png" alt="SMB Logo" class="w-16 sm:w-20 h-16 sm:h-20 object-contain shadow-lg rounded-lg" />
             <div class="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full animate-pulse"></div>
           </div>
           <div>
@@ -506,15 +544,15 @@
         <div class="space-y-4">
           <div class="flex items-center space-x-3">
             <i class="fas fa-envelope text-blue-400 w-5"></i>
-            <span class="text-sm">info@smbsolutions.com</span>
+            <span class="text-sm">smbsmartmd@gmail.com</span>
           </div>
           <div class="flex items-center space-x-3">
             <i class="fas fa-phone text-green-400 w-5"></i>
-            <span class="text-sm">+91 12345 67890</span>
+            <span class="text-sm">+91 9032632464</span>
           </div>
           <div class="flex items-start space-x-3">
             <i class="fas fa-map-marker-alt text-red-400 w-5 mt-1"></i>
-            <span class="text-sm">123 Industrial Park, City, India</span>
+            <span class="text-sm">405, 5th floor, AIMS Business Center, Botcha square, Murali Nagar, Visakhapatnam - 530007</span>
           </div>
           <div class="flex items-center space-x-3">
             <i class="fas fa-clock text-purple-400 w-5"></i>
@@ -522,7 +560,7 @@
           </div>
         </div>
 
-        <!-- Newsletter (same pattern as index) -->
+        <!-- Newsletter -->
         <div class="mt-8">
           <h4 class="text-white font-semibold mb-3">Newsletter</h4>
           <p class="text-sm mb-3 text-gray-400">Subscribe for product updates and project news.</p>
@@ -538,39 +576,55 @@
 
     <!-- Bottom Bar -->
     <div class="border-t border-gray-700 mt-12 pt-8 text-center fade-up delay-300">
-  <p class="text-sm text-gray-400">
-    &copy; 2025 SMB Smart Electrical Solutions. All rights reserved. | 
-    <a href="#" class="hover:text-white transition-colors duration-300">Privacy Policy</a> | 
-    <a href="#" class="hover:text-white transition-colors duration-300">Terms of Service</a> |
-    <span class="text-gray-400">Designed by <a href="#" class="text-blue-400 hover:text-white font-medium transition-colors duration-300">Yaway Technologies</a></span>
-  </p>
-</div>
-
+      <p class="text-sm text-gray-400">
+        &copy; <span id="year">2025</span> SMB Smart Electrical Solutions. All rights reserved. | 
+        <a href="#" class="hover:text-white transition-colors duration-300">Privacy Policy</a> | 
+        <a href="#" class="hover:text-white transition-colors duration-300">Terms of Service</a> |
+        <span class="text-gray-400">Designed by <a href="#" class="text-blue-400 hover:text-white font-medium transition-colors duration-300">Yaway Technologies</a></span>
+      </p>
+    </div>
   </div>
 </footer>
 
+<script>
+  /* ---------- tiny helper used below ---------- */
+  const safe = (fn) => { try { fn(); } catch (_) {} };
 
-  <script>
-    // Fade-up
+  // Fade-up
+  safe(() => {
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => {
-        if(e.isIntersecting) {
+        if (e.isIntersecting) {
           e.target.classList.add('visible');
           obs.unobserve(e.target);
         }
       });
     }, { threshold: 0.2 });
     document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+  });
 
-    // Mobile menu toggle
-    document.getElementById('mobile-menu-btn').onclick = () => {
-      document.getElementById('mobile-menu').classList.toggle('open');
-    };
-    document.getElementById('close-menu-btn').onclick = () => {
-      document.getElementById('mobile-menu').classList.remove('open');
-    };
+  // Mobile menu
+  safe(() => {
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+      document.getElementById('mobile-menu')?.classList.toggle('open');
+    });
+    document.getElementById('close-menu-btn')?.addEventListener('click', () => {
+      document.getElementById('mobile-menu')?.classList.remove('open');
+    });
+  });
 
-    // ---------- Footer subscribe (safe) ----------
+  // Smooth scrolling for anchors
+  safe(() => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(anchor.getAttribute('href'));
+        target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  });
+
+  // Footer subscribe
   safe(() => {
     const footerSubscribe = document.getElementById('footerSubscribe');
     if (!footerSubscribe) return;
@@ -584,51 +638,168 @@
     });
   });
 
-  // ---------- Footer year (safe) ----------
+  // Footer year
   safe(() => {
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
   });
 
-  // ---------- Smooth scrolling for anchor links ----------
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
-    });
-  });
+  /* ---------- FILTER (fixed) ---------- */
+  safe(() => {
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('#projects .card');
+    if (!buttons.length || !cards.length) return;
 
-    // Filter
-    document.querySelectorAll('.filter-btn').forEach(btn => {
+    // make sure cards are visible initially
+    cards.forEach(c => { c.style.display = ''; c.classList.remove('hidden'); });
+
+    const setActive = (btn) => {
+      buttons.forEach(b => {
+        b.classList.remove('active','bg-blue-500','text-white');
+        b.classList.add('bg-gray-200','text-gray-700');
+        b.setAttribute('aria-pressed','false');
+      });
+      btn.classList.add('active','bg-blue-500','text-white');
+      btn.classList.remove('bg-gray-200','text-gray-700');
+      btn.setAttribute('aria-pressed','true');
+    };
+
+    const show = (el) => {
+      el.style.display = '';          // preserves grid/flex
+      el.classList.remove('hidden');
+      // re-trigger fade-up nicely
+      el.classList.remove('visible');
+      requestAnimationFrame(() => el.classList.add('visible'));
+    };
+
+    const hide = (el) => {
+      el.classList.add('hidden');
+      el.style.display = 'none';
+    };
+
+    buttons.forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active','bg-blue-500','text-white'));
-        btn.classList.add('active','bg-blue-500','text-white');
-        const f = btn.dataset.filter;
-        document.querySelectorAll('#projects .card').forEach(card => {
-          card.style.display = (f==='all' || card.classList.contains(f)) ? 'block' : 'none';
+        setActive(btn);
+        const f = btn.dataset.filter; // "all" | "smart-meters" | "substations" | "manpower"
+        cards.forEach(card => {
+          const match = (f === 'all') || card.classList.contains(f);
+          match ? show(card) : hide(card);
         });
       });
     });
+  });
 
-     // ---------- Smooth scrolling for anchor links ----------
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+  /* ---------- CONTACT FORM (unchanged core) ---------- */
+  // Config
+  const OWNER_WHATSAPP = "+919032632464";
+  const OWNER_EMAIL = "smbsmartmd@gmail.com";
+  const PRIMARY_CHANNEL = "whatsapp"; // "whatsapp" or "email"
+
+  // Helpers
+  const $ = (id) => document.getElementById(id);
+  const toggle = (id, show) => { const n = $(id); if (n) n.classList.toggle("hidden", !show); };
+
+  function buildMessage({ name, company, email, phone, services, message }) {
+    return `New Project Request (SMB Website)
+Name: ${name}
+Company: ${company || "-"}
+Email: ${email}
+Phone: ${phone || "-"}
+Interested In: ${services || "-"}
+Details:
+${message || "-"}
+
+Source: SMB Contact Form`;
+  }
+
+  function sendViaWhatsApp(text) {
+    const digits = OWNER_WHATSAPP.replace(/\D/g, "");
+    const url = `https://wa.me/${digits}?text=${encodeURIComponent(text)}`;
+    const win = window.open(url, "_blank");
+    if (!win) window.location.href = url; // popup blocked fallback
+  }
+
+  function sendViaEmail(name, text) {
+    const subject = `New Project Request — ${name || "SMB Website"}`;
+    const url = `mailto:${encodeURIComponent(OWNER_EMAIL)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
+    window.location.href = url;
+  }
+
+  (function initContactForm() {
+    const form = $("contactForm");
+    if (!form) return;
+
+    form.addEventListener("submit", function (e) {
       e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
+
+      const name = ($("name")?.value || "").trim();
+      const company = ($("company")?.value || "").trim();
+      const email = ($("email")?.value || "").trim();
+      const phone = ($("phone")?.value || "").trim();
+      const services = ($("services")?.value || "").trim();
+      const message = ($("message")?.value || "").trim();
+
+      // validation
+      let ok = true;
+      if (!name) { toggle("err-name", true); ok = false; } else { toggle("err-name", false); }
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRe.test(email)) { toggle("err-email", true); ok = false; } else { toggle("err-email", false); }
+      if (!ok) return;
+
+      const btn = form.querySelector('button[type="submit"]');
+      const status = $("formStatus");
+      if (btn) { btn.disabled = true; btn.classList.add("opacity-70","cursor-not-allowed"); }
+      if (status) status.textContent = PRIMARY_CHANNEL === "whatsapp" ? "Opening WhatsApp…" : "Opening your email app…";
+
+      const text = buildMessage({ name, company, email, phone, services, message });
+
+      try {
+        if (PRIMARY_CHANNEL === "email") {
+          sendViaEmail(name, text);
+        } else {
+          sendViaWhatsApp(text);
+        }
+      } finally {
+        setTimeout(() => {
+          form.reset();
+          if (btn) { btn.disabled = false; btn.classList.remove("opacity-70","cursor-not-allowed"); }
+          if (status) status.textContent = "Request prepared. Review & send from the opened app.";
+        }, 600);
       }
     });
-  });
-  </script>
+  })();
+
+  (function(){
+    const btn = document.getElementById('mobile-menu-btn');
+    const closeBtn = document.getElementById('close-menu-btn');
+    const drawer = document.getElementById('mobile-menu');
+    const backdrop = document.getElementById('mobile-backdrop');
+
+    function openMenu(){
+      drawer.classList.remove('translate-x-full');
+      backdrop.classList.remove('pointer-events-none');
+      backdrop.classList.add('opacity-100');
+      document.body.style.overflow = 'hidden';
+      btn.setAttribute('aria-expanded','true');
+    }
+    function closeMenu(){
+      drawer.classList.add('translate-x-full');
+      backdrop.classList.add('pointer-events-none');
+      backdrop.classList.remove('opacity-100');
+      document.body.style.overflow = '';
+      btn.setAttribute('aria-expanded','false');
+    }
+
+    btn?.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      expanded ? closeMenu() : openMenu();
+    });
+    closeBtn?.addEventListener('click', closeMenu);
+    backdrop?.addEventListener('click', closeMenu);
+
+    // ESC to close
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeMenu(); });
+  })();
+</script>
 </body>
 </html>
