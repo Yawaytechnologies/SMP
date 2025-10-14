@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — SMB Smart Electrical Solutions</title>
+
+  <!-- Tailwind + font -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body { 
+      font-family: 'Inter', sans-serif; 
+      scroll-behavior: smooth; 
+    }
+
+    /* Enhanced Text Gradient */
+    .text-gradient { 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+      background-clip: text;
+    }
+
+    /* Advanced Card Animations */
+    .card { 
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: left 0.5s;
+    }
+
+    .card:hover::before {
+      left: 100%;
+    }
+
+    .card:hover { 
+      transform: translateY(-8px) scale(1.02); 
+      box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+    }
+
+    /* Enhanced Fade Animations */
+    .fade-up { 
+      transform: translateY(30px); 
+      opacity: 0; 
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
+    }
+
+    .fade-up.visible { 
+      transform: translateY(0); 
+      opacity: 1; 
+    }
+
+    .fade-left { 
+      transform: translateX(-30px); 
+      opacity: 0; 
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
+    }
+
+    .fade-left.visible { 
+      transform: translateX(0); 
+      opacity: 1; 
+    }
+
+    .fade-right { 
+      transform: translateX(30px); 
+      opacity: 0; 
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
+    }
+
+    .fade-right.visible { 
+      transform: translateX(0); 
+      opacity: 1; 
+    }
+
+    /* Staggered Animation Delays */
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+
+    /* Floating Animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .float { animation: float 3s ease-in-out infinite; }
+
+    /* Pulse Animation */
+    @keyframes pulse-slow {
+      0%, 100% { opacity: 0.7; transform: scale(1); }
+      50% { opacity: 0.9; transform: scale(1.05); }
+    }
+
+    .animate-pulse-slow { animation: pulse-slow 4s ease-in-out infinite; }
+
+    /* Button Enhancements */
+    .btn-enhanced {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .btn-enhanced::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn-enhanced:hover::before {
+      left: 100%;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+    }
+
+    /* Mobile Navbar */
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+
+    /* Enhanced Backdrop Blur */
+    .backdrop-blur-custom {
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    /* Gradient Background for Hero */
+    .hero-gradient {
+      background: linear-gradient(135deg, 
+        rgba(102, 126, 234, 0.9) 0%, 
+        rgba(118, 75, 162, 0.9) 50%, 
+        rgba(55, 48, 163, 0.9) 100%);
+    }
+
+    /* Timeline Styles */
+    .timeline-container {
+      position: relative;
+    }
+
+    .timeline-line {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, #667eea, #764ba2);
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      z-index: 10;
+    }
+
+    .timeline-content {
+      width: 45%;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .timeline-content:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+
+    .timeline-left .timeline-content {
+      margin-left: 0;
+      margin-right: auto;
+    }
+
+    .timeline-right .timeline-content {
+      margin-left: auto;
+      margin-right: 0;
+    }
+
+    /* Founder Section */
+    .founder-image {
+      position: relative;
+      overflow: hidden;
+      border-radius: 50%;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .founder-image::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      padding: 4px;
+      background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+      border-radius: 50%;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: xor;
+    }
+
+    .founder-image:hover {
+      transform: scale(1.05) rotate(5deg);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    /* Mission Vision Cards */
+    .mission-vision-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      color: white;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mission-vision-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: left 0.6s;
+    }
+
+    .mission-vision-card:hover::before {
+      left: 100%;
+    }
+
+    .mission-vision-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+    }
+
+    /* Responsive Timeline */
+    @media (max-width: 768px) {
+      .timeline-line {
+        left: 2rem;
+      }
+      
+      .timeline-dot {
+        left: 2rem;
+        width: 40px;
+        height: 40px;
+      }
+      
+      .timeline-content {
+        width: calc(100% - 5rem);
+        margin-left: 5rem !important;
+        margin-right: 0 !important;
+      }
+    }
+
+    /* Stats animation */
+    .stats-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      transition: all 0.3s ease;
+    }
+
+    .stats-card:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    /* Animated hamburger lines */
+.hamb-line{
+  position: relative;
+  display:block;
+  width:22px;height:2px;background:#111;border-radius:2px;
+  transition:transform .25s ease, opacity .2s ease, top .25s ease, bottom .25s ease;
+}
+.hamb-line:nth-child(1){ top:-6px; position:relative; }
+.hamb-line:nth-child(2){ }
+.hamb-line:nth-child(3){ bottom:-6px; position:relative; }
+button[aria-expanded="true"] .hamb-line:nth-child(1){ transform:translateY(6px) rotate(45deg); }
+button[aria-expanded="true"] .hamb-line:nth-child(2){ opacity:0; }
+button[aria-expanded="true"] .hamb-line:nth-child(3){ transform:translateY(-6px) rotate(-45deg); }
+
+/* Mobile drawer links */
+.mob-link{
+  display:flex; align-items:center; gap:.6rem;
+  font-weight:600; padding:.9rem 1rem; border-radius:.9rem;
+  background:linear-gradient(180deg,#ffffff, #fafafa); border:1px solid #eee;
+  color:#374151; transition:transform .15s ease, box-shadow .2s ease, background .2s ease;
+}
+.mob-link i{ width:18px; text-align:center; }
+.mob-link:hover{ transform:translateY(-1px); box-shadow:0 10px 18px rgba(0,0,0,.06); }
+.mob-link.active{ background:linear-gradient(180deg,#eef2ff,#e0e7ff); border-color:#c7d2fe; color:#1d4ed8; }
+
+/* Quick chips */
+.quick-chip{
+  display:flex; align-items:center; justify-content:center; gap:.5rem;
+  padding:.7rem .8rem; border-radius:.8rem; font-weight:600;
+  background:#f8fafc; border:1px solid #eef2f7; color:#0f172a;
+}
+.quick-chip:hover{ background:#eef2f7; }
+
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+<!-- ENHANCED NAVBAR -->
+<header class="fixed inset-x-0 top-0 z-50 bg-white/80 backdrop-blur-md border-b border-white/40 shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
+  <div class="container mx-auto flex items-center justify-between px-4 sm:px-6 py-3">
+    <!-- Brand -->
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="relative">
+        <img src="asset/SMB logo.png" alt="SMB Logo" class="w-12 h-12 object-contain rounded-lg shadow-lg" />
+        <span class="absolute -top-0.5 -right-0.5 w-3 h-3 bg-emerald-400 rounded-full ring-2 ring-white"></span>
+      </div>
+      <div class="hidden sm:block">
+        <h1 class="text-lg font-extrabold tracking-tight text-gray-900">SMB</h1>
+        <p class="text-xs text-gray-600 -mt-0.5">Smart Solutions</p>
+      </div>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden lg:flex items-center gap-8">
+      <a href="index.html" class="group relative font-medium text-gray-700 hover:text-blue-600">
+        Home
+        <span class="absolute -bottom-1 left-0 h-0.5 w-0 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="services.html" class="group relative font-medium text-gray-700 hover:text-blue-600">
+        Services
+        <span class="absolute -bottom-1 left-0 h-0.5 w-0 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="projects.html" class="group relative font-medium text-gray-700 hover:text-blue-600">
+        Projects
+        <span class="absolute -bottom-1 left-0 h-0.5 w-0 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="about.html" class="group relative font-medium text-gray-700 hover:text-blue-600">About
+        <span class="absolute -bottom-1 left-0 h-0.5 w-0 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="resources.html" class="group relative font-medium text-gray-700 hover:text-blue-600">
+        Resources
+        <span class="absolute -bottom-1 left-0 h-0.5 w-0 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+    </nav>
+
+    <!-- Desktop CTA -->
+    <div class="hidden md:flex">
+      <a href="#contact" class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 py-2.5 font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]">
+        <i class="fas fa-phone"></i> Contact
+      </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button id="mobile-menu-btn"
+      class="lg:hidden relative w-11 h-11 grid place-items-center rounded-xl border border-gray-200 bg-white/70 hover:bg-white shadow-md transition"
+      aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+      <!-- Hamburger (animated) -->
+      <span class="hamb-line"></span>
+      <span class="hamb-line"></span>
+      <span class="hamb-line"></span>
+    </button>
+  </div>
+
+  <!-- Backdrop -->
+  <div id="mobile-backdrop" class="fixed inset-0 z-40 bg-black/50 opacity-0 pointer-events-none transition-opacity"></div>
+
+  <!-- Mobile Drawer -->
+  <aside id="mobile-menu"
+         class="fixed right-0 top-0 z-50 h-screen w-80 max-w-[88vw] translate-x-full bg-white shadow-2xl transition-transform duration-300 will-change-transform lg:hidden">
+    <div class="flex items-center justify-between px-6 py-4 border-b">
+      <div class="flex items-center gap-3">
+        <img src="asset/SMB logo.png" alt="SMB" class="w-10 h-10 rounded-lg shadow" />
+        <div>
+          <p class="font-bold text-gray-900 leading-tight">SMB Smart Solutions</p>
+          <p class="text-xs text-gray-500 -mt-0.5">Powering Tomorrow's World</p>
+        </div>
+      </div>
+      <button id="close-menu-btn" class="p-2 rounded-lg hover:bg-gray-100" aria-label="Close menu">
+        <i class="fas fa-times text-xl text-gray-700"></i>
+      </button>
+    </div>
+
+    <nav class="px-4 py-5 space-y-2">
+      <a href="index.html" class="mob-link"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="services.html" class="mob-link"><i class="fa-solid fa-screwdriver-wrench"></i> Services</a>
+      <a href="projects.html" class="mob-link"><i class="fa-solid fa-diagram-project"></i> Projects</a>
+      <a href="about.html" class="mob-link "><i class="fa-solid fa-id-card"></i> About</a>
+      <a href="resources.html" class="mob-link"><i class="fa-solid fa-book-open"></i> Resources</a>
+
+      <!-- Quick Actions -->
+      <div class="mt-4 grid grid-cols-2 gap-3">
+        <a href="#contact" class="quick-chip"><i class="fa-solid fa-paper-plane"></i> Enquiry</a>
+        <a href="tel:+919032632464" class="quick-chip"><i class="fa-solid fa-phone"></i> Call</a>
+      </div>
+    </nav>
+
+    <!-- Sticky CTA -->
+    <div class="absolute inset-x-0 bottom-0 p-4 border-t bg-white">
+      <a href="https://wa.me/919032632464"
+         class="flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white py-3 font-semibold shadow-lg hover:shadow-xl transition">
+        <i class="fa-brands fa-whatsapp text-xl"></i>
+        Chat on WhatsApp
+      </a>
+    </div>
+  </aside>
+</header>
+
+
+<main class="pt-20">
+
+  <!-- ENHANCED HERO SECTION -->
+  <section class="relative text-white py-24 sm:py-32 lg:py-40 overflow-hidden">
+    <!-- Background Image with enhanced overlay -->
+    <div class="absolute inset-0">
+      <img src="asset/Home.png" alt="Smart Electrical Solutions" class="w-full h-full object-cover scale-105 transition-transform duration-1000">
+      <div class="hero-gradient absolute inset-0"></div>
+    </div>
+
+    <!-- Animated Background Elements -->
+    <div class="absolute top-4 left-4 sm:left-10 w-16 sm:w-24 h-16 sm:h-24 bg-white/20 rounded-full animate-pulse-slow float"></div>
+    <div class="absolute top-1/3 right-4 sm:right-16 w-12 sm:w-20 h-12 sm:h-20 bg-blue-300/30 rounded-full animate-pulse-slow" style="animation-delay: 2s;"></div>
+    <div class="absolute bottom-20 right-8 sm:right-16 w-20 sm:w-32 h-20 sm:h-32 bg-purple-300/20 rounded-full animate-pulse-slow float" style="animation-delay: 1s;"></div>
+    <div class="absolute bottom-1/4 left-4 sm:left-12 w-8 sm:w-16 h-8 sm:h-16 bg-pink-300/25 rounded-full animate-pulse-slow"></div>
+
+    <!-- Content -->
+    <div class="relative container mx-auto text-center px-4 sm:px-6 max-w-4xl">
+      <div class="fade-up">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 leading-tight">
+          About <span class="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-pink-500">SMB Smart</span> Solutions
+        </h1>
+      </div>
+      <div class="fade-up delay-200">
+        <p class="text-base sm:text-lg md:text-xl opacity-90 mb-6 sm:mb-8 leading-relaxed max-w-3xl mx-auto">
+          Innovating smart meter manufacturing, turnkey electrical infrastructure erection, and manpower management solutions with quality and compliance at the core.
+        </p>
+      </div>
+      <div class="fade-up delay-400">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a href="#company" class="btn-enhanced bg-white text-gray-800 font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 w-full sm:w-auto">
+            <i class="fas fa-arrow-down mr-2"></i>
+            Learn More
+          </a>
+          <a href="#contact" class="btn-enhanced border-2 border-white text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-white hover:text-gray-800 transition-all duration-300 w-full sm:w-auto">
+            <i class="fas fa-phone mr-2"></i>
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENHANCED COMPANY OVERVIEW -->
+  <section id="company" class="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-gray-50 to-blue-50">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="max-w-6xl mx-auto">
+        <!-- Section Header -->
+        <div class="text-center mb-12 sm:mb-16 fade-up">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
+            Company <span class="text-gradient">Overview</span>
+          </h2>
+          <p class="text-gray-600 text-lg sm:text-xl max-w-4xl mx-auto leading-relaxed">
+            SMB has been a pioneering provider of smart electrical solutions since its inception. We specialize in smart meter manufacturing, substation erection, and skilled manpower management for industrial, commercial, and residential projects.
+          </p>
+        </div>
+
+        <!-- Content -->
+<div class="fade-up delay-200">
+  <p class="text-gray-700 text-lg sm:text-xl leading-relaxed text-center max-w-4xl mx-auto mb-12">
+    Founded in <span class="font-semibold text-blue-600">April 2023</span>, SMB Smart Electrical Solutions was built on a mission to combine innovation, operational excellence, and strict compliance to deliver reliable, safe, and efficient energy solutions. From planning to execution, we ensure every project meets the highest standards of quality and client satisfaction.
+  </p>
+</div>
+
+
+        
+  <!-- ENHANCED FOUNDER / CHAIRMAN -->
+  <section id="chairman" class="py-16 sm:py-20 lg:py-24">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="max-w-6xl mx-auto">
+        <!-- Section Header -->
+        <div class="text-center mb-12 sm:mb-16 fade-up">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+            Founder & <span class="text-gradient">Chairman</span>
+          </h2>
+        </div>
+
+        <div class="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16">
+          
+          <!-- Founder Image with enhanced styling -->
+          <div class="fade-left">
+            <div class="founder-image relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80">
+              <img src="asset/image.png" alt="Founder" class="w-full h-full object-cover rounded-full">
+            </div>
+          </div>
+          
+          <!-- Founder Details Card -->
+          <div class="max-w-xl fade-right">
+            <div class="card bg-white rounded-3xl p-8 sm:p-10 shadow-xl hover:shadow-2xl transition-all duration-300">
+              <h3 class="text-2xl sm:text-3xl font-bold mb-2 text-gradient">SHEIK MASTHAN VALI</h3>
+              <h4 class="text-lg font-semibold text-gray-500 mb-6">Founder & Chairman</h4>
+              <p class="text-gray-700 leading-relaxed text-lg">
+                Mr. SHEIK MASTHAN VALI founded SMB with a vision to revolutionize the smart meter and electrical infrastructure sector in India. Under his guidance, SMB has grown into a trusted provider of quality, compliance-driven solutions with a strong commitment to client satisfaction.
+              </p>
+              <div class="mt-8 flex items-center space-x-4">
+                <div class="flex space-x-3">
+                  <a href="#" class="bg-blue-100 hover:bg-blue-200 p-3 rounded-full transition-colors duration-300">
+                    <i class="fab fa-linkedin-in text-blue-600"></i>
+                  </a>
+                  <a href="#" class="bg-gray-100 hover:bg-gray-200 p-3 rounded-full transition-colors duration-300">
+                    <i class="fas fa-envelope text-gray-600"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENHANCED MISSION & VISION -->
+  <section id="mission" class="py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+    <!-- Background with overlay -->
+    <div class="absolute inset-0">
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80" 
+           alt="Mission Background" 
+           class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-black/60"></div>
+    </div>
+
+    <div class="relative container mx-auto px-4 sm:px-6">
+      <div class="max-w-6xl mx-auto">
+        <!-- Section Header -->
+        <div class="text-center mb-12 sm:mb-16 fade-up">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-white">
+            Mission & <span class="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-pink-500">Vision</span>
+          </h2>
+        </div>
+        
+        <div class="grid lg:grid-cols-2 gap-8 sm:gap-12">
+          
+          <!-- Mission Card -->
+          <div class="mission-vision-card fade-up delay-100">
+            <div class="flex items-center mb-6">
+              <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mr-4">
+                <i class="fas fa-target text-white text-2xl"></i>
+              </div>
+              <h3 class="text-2xl sm:text-3xl font-bold text-white">Mission</h3>
+            </div>
+            <p class="text-white/90 leading-relaxed text-lg">
+              Deliver high-quality, compliant smart electrical solutions that empower industries and communities with reliable, safe, and efficient power management systems.
+            </p>
+          </div>
+
+          <!-- Vision Card -->
+          <div class="mission-vision-card fade-up delay-200">
+            <div class="flex items-center mb-6">
+              <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mr-4">
+                <i class="fas fa-eye text-white text-2xl"></i>
+              </div>
+              <h3 class="text-2xl sm:text-3xl font-bold text-white">Vision</h3>
+            </div>
+            <p class="text-white/90 leading-relaxed text-lg">
+              Be the most trusted and innovative partner in the smart electrical solutions industry, recognized for excellence, sustainability, and impactful contributions to energy infrastructure.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+  <!-- ENHANCED CONTACT SECTION -->
+  <section id="contact" class="py-12 sm:py-16 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-center">
+  <div class="container mx-auto px-4 sm:px-6">
+    <div class="fade-up">
+      <h2 class="text-2xl md:text-3xl font-bold mb-2">Start your project with SMB</h2>
+      <p class="mb-6 max-w-2xl mx-auto opacity-90 text-base">Tell us about your requirements — meters, erection, or manpower. We'll propose a scope, timeline and estimate.</p>
+    </div>
+
+    <div class="max-w-3xl mx-auto bg-white rounded-2xl p-5 sm:p-6 text-left shadow-2xl fade-up delay-200">
+      <form id="contactForm" novalidate>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+          <div>
+            <label for="name" class="block text-xs font-medium text-gray-700 mb-1.5">Name *</label>
+            <input id="name" name="name" required
+              class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 placeholder-gray-500 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300" />
+            <p class="text-[11px] mt-1 text-red-600 hidden" id="err-name">Please enter your name.</p>
+          </div>
+
+          <div>
+            <label for="company" class="block text-xs font-medium text-gray-700 mb-1.5">Company</label>
+            <input id="company" name="company"
+              class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 placeholder-gray-500 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300" />
+          </div>
+
+          <div>
+            <label for="email" class="block text-xs font-medium text-gray-700 mb-1.5">Email *</label>
+            <input id="email" name="email" type="email" required
+              pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+              inputmode="email"
+              placeholder="your@email.com"
+              class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 placeholder-gray-500 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300" />
+            <p class="text-[11px] mt-1 text-red-600 hidden" id="err-email">Enter a valid email address.</p>
+          </div>
+
+          <div>
+            <label for="phone" class="block text-xs font-medium text-gray-700 mb-1.5">Phone</label>
+            <input id="phone" name="phone" type="tel" maxlength="15"
+              pattern="[0-9]{10,15}"
+              inputmode="numeric"
+              placeholder="Enter phone number"
+              oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+              class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 placeholder-gray-500 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300" />
+          </div>
+        </div>
+
+        <div class="mt-5">
+          <label for="services" class="block text-xs font-medium text-gray-700 mb-1.5">Interested In</label>
+          <select id="services" name="services"
+            class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300">
+            <option>Smart meters & Manufacturing</option>
+            <option>Infrastructure Erection</option>
+            <option>Manpower & Training</option>
+            <option>Maintenance & O&M</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="mt-5">
+          <label for="message" class="block text-xs font-medium text-gray-700 mb-1.5">Project details</label>
+          <textarea id="message" name="message" rows="5"
+            class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 placeholder-gray-500 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300"></textarea>
+        </div>
+
+        <div class="mt-6 flex items-center gap-3">
+          <button type="submit"
+            class="btn-enhanced bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold px-6 py-3 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl">
+            Request a Quote
+          </button>
+          <span id="formStatus" class="text-sm text-gray-600"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+  <!-- ENHANCED STATS STRIP -->
+  <section class="py-8 sm:py-12">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div class="stats-card text-white p-6 sm:p-8 rounded-2xl shadow-lg"> 
+          <div class="text-2xl sm:text-3xl font-bold">50k+</div>
+          <div class="text-sm sm:text-base opacity-90">Meters Supplied</div>
+        </div>
+        <div class="card bg-green-600 text-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300"> 
+          <div class="text-2xl sm:text-3xl font-bold">200+</div>
+          <div class="text-sm sm:text-base opacity-90">Projects</div>
+        </div>
+        <div class="card bg-indigo-600 text-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300"> 
+          <div class="text-2xl sm:text-3xl font-bold">120+</div>
+          <div class="text-sm sm:text-base opacity-90">Clients</div>
+        </div>
+        <div class="card bg-gray-800 text-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300"> 
+          <div class="text-2xl sm:text-3xl font-bold">24/7</div>
+          <div class="text-sm sm:text-base opacity-90">Support</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ENHANCED FOOTER -->
+<footer class="bg-gradient-to-br from-gray-900 to-gray-800 text-gray-300 relative overflow-hidden">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-10 left-10 w-32 h-32 border border-gray-600 rounded-full"></div>
+    <div class="absolute bottom-20 right-16 w-40 h-40 border border-gray-600 rounded-full"></div>
+    <div class="absolute top-1/2 left-1/3 w-24 h-24 border border-gray-600 rounded-full"></div>
+  </div>
+
+  <div class="relative container mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      
+      <!-- Company Info -->
+      <div class="lg:col-span-2 fade-up">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="relative">
+            <img src="asset/SMB logo.png" alt="SMB Logo" class="w-16 sm:w-20 h-16 sm:h-20 object-contain shadow-lg rounded-lg" />
+            <div class="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full animate-pulse"></div>
+          </div>
+          <div>
+            <h3 class="text-white font-bold text-xl sm:text-2xl">SMB Smart Solution</h3>
+            <p class="text-gray-400 text-sm">Powering Tomorrow's World</p>
+          </div>
+        </div>
+        <p class="text-sm sm:text-base mb-4 leading-relaxed">
+          Smart Meter Manufacturing · Electrical Infrastructure Erection · Manpower Management
+        </p>
+        <p class="text-sm text-gray-400 mb-6">
+          Leading the electrical industry with innovative solutions and unmatched expertise since our founding.
+        </p>
+        <div class="flex space-x-4">
+          <a href="#" class="card bg-gray-700 hover:bg-blue-600 p-3 rounded-full transition-all duration-300 transform hover:scale-110">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="card bg-gray-700 hover:bg-blue-400 p-3 rounded-full transition-all duration-300 transform hover:scale-110">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="card bg-gray-700 hover:bg-blue-700 p-3 rounded-full transition-all duration-300 transform hover:scale-110">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="card bg-gray-700 hover:bg-pink-600 p-3 rounded-full transition-all duration-300 transform hover:scale-110">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="fade-up delay-100">
+        <h3 class="text-white font-bold mb-6 text-lg">Quick Links</h3>
+        <ul class="space-y-3">
+          <li><a href="index.html" class="hover:text-white transition-all duration-300 hover:translate-x-2 inline-block">Home</a></li>
+          <li><a href="about.html" class="text-blue-400 hover:text-blue-300 transition-all duration-300 hover:translate-x-2 inline-block">About</a></li>
+          <li><a href="services.html" class="hover:text-white transition-all duration-300 hover:translate-x-2 inline-block">Services</a></li>
+          <li><a href="resources.html" class="hover:text-white transition-all duration-300 hover:translate-x-2 inline-block">Resources</a></li>
+          <li><a href="#contact" class="hover:text-white transition-all duration-300 hover:translate-x-2 inline-block">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="fade-up delay-200">
+        <h3 class="text-white font-bold mb-6 text-lg">Get In Touch</h3>
+        <div class="space-y-4">
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-envelope text-blue-400 w-5"></i>
+            <span class="text-sm">smbsmartmd@gmail.com</span>
+          </div>
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-phone text-green-400 w-5"></i>
+            <span class="text-sm">+91 9032632464</span>
+          </div>
+          <div class="flex items-start space-x-3">
+            <i class="fas fa-map-marker-alt text-red-400 w-5 mt-1"></i>
+            <span class="text-sm">405, 5th floor, AIMS Business Center, Botcha square, Murali Nagar, Visakhapatnam - 530007</span>
+          </div>
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-clock text-purple-400 w-5"></i>
+            <span class="text-sm">24/7 Support Available</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="border-t border-gray-700 mt-12 pt-8 text-center fade-up delay-300">
+  <p class="text-sm text-gray-400">
+    &copy; 2025 SMB Smart Electrical Solutions. All rights reserved. | 
+    <a href="#" class="hover:text-white transition-colors duration-300">Privacy Policy</a> | 
+    <a href="#" class="hover:text-white transition-colors duration-300">Terms of Service</a> |
+    <span class="text-gray-400">Designed by <a href="#" class="text-blue-400 hover:text-white font-medium transition-colors duration-300">Yaway Technologies</a></span>
+  </p>
+</div>
+
+  </div>
+</footer>
+
+<!-- Newsletter Modal (simple) -->
+<div id="newsletterModal" class="fixed inset-0 bg-black/60 flex items-center justify-center hidden z-50" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="bg-white rounded-3xl max-w-md w-full mx-4 p-6 sm:p-8">
+    <div class="flex justify-between items-start mb-4">
+      <h3 class="text-xl font-bold text-gray-800">Subscribe to Updates</h3>
+      <button id="closeNewsletter" aria-label="Close" class="text-gray-500 hover:text-gray-700 transition-colors duration-300">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+    </div>
+    <p class="text-sm text-gray-600 mt-2 mb-6">Get release notes, datasheets and project announcements.</p>
+    <form id="newsletterForm" class="space-y-4" novalidate>
+      <input id="newsEmail" type="email" placeholder="Email address" required class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300" />
+      <div class="flex justify-end gap-3">
+        <button type="button" id="cancelNews" class="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors duration-300">Cancel</button>
+        <button type="submit" class="btn-enhanced bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold px-6 py-2 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300">Subscribe</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ENHANCED JAVASCRIPT -->
+<script>
+
+  
+document.addEventListener("DOMContentLoaded", () => {
+  // --- Helper ---
+  const safe = (fn) => { try { fn(); } catch (e) { /* swallow safely */ } };
+
+  // ---------- Mobile Menu ----------
+  safe(() => {
+    const mobileBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const closeMobileMenu = document.getElementById("close-menu-btn");
+    
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("open");
+        document.body.style.overflow = mobileMenu.classList.contains("open") ? "hidden" : "auto";
+      });
+    }
+
+    if (closeMobileMenu && mobileMenu) {
+      closeMobileMenu.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        document.body.style.overflow = "auto";
+      });
+    }
+
+    // Close mobile menu when clicking outside
+    mobileMenu?.addEventListener("click", (e) => {
+      if (e.target === mobileMenu) {
+        mobileMenu.classList.remove("open");
+        document.body.style.overflow = "auto";
+      }
+    });
+  });
+
+  // ---------- Enhanced Intersection Observer for animations ----------
+  safe(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all animated elements
+    document.querySelectorAll('.fade-up, .fade-left, .fade-right').forEach(el => {
+      observer.observe(el);
+    });
+  });
+
+  // ---------- Newsletter Modal ----------
+  safe(() => {
+    const openNewsletter = document.getElementById("openNewsletter");
+    const newsletterModal = document.getElementById("newsletterModal");
+    const closeNewsletter = document.getElementById("closeNewsletter");
+    const cancelNews = document.getElementById("cancelNews");
+    
+    if (openNewsletter && newsletterModal) {
+      openNewsletter.addEventListener("click", () => {
+        newsletterModal.classList.remove("hidden");
+        newsletterModal.setAttribute("aria-hidden", "false");
+        const input = document.getElementById("newsEmail");
+        if (input) input.focus();
+      });
+    }
+    
+    if (closeNewsletter && newsletterModal) {
+      closeNewsletter.addEventListener("click", () => {
+        newsletterModal.classList.add("hidden");
+        newsletterModal.setAttribute("aria-hidden", "true");
+      });
+    }
+    
+    if (cancelNews && newsletterModal) {
+      cancelNews.addEventListener("click", () => {
+        newsletterModal.classList.add("hidden");
+        newsletterModal.setAttribute("aria-hidden", "true");
+      });
+    }
+    
+    const newsletterForm = document.getElementById("newsletterForm");
+    if (newsletterForm && newsletterModal) {
+      newsletterForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const v = (document.getElementById("newsEmail") || {}).value || "";
+        if (!/^\S+@\S+\.\S+$/.test(v)) { alert("Enter a valid email"); return; }
+        alert("Thanks for subscribing!");
+        newsletterModal.classList.add("hidden");
+        if (document.getElementById("newsEmail")) document.getElementById("newsEmail").value = "";
+      });
+    }
+  });
+
+  // ---------- Contact form validation (safe) ----------
+  safe(() => {
+    const contactForm = document.getElementById('contactForm');
+    if (!contactForm) return;
+    const name = document.getElementById('name');
+    const email = document.getElementById('email');
+    const errName = document.getElementById('err-name');
+    const errEmail = document.getElementById('err-email');
+    const status = document.getElementById('formStatus');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let ok = true;
+      if (name && errName) {
+        if (!name.value.trim()) { errName.classList.remove('hidden'); ok = false; } else errName.classList.add('hidden');
+      }
+      if (email && errEmail) {
+        if (!/^\S+@\S+\.\S+$/.test(email.value)) { errEmail.classList.remove('hidden'); ok = false; } else errEmail.classList.add('hidden');
+      }
+      if (!ok) return;
+      if (status) status.textContent = 'Submitting...';
+      setTimeout(() => {
+        if (status) status.textContent = 'Thanks! We will contact you shortly.';
+        contactForm.reset();
+      }, 900);
+    });
+  });
+
+  // ---------- Smooth scrolling for anchor links ----------
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // ---------- Add scroll effect to navbar ----------
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    if (window.scrollY > 100) {
+      header.classList.add('bg-white/95');
+      header.classList.remove('bg-white/90');
+    } else {
+      header.classList.add('bg-white/90');
+      header.classList.remove('bg-white/95');
+    }
+  });
+
+  // ---------- Defensive Escape key handling for modal ----------
+  safe(() => {
+    const newsletterModal = document.getElementById('newsletterModal');
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && newsletterModal && !newsletterModal.classList.contains('hidden')) {
+        newsletterModal.classList.add('hidden');
+        newsletterModal.setAttribute('aria-hidden', 'true');
+      }
+    });
+  });
+});
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const reveal = (el) => {
+      el.style.opacity = 0;
+      el.style.transform = "translateY(16px)";
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            el.style.transition = "opacity .6s ease, transform .6s ease";
+            el.style.opacity = 1;
+            el.style.transform = "translateY(0)";
+            io.unobserve(el);
+          }
+        });
+      }, { threshold: 0.1 });
+      io.observe(el);
+    };
+    document.querySelectorAll("#milestones article .group").forEach(reveal);
+  });
+
+  // ===== CONFIG =====
+  const OWNER_WHATSAPP = "+919032632464"; // <-- change to your number (with country code)
+  const OWNER_EMAIL = "smbsmartmd@gmail.com"; // <-- optional email fallback
+  const PRIMARY_CHANNEL = "whatsapp"; // "whatsapp" or "email"
+
+  // ===== HELPERS =====
+  const $ = (id) => document.getElementById(id);
+  const toggle = (id, show) => { const n = $(id); if (n) n.classList.toggle("hidden", !show); };
+
+  function buildMessage({ name, company, email, phone, services, message }) {
+    return `New Project Request (SMB Website)
+Name: ${name}
+Company: ${company || "-"}
+Email: ${email}
+Phone: ${phone || "-"}
+Interested In: ${services || "-"}
+Details:
+${message || "-"}
+
+Source: SMB Contact Form`;
+  }
+
+  function sendViaWhatsApp(text) {
+    const digits = OWNER_WHATSAPP.replace(/\D/g, "");
+    const url = `https://wa.me/${digits}?text=${encodeURIComponent(text)}`;
+    const win = window.open(url, "_blank");
+    if (!win) window.location.href = url; // popup blocked fallback
+  }
+
+  function sendViaEmail(name, text) {
+    const subject = `New Project Request — ${name || "SMB Website"}`;
+    const url = `mailto:${encodeURIComponent(OWNER_EMAIL)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
+    window.location.href = url;
+  }
+
+  (function initContactForm() {
+    const form = $("contactForm");
+    if (!form) return;
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = ($("name")?.value || "").trim();
+      const company = ($("company")?.value || "").trim();
+      const email = ($("email")?.value || "").trim();
+      const phone = ($("phone")?.value || "").trim();
+      const services = ($("services")?.value || "").trim();
+      const message = ($("message")?.value || "").trim();
+
+      // basic validation using your hints
+      let ok = true;
+      if (!name) { toggle("err-name", true); ok = false; } else { toggle("err-name", false); }
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRe.test(email)) { toggle("err-email", true); ok = false; } else { toggle("err-email", false); }
+      if (!ok) return;
+
+      const btn = form.querySelector('button[type="submit"]');
+      const status = $("formStatus");
+      if (btn) { btn.disabled = true; btn.classList.add("opacity-70","cursor-not-allowed"); }
+      if (status) status.textContent = PRIMARY_CHANNEL === "whatsapp" ? "Opening WhatsApp…" : "Opening your email app…";
+
+      const text = buildMessage({ name, company, email, phone, services, message });
+
+      try {
+        if (PRIMARY_CHANNEL === "email") {
+          sendViaEmail(name, text);
+        } else {
+          sendViaWhatsApp(text);
+        }
+      } finally {
+        setTimeout(() => {
+          form.reset();
+          if (btn) { btn.disabled = false; btn.classList.remove("opacity-70","cursor-not-allowed"); }
+          if (status) status.textContent = "Request prepared. Review & send from the opened app.";
+        }, 600);
+      }
+    });
+  })();
+
+ 
+  (function(){
+    const btn = document.getElementById('mobile-menu-btn');
+    const closeBtn = document.getElementById('close-menu-btn');
+    const drawer = document.getElementById('mobile-menu');
+    const backdrop = document.getElementById('mobile-backdrop');
+
+    function openMenu(){
+      drawer.classList.remove('translate-x-full');
+      backdrop.classList.remove('pointer-events-none');
+      backdrop.classList.add('opacity-100');
+      document.body.style.overflow = 'hidden';
+      btn.setAttribute('aria-expanded','true');
+    }
+    function closeMenu(){
+      drawer.classList.add('translate-x-full');
+      backdrop.classList.add('pointer-events-none');
+      backdrop.classList.remove('opacity-100');
+      document.body.style.overflow = '';
+      btn.setAttribute('aria-expanded','false');
+    }
+
+    btn?.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      expanded ? closeMenu() : openMenu();
+    });
+    closeBtn?.addEventListener('click', closeMenu);
+    backdrop?.addEventListener('click', closeMenu);
+
+    // ESC to close
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeMenu(); });
+  })();
+
+
+</script>
+
+</body>
+</html>

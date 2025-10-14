@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SMB — Smart Electrical Solutions</title>
+
+  <!-- Basic SEO / Social -->
+  <meta name="description" content="SMB — Smart meter manufacturing, turnkey electrical infrastructure erection and manpower management. ISO/IEC compliant solutions, 24/7 support." />
+  <meta name="keywords" content="smart meter, smart meters, electrical infrastructure, manpower, substation, erection, NB-IoT, LoRaWAN" />
+  <meta name="author" content="SMB" />
+  <meta property="og:title" content="SMB — Smart Electrical Solutions" />
+  <meta property="og:description" content="End-to-end smart meter manufacturing, electrical infrastructure erection and manpower management." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=5b6b8df1e5c78f0f2f2d6b4b8e3a6f1a" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Tailwind + font -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body { 
+      font-family: 'Inter', sans-serif; 
+      scroll-behavior: smooth; 
+    }
+
+    /* Enhanced Text Gradient */
+    .text-gradient { 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+      background-clip: text;
+    }
+
+    /* Advanced Card Animations */
+    .card { 
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: left 0.5s;
+    }
+
+    .card:hover::before {
+      left: 100%;
+    }
+
+    .card:hover { 
+      transform: translateY(-8px) scale(1.02); 
+      box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+    }
+
+    /* Enhanced Fade Animations */
+    .fade-up { 
+      transform: translateY(30px); 
+      opacity: 0; 
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
+    }
+
+    .fade-up.visible { 
+      transform: translateY(0); 
+      opacity: 1; 
+    }
+
+    .fade-left { 
+      transform: translateX(-30px); 
+      opacity: 0; 
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
+    }
+
+    .fade-left.visible { 
+      transform: translateX(0); 
+      opacity: 1; 
+    }
+
+    .fade-right { 
+      transform: translateX(30px); 
+      opacity: 0; 
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
+    }
+
+    .fade-right.visible { 
+      transform: translateX(0); 
+      opacity: 1; 
+    }
+
+    /* Staggered Animation Delays */
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+
+    /* Floating Animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .float { animation: float 3s ease-in-out infinite; }
+
+    /* Pulse Animation */
+    @keyframes pulse-slow {
+      0%, 100% { opacity: 0.7; transform: scale(1); }
+      50% { opacity: 0.9; transform: scale(1.05); }
+    }
+
+    .animate-pulse-slow { animation: pulse-slow 4s ease-in-out infinite; }
+
+    /* Button Enhancements */
+    .btn-enhanced {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .btn-enhanced::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn-enhanced:hover::before {
+      left: 100%;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+    }
+
+    /* Mobile Navbar */
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+
+    /* Enhanced Backdrop Blur */
+    .backdrop-blur-custom {
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    /* Service Icon Styles */
+    .service-icon {
+      transition: all 0.3s ease;
+    }
+
+    .service-icon:hover {
+      transform: rotate(360deg) scale(1.1);
+    }
+
+    /* Gradient Background for Hero */
+    .hero-gradient {
+      background: linear-gradient(135deg, 
+        rgba(102, 126, 234, 0.9) 0%, 
+        rgba(118, 75, 162, 0.9) 50%, 
+        rgba(55, 48, 163, 0.9) 100%);
+    }
+
+    /* Typewriter cursor */
+    .typewriter-cursor {
+      display:inline-block;
+      width:2px;
+      height:1.1em;
+      background:rgba(255,255,255,0.9);
+      margin-left:6px;
+      animation: blink 1s steps(2, start) infinite;
+      vertical-align:middle;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    /* Floating animations */
+    @keyframes floatY {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+    @keyframes pulseShadow {
+      0% { box-shadow: 0 6px 18px rgba(0,0,0,0.35); }
+      50% { box-shadow: 0 18px 48px rgba(0,0,0,0.45); }
+      100% { box-shadow: 0 6px 18px rgba(0,0,0,0.35); }
+    }
+
+    .animate-fadeUp {
+      animation: fadeUp 0.6s ease-out forwards;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .animated, .floaty, .counter { animation: none !important; transition: none !important; }
+    }
+
+    /* accessible focus ring */
+    :focus { outline: 3px solid rgba(59,130,246,0.35); outline-offset: 2px; }
+    
+    /* small animation for back to top */
+    #backToTop { transition: transform .2s, opacity .2s; }
+    #backToTop.hidden { opacity: 0; transform: translateY(20px); pointer-events: none; }
+    
+    /* small max width for content */
+    .container { max-width: 1200px; }
+
+    /* Animated hamburger lines */
+.hamb-line{
+  position: relative;
+  display:block;
+  width:22px;height:2px;background:#111;border-radius:2px;
+  transition:transform .25s ease, opacity .2s ease, top .25s ease, bottom .25s ease;
+}
+.hamb-line:nth-child(1){ top:-6px; position:relative; }
+.hamb-line:nth-child(2){ }
+.hamb-line:nth-child(3){ bottom:-6px; position:relative; }
+button[aria-expanded="true"] .hamb-line:nth-child(1){ transform:translateY(6px) rotate(45deg); }
+button[aria-expanded="true"] .hamb-line:nth-child(2){ opacity:0; }
+button[aria-expanded="true"] .hamb-line:nth-child(3){ transform:translateY(-6px) rotate(-45deg); }
+
+/* Mobile drawer links */
+.mob-link{
+  display:flex; align-items:center; gap:.6rem;
+  font-weight:600; padding:.9rem 1rem; border-radius:.9rem;
+  background:linear-gradient(180deg,#ffffff, #fafafa); border:1px solid #eee;
+  color:#374151; transition:transform .15s ease, box-shadow .2s ease, background .2s ease;
+}
+.mob-link i{ width:18px; text-align:center; }
+.mob-link:hover{ transform:translateY(-1px); box-shadow:0 10px 18px rgba(0,0,0,.06); }
+.mob-link.active{ background:linear-gradient(180deg,#eef2ff,#e0e7ff); border-color:#c7d2fe; color:#1d4ed8; }
+
+/* Quick chips */
+.quick-chip{
+  display:flex; align-items:center; justify-content:center; gap:.5rem;
+  padding:.7rem .8rem; border-radius:.8rem; font-weight:600;
+  background:#f8fafc; border:1px solid #eef2f7; color:#0f172a;
+}
+.quick-chip:hover{ background:#eef2f7; }
+
+  </style>
+
+  <!-- Structured data (JSON-LD) for organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "SMB",
+    "url": "https://example.com/",
+    "logo": "https://example.com/logo.png",
+    "sameAs": [],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "+91-XXXXXXXXXX",
+      "contactType": "customer service",
+      "areaServed": "IN"
+    }]
+  }
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+<!-- ENHANCED NAVBAR -->
+<header class="fixed inset-x-0 top-0 z-50 bg-white/80 backdrop-blur-md border-b border-white/40 shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
+  <div class="container mx-auto flex items-center justify-between px-4 sm:px-6 py-3">
+    <!-- Brand -->
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="relative">
+        <img src="asset/SMB logo.png" alt="SMB Logo" class="w-12 h-12 object-contain rounded-lg shadow-lg" />
+        <span class="absolute -top-0.5 -right-0.5 w-3 h-3 bg-emerald-400 rounded-full ring-2 ring-white"></span>
+      </div>
+      <div class="hidden sm:block">
+        <h1 class="text-lg font-extrabold tracking-tight text-gray-900">SMB</h1>
+        <p class="text-xs text-gray-600 -mt-0.5">Smart Solutions</p>
+      </div>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden lg:flex items-center gap-8">
+      <a href="index.html" class="group relative font-medium text-gray-700 hover:text-blue-600">
+        Home
+        <span class="absolute -bottom-1 left-0 h-0.5 w-0 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="services.html" class="group relative font-medium text-gray-700 hover:text-blue-600">
+        Services
+        <span class="absolute -bottom-1 left-0 h-0.5 w-0 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="projects.html" class="group relative font-medium text-gray-700 hover:text-blue-600">
+        Projects
+        <span class="absolute -bottom-1 left-0 h-0.5 w-0 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="about.html" class="group relative font-medium text-gray-700 hover:text-blue-600">About
+        <span class="absolute -bottom-1 left-0 h-0.5 w-0 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+      <a href="resources.html" class="group relative font-medium text-gray-700 hover:text-blue-600">
+        Resources
+        <span class="absolute -bottom-1 left-0 h-0.5 w-0 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+    </nav>
+
+    <!-- Desktop CTA -->
+    <div class="hidden md:flex">
+      <a href="#contact" class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 py-2.5 font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]">
+        <i class="fas fa-phone"></i> Contact
+      </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button id="mobile-menu-btn"
+      class="lg:hidden relative w-11 h-11 grid place-items-center rounded-xl border border-gray-200 bg-white/70 hover:bg-white shadow-md transition"
+      aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+      <!-- Hamburger (animated) -->
+      <span class="hamb-line"></span>
+      <span class="hamb-line"></span>
+      <span class="hamb-line"></span>
+    </button>
+  </div>
+
+  <!-- Backdrop -->
+  <div id="mobile-backdrop" class="fixed inset-0 z-40 bg-black/50 opacity-0 pointer-events-none transition-opacity"></div>
+
+  <!-- Mobile Drawer -->
+  <aside id="mobile-menu"
+         class="fixed right-0 top-0 z-50 h-screen w-80 max-w-[88vw] translate-x-full bg-white shadow-2xl transition-transform duration-300 will-change-transform lg:hidden">
+    <div class="flex items-center justify-between px-6 py-4 border-b">
+      <div class="flex items-center gap-3">
+        <img src="asset/SMB logo.png" alt="SMB" class="w-10 h-10 rounded-lg shadow" />
+        <div>
+          <p class="font-bold text-gray-900 leading-tight">SMB Smart Solutions</p>
+          <p class="text-xs text-gray-500 -mt-0.5">Powering Tomorrow's World</p>
+        </div>
+      </div>
+      <button id="close-menu-btn" class="p-2 rounded-lg hover:bg-gray-100" aria-label="Close menu">
+        <i class="fas fa-times text-xl text-gray-700"></i>
+      </button>
+    </div>
+
+    <nav class="px-4 py-5 space-y-2">
+      <a href="index.html" class="mob-link"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="services.html" class="mob-link"><i class="fa-solid fa-screwdriver-wrench"></i> Services</a>
+      <a href="projects.html" class="mob-link"><i class="fa-solid fa-diagram-project"></i> Projects</a>
+      <a href="about.html" class="mob-link"><i class="fa-solid fa-id-card"></i> About</a>
+      <a href="resources.html" class="mob-link"><i class="fa-solid fa-book-open"></i> Resources</a>
+
+      <!-- Quick Actions -->
+      <div class="mt-4 grid grid-cols-2 gap-3">
+        <a href="#contact" class="quick-chip"><i class="fa-solid fa-paper-plane"></i> Enquiry</a>
+        <a href="tel:+919032632464" class="quick-chip"><i class="fa-solid fa-phone"></i> Call</a>
+      </div>
+    </nav>
+
+    <!-- Sticky CTA -->
+    <div class="absolute inset-x-0 bottom-0 p-4 border-t bg-white">
+      <a href="https://wa.me/919032632464"
+         class="flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white py-3 font-semibold shadow-lg hover:shadow-xl transition">
+        <i class="fa-brands fa-whatsapp text-xl"></i>
+        Chat on WhatsApp
+      </a>
+    </div>
+  </aside>
+</header>
+
+
+<main class="pt-20">
+
+  <!-- ENHANCED HERO SECTION -->
+  <section id="home" class="relative text-white py-24 sm:py-32 lg:py-40 overflow-hidden">
+    <!-- Background Image with enhanced overlay -->
+    <div class="absolute inset-0">
+      <img id="hero-bg"
+           src="asset/Home.png"
+           alt="electrical infrastructure"
+           class="absolute inset-0 w-full h-full object-cover scale-105 transition-transform duration-1000"
+           loading="lazy" />
+      <div class="hero-gradient absolute inset-0"></div>
+    </div>
+
+    <!-- Animated Background Elements -->
+    <div class="absolute top-4 left-4 sm:left-10 w-16 sm:w-28 h-16 sm:h-28 opacity-30 float">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="40" fill="#0ea5e9"/>
+      </svg>
+    </div>
+    
+    <div class="absolute top-1/3 right-4 sm:right-16 w-12 sm:w-20 h-12 sm:h-20 bg-blue-300/30 rounded-full animate-pulse-slow" style="animation-delay: 2s;"></div>
+    <div class="absolute bottom-20 right-8 sm:right-16 w-20 sm:w-36 h-20 sm:h-36 opacity-25 float" style="animation-delay: 1s;">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <rect x="10" y="10" width="80" height="80" rx="16" fill="#60a5fa"/>
+      </svg>
+    </div>
+    <div class="absolute bottom-1/4 left-4 sm:left-12 w-8 sm:w-16 h-8 sm:h-16 bg-pink-300/25 rounded-full animate-pulse-slow"></div>
+
+    <!-- Content -->
+    <div class="relative container mx-auto text-center px-4 sm:px-6 max-w-4xl">
+      <div class="max-w-3xl mx-auto">
+        <!-- Headline with typewriter -->
+        <div class="fade-up">
+          <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-4">
+            <span class="sr-only">Smart Meter Manufacturing · Electrical Infrastructure · Manpower Management</span>
+            <span id="headline-static" class="inline-block md:hidden">
+              Smart Meter Manufacturing · Electrical Infrastructure · Manpower Management
+            </span>
+
+            <!-- visible on md+ -->
+            <span id="typewriter" class="hidden md:inline-block" aria-live="polite" title="Smart solutions">
+              <span id="type-text" class="align-middle">Smart Meter Manufacturing</span>
+              <span class="typewriter-cursor" aria-hidden="true"></span>
+            </span>
+          </h1>
+        </div>
+
+        <div class="fade-up delay-200">
+          <p class="text-lg md:text-xl mb-6 opacity-90">End-to-end solutions — from precision smart meters to turnkey erection & reliable manpower deployment. Quality, compliance and safety baked in.</p>
+        </div>
+
+        <div class="fade-up delay-400">
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+            <a href="#services" class="btn-enhanced bg-white text-gray-800 font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 w-full sm:w-auto">
+              <i class="fas fa-arrow-down mr-2"></i>
+              Explore Services
+            </a>
+            <a href="#contact" class="btn-enhanced border-2 border-white text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-white hover:text-gray-800 transition-all duration-300 w-full sm:w-auto">
+              <i class="fas fa-phone mr-2"></i>
+              Contact Sales
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick stats badges -->
+        <div class="fade-up delay-500">
+          <div class="mt-6 grid grid-cols-3 gap-3 md:grid-cols-6">
+            <div class="bg-white/10 rounded-lg px-4 py-3">
+              <div class="text-sm opacity-80">Years</div>
+              <div class="text-xl md:text-lg font-bold"><span class="counter" data-target="15">0</span>+</div>
+            </div>
+
+            <div class="bg-white/10 rounded-lg px-4 py-3">
+              <div class="text-sm opacity-80">Meters Delivered</div>
+              <div class="text-xl md:text-lg font-bold"><span class="counter" data-target="50000">0</span>+</div>
+            </div>
+
+            <div class="bg-white/10 rounded-lg px-4 py-3">
+              <div class="text-sm opacity-80">Projects</div>
+              <div class="text-xl md:text-lg font-bold"><span class="counter" data-target="200">0</span>+</div>
+            </div>
+
+            <div class="bg-white/10 rounded-lg px-4 py-3">
+              <div class="text-sm opacity-80">Clients</div>
+              <div class="text-xl md:text-lg font-bold"><span class="counter" data-target="120">0</span>+</div>
+            </div>
+
+            <div class="bg-white/10 rounded-lg px-4 py-3">
+              <div class="text-sm opacity-80">Compliance</div>
+              <div class="text-xl md:text-lg font-bold">ISO & IEC</div>
+            </div>
+
+            <div class="bg-white/10 rounded-lg px-4 py-3">
+              <div class="text-sm opacity-80">Support</div>
+              <div class="text-xl md:text-lg font-bold">24/7</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENHANCED SERVICES SECTION -->
+  <section id="services" class="py-16 sm:py-20 lg:py-24 container mx-auto px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto">
+      <!-- Section Header -->
+      <div class="text-center mb-12 sm:mb-16 fade-up">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
+          Our <span class="text-gradient">Premium Services</span>
+        </h2>
+        <p class="text-gray-600 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
+          Comprehensive offerings covering manufacturing, construction and manpower — designed for performance and compliance.
+        </p>
+      </div>
+
+      <!-- Service Cards Grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        
+        <!-- Smart Meter -->
+        <article class="card bg-white rounded-3xl shadow-xl overflow-hidden fade-up delay-100 group">
+          <div class="relative overflow-hidden">
+            <img src="asset/smartmeter2.png" alt="smart meter" class="w-full h-56 sm:h-64 object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+            <div class="absolute top-4 left-4 bg-blue-500 text-white p-3 rounded-full shadow-lg">
+              <i class="fas fa-tachometer-alt service-icon text-xl"></i>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+          <div class="p-6 sm:p-8">
+            <h3 class="text-xl sm:text-2xl font-bold mb-3 text-blue-600 group-hover:text-blue-700 transition-colors duration-300">
+              Smart Meter Manufacturing
+            </h3>
+            <p class="text-gray-600 text-sm sm:text-base mb-4 leading-relaxed">
+              High-quality smart meters for residential, commercial, and industrial use. Compliant with relevant standards (IEC, ANSI, MID where applicable).
+            </p>
+            <ul class="text-gray-600 list-disc list-inside mb-6 text-sm">
+              <li>Precision measurement & tamper-resistance</li>
+              <li>Multiple communication options: NB-IoT, LoRaWAN, RF, PLC</li>
+              <li>Custom firmware, calibration & factory testing</li>
+            </ul>
+            <div class="flex items-center justify-between">
+              <a href="#contact" class="btn-enhanced bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold px-6 py-3 rounded-full hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                Request Quote
+              </a>
+              <div class="flex items-center space-x-1 text-yellow-400">
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Infrastructure -->
+        <article class="card bg-white rounded-3xl shadow-xl overflow-hidden fade-up delay-200 group">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80" alt="electrical infrastructure" class="w-full h-56 sm:h-64 object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+            <div class="absolute top-4 left-4 bg-purple-500 text-white p-3 rounded-full shadow-lg">
+              <i class="fas fa-bolt service-icon text-xl"></i>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+          <div class="p-6 sm:p-8">
+            <h3 class="text-xl sm:text-2xl font-bold mb-3 text-purple-600 group-hover:text-purple-700 transition-colors duration-300">
+              Electrical Infrastructure Erection
+            </h3>
+            <p class="text-gray-600 text-sm sm:text-base mb-4 leading-relaxed">
+              Substation erection, transmission & distribution lines, turnkey electrical projects, and operation & maintenance services.
+            </p>
+            <ul class="text-gray-600 list-disc list-inside mb-6 text-sm">
+              <li>Substation civil, electrical & protection integration</li>
+              <li>Transmission & distribution line erection</li>
+              <li>Turnkey project management and post-deployment O&M</li>
+            </ul>
+            <div class="flex items-center justify-between">
+              <a href="#contact" class="btn-enhanced bg-gradient-to-r from-purple-500 to-purple-600 text-white font-semibold px-6 py-3 rounded-full hover:from-purple-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                Consult with Us
+              </a>
+              <div class="flex items-center space-x-1 text-yellow-400">
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Manpower -->
+        <article class="card bg-white rounded-3xl shadow-xl overflow-hidden fade-up delay-300 group sm:col-span-2 lg:col-span-1">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80" alt="manpower" class="w-full h-56 sm:h-64 object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+            <div class="absolute top-4 left-4 bg-pink-500 text-white p-3 rounded-full shadow-lg">
+              <i class="fas fa-users service-icon text-xl"></i>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+          <div class="p-6 sm:p-8">
+            <h3 class="text-xl sm:text-2xl font-bold mb-3 text-pink-500 group-hover:text-pink-600 transition-colors duration-300">
+              Manpower Management
+            </h3>
+            <p class="text-gray-600 text-sm sm:text-base mb-4 leading-relaxed">
+              Skilled workforce for electrical projects, recruitment, deployment, and training — tailored to the project lifecycle.
+            </p>
+            <ul class="text-gray-600 list-disc list-inside mb-6 text-sm">
+              <li>Skilled technicians, engineers and supervisors</li>
+              <li>On-site team management, safety training & certifications</li>
+              <li>Temporary & long-term staffing with logistics support</li>
+            </ul>
+            <div class="flex items-center justify-between">
+              <a href="#contact" class="btn-enhanced bg-gradient-to-r from-pink-500 to-pink-600 text-white font-semibold px-6 py-3 rounded-full hover:from-pink-600 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                Hire Workforce
+              </a>
+              <div class="flex items-center space-x-1 text-yellow-400">
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+                <i class="fas fa-star text-sm"></i>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENHANCED PROJECTS / CASE STUDIES -->
+  <section id="projects" class="py-16 sm:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 sm:mb-12 fade-up">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-bold mb-2">
+            Projects & <span class="text-gradient">Case Studies</span>
+          </h2>
+          <p class="text-gray-600 text-lg">Showcasing our expertise across diverse electrical projects</p>
+        </div>
+        <a href="#" class="text-blue-600 hover:text-blue-700 font-semibold flex items-center group mt-4 sm:mt-0">
+          View all projects 
+          <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+        </a>
+      </div>
+
+      <div class="grid gap-6 sm:gap-8 md:grid-cols-3">
+        <figure class="card group relative overflow-hidden rounded-3xl shadow-xl fade-up delay-100">
+          <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=abc" alt="Substation project in Mumbai" class="w-full h-64 sm:h-72 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+          <figcaption class="absolute bottom-0 left-0 right-0 p-6 sm:p-8 bg-gradient-to-t from-black/80 via-black/50 to-transparent text-white">
+            <h3 class="font-bold text-lg sm:text-xl mb-2">Substation Upgrade — Mumbai</h3>
+            <p class="text-sm opacity-90 leading-relaxed">Complete erection & commissioning delivered under 6 months with zero downtime.</p>
+            <div class="flex items-center mt-4 text-sm">
+              <i class="fas fa-clock mr-2 text-yellow-400"></i>
+              <span>Completed in 2024</span>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="card group relative overflow-hidden rounded-3xl shadow-xl fade-up delay-200">
+          <img src="https://images.unsplash.com/photo-1495433324511-bf8e92934d90?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=def" alt="Smart meter rollout Gujarat" class="w-full h-64 sm:h-72 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+          <figcaption class="absolute bottom-0 left-0 right-0 p-6 sm:p-8 bg-gradient-to-t from-black/80 via-black/50 to-transparent text-white">
+            <h3 class="font-bold text-lg sm:text-xl mb-2">Smart Meter Rollout — Gujarat</h3>
+            <p class="text-sm opacity-90 leading-relaxed">50,000+ meters deployed across residential & commercial sectors with 99.8% accuracy.</p>
+            <div class="flex items-center mt-4 text-sm">
+              <i class="fas fa-users mr-2 text-green-400"></i>
+              <span>50,000+ installations</span>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="card group relative overflow-hidden rounded-3xl shadow-xl fade-up delay-300">
+          <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=ghi" alt="O&M industrial park" class="w-full h-64 sm:h-72 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+          <figcaption class="absolute bottom-0 left-0 right-0 p-6 sm:p-8 bg-gradient-to-t from-black/80 via-black/50 to-transparent text-white">
+            <h3 class="font-bold text-lg sm:text-xl mb-2">O&M Contract — Industrial Park</h3>
+            <p class="text-sm opacity-90 leading-relaxed">Ongoing operations & maintenance ensuring 99.9% uptime for critical infrastructure.</p>
+            <div class="flex items-center mt-4 text-sm">
+              <i class="fas fa-shield-alt mr-2 text-blue-400"></i>
+              <span>99.9% uptime guarantee</span>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENHANCED CLIENTS / PARTNERS -->
+  <section id="clients" class="py-16 sm:py-20">
+    <div class="container mx-auto px-4 sm:px-6">
+      <!-- Heading -->
+      <div class="text-center mb-12 sm:mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold fade-up mb-4">
+          Our Clients & <span class="text-gradient">Partners</span>
+        </h2>
+        <p class="text-gray-600 mt-2 max-w-2xl mx-auto fade-up text-sm sm:text-base leading-relaxed">
+          Trusted by leading companies across power, infrastructure, and technology sectors.
+        </p>
+      </div>
+
+      <!-- Clients Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 sm:gap-8 md:gap-10 items-center fade-up">
+        <!-- Venus Infrastructure -->
+        <div class="card flex justify-center items-center p-4 sm:p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+          <img src="asset/venus.png" alt="Venus Infrastructure" class="w-full max-h-12 sm:max-h-16 object-contain" />
+        </div>
+
+        <!-- Adani Electrical -->
+        <div class="card flex justify-center items-center p-4 sm:p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+          <img src="asset/Adani.png" alt="Adani Electrical" class="w-full max-h-12 sm:max-h-16 object-contain" />
+        </div>
+
+        <!-- Tata Power -->
+        <div class="card flex justify-center items-center p-4 sm:p-6 bg-gradient-to-b from-gray-100 to-gray-200 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+          <img src="asset/Tata energy.png" alt="Tata Power" class="w-full max-h-12 sm:max-h-16 object-contain" />
+        </div>
+
+        <!-- L&T Infrastructure -->
+        <div class="card flex justify-center items-center p-4 sm:p-6 bg-black rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+          <img src="asset/L&T.png" alt="L&T Infrastructure" class="w-full max-h-12 sm:max-h-16 object-contain brightness-200" />
+        </div>
+
+        <!-- Add more clients easily -->
+        <div class="card flex justify-center items-center p-4 sm:p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+          <img src="asset/reliance-industries.png" alt="Reliance Industries" class="w-full max-h-12 sm:max-h-16 object-contain" />
+        </div>
+
+        <div class="card flex justify-center items-center p-4 sm:p-6 bg-black rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+          <img src="asset/SE energy.png" alt="Siemens" class="w-full max-h-12 sm:max-h-16 object-contain" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENHANCED CERTIFICATIONS / QUALITY -->
+  <section id="certs" class="py-16 sm:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+        <div class="flex-1 fade-up">
+          <h3 class="text-3xl sm:text-4xl font-bold mb-4">
+            Quality & <span class="text-gradient">Compliance</span>
+          </h3>
+          <p class="text-gray-600 mt-2 text-lg leading-relaxed mb-6">
+            We follow industry best practices and hold certifications that demonstrate our commitment to quality and safety.
+          </p>
+          <ul class="mt-4 text-gray-600 space-y-3">
+            <li class="flex items-center">
+              <i class="fas fa-check-circle text-green-500 mr-3"></i>
+              <span>ISO 9001 — Quality Management</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check-circle text-green-500 mr-3"></i>
+              <span>ISO 45001 — Occupational Health & Safety</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-check-circle text-green-500 mr-3"></i>
+              <span>IEC testing & certified meter production lines</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4 sm:gap-6 flex-1 fade-up delay-200">
+          <div class="card bg-white p-4 sm:p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+            <img src="asset/Iso 9001.png" alt="ISO 9001" class="rounded-lg shadow w-full" loading="lazy" />
+          </div>
+          <div class="card bg-white p-4 sm:p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+            <img src="asset/iso 45001.png" alt="ISO 45001" class="rounded-lg shadow w-full" loading="lazy" />
+          </div>
+          <div class="card bg-white p-4 sm:p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+            <img src="asset/IEC.png" alt="IEC tested" class="rounded-lg shadow w-full" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENHANCED RESOURCES / BLOG -->
+  <section id="resources" class="py-16 sm:py-20">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 sm:mb-12 fade-up">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-bold mb-2">
+            Resources & <span class="text-gradient">Insights</span>
+          </h2>
+          <p class="text-gray-600 text-lg">Latest insights and technical resources for electrical professionals</p>
+        </div>
+        <a href="#" class="text-blue-600 hover:text-blue-700 font-semibold flex items-center group mt-4 sm:mt-0">
+          View all posts 
+          <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+        </a>
+      </div>
+
+      <div class="grid gap-6 sm:gap-8 md:grid-cols-3">
+        <article class="card bg-white rounded-3xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 fade-up delay-100">
+          <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=1200&q=80" alt="Smart meter close-up" class="w-full h-40 sm:h-48 object-cover rounded-2xl mb-6" loading="lazy" />
+          <h3 class="font-bold text-lg sm:text-xl mb-3 hover:text-blue-600 transition-colors duration-300">
+            Choosing the right smart meter for utilities
+          </h3>
+          <p class="text-sm sm:text-base text-gray-600 mb-4 leading-relaxed">
+            A comprehensive guide to communication options, tamper resistance and lifecycle costs for utility companies.
+          </p>
+          <div class="flex items-center justify-between">
+            <div class="text-sm text-gray-500 flex items-center">
+              <i class="fas fa-calendar mr-2"></i>
+              <span>Oct 2025 • 4 min read</span>
+            </div>
+            <a href="#" class="text-blue-600 hover:text-blue-700 font-semibold text-sm">
+              Read More →
+            </a>
+          </div>
+        </article>
+
+        <article class="card bg-white rounded-3xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 fade-up delay-200">
+          <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1200&q=80" alt="Electrical substation infrastructure" class="w-full h-40 sm:h-48 object-cover rounded-2xl mb-6" loading="lazy" />
+          <h3 class="font-bold text-lg sm:text-xl mb-3 hover:text-blue-600 transition-colors duration-300">
+            Best practices for substation erection
+          </h3>
+          <p class="text-sm sm:text-base text-gray-600 mb-4 leading-relaxed">
+            Essential design principles, commissioning checklist and safety considerations for large infrastructure projects.
+          </p>
+          <div class="flex items-center justify-between">
+            <div class="text-sm text-gray-500 flex items-center">
+              <i class="fas fa-calendar mr-2"></i>
+              <span>Sep 2025 • 6 min read</span>
+            </div>
+            <a href="#" class="text-blue-600 hover:text-blue-700 font-semibold text-sm">
+              Read More →
+            </a>
+          </div>
+        </article>
+
+        <article class="card bg-white rounded-3xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 fade-up delay-300">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=post3" alt="blog 3" class="w-full h-40 sm:h-48 object-cover rounded-2xl mb-6" loading="lazy" />
+          <h3 class="font-bold text-lg sm:text-xl mb-3 hover:text-blue-600 transition-colors duration-300">
+            Training & certification for on-site teams
+          </h3>
+          <p class="text-sm sm:text-base text-gray-600 mb-4 leading-relaxed">
+            How we upskill technicians and minimize downtime during electrical infrastructure rollouts and maintenance.
+          </p>
+          <div class="flex items-center justify-between">
+            <div class="text-sm text-gray-500 flex items-center">
+              <i class="fas fa-calendar mr-2"></i>
+              <span>Aug 2025 • 5 min read</span>
+            </div>
+            <a href="#" class="text-blue-600 hover:text-blue-700 font-semibold text-sm">
+              Read More →
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENHANCED FAQ -->
+  <section id="faq" class="py-16 sm:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+  <div class="container mx-auto px-4 sm:px-6">
+    <h2 class="text-3xl sm:text-4xl font-bold mb-6 sm:mb-12 text-center fade-up">
+      Frequently Asked <span class="text-gradient">Questions</span>
+    </h2>
+
+    <div class="grid gap-6 sm:gap-8 md:grid-cols-2">
+      <!-- Accordion -->
+      <div class="space-y-4 fade-up" id="faqList" role="list">
+        <div class="card bg-white border rounded-2xl overflow-hidden shadow-lg">
+          <button class="w-full text-left px-6 py-4 flex justify-between items-center faq-btn hover:bg-gray-50 transition-colors duration-300" aria-expanded="false">
+            <span class="font-medium text-gray-800">What communication technologies do your meters support?</span>
+            <i class="fas fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+          </button>
+          <div class="px-6 py-4 hidden faq-panel border-t border-gray-100">
+            <p class="text-gray-600">We support NB-IoT, LoRaWAN, RF and PLC depending on project needs and coverage requirements.</p>
+          </div>
+        </div>
+
+        <div class="card bg-white border rounded-2xl overflow-hidden shadow-lg">
+          <button class="w-full text-left px-6 py-4 flex justify-between items-center faq-btn hover:bg-gray-50 transition-colors duration-300" aria-expanded="false">
+            <span class="font-medium text-gray-800">Do you provide post-deployment O&M?</span>
+            <i class="fas fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+          </button>
+          <div class="px-6 py-4 hidden faq-panel border-t border-gray-100">
+            <p class="text-gray-600">Yes — we offer comprehensive SLAs tailored to availability, spares provisioning and preventive maintenance requirements.</p>
+          </div>
+        </div>
+
+        <div class="card bg-white border rounded-2xl overflow-hidden shadow-lg">
+          <button class="w-full text-left px-6 py-4 flex justify-between items-center faq-btn hover:bg-gray-50 transition-colors duration-300" aria-expanded="false">
+            <span class="font-medium text-gray-800">What safety standards does your workforce follow?</span>
+            <i class="fas fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+          </button>
+          <div class="px-6 py-4 hidden faq-panel border-t border-gray-100">
+            <p class="text-gray-600">Our teams are trained to ISO 45001 practices, plus project-specific inductions and comprehensive PPE enforcement.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Support Info (replaces form) -->
+      <div class="card bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-8 sm:p-10 rounded-3xl shadow-xl fade-up delay-200 flex flex-col justify-center items-center text-center">
+        <div class="mb-6">
+          <i class="fas fa-headset text-5xl mb-4 animate-pulse"></i>
+          <h3 class="font-bold text-2xl mb-3">Need Assistance?</h3>
+          <p class="text-base opacity-90 max-w-sm mx-auto">
+            Our support specialists are available 24/7 to assist you with any project inquiries, technical clarifications, or service requests.
+          </p>
+        </div>
+        <div class="space-y-3">
+          <a href="#contact" class="inline-flex items-center gap-2 bg-white text-blue-700 font-semibold px-6 py-3 rounded-full hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-2xl">
+            <i class="fas fa-envelope"></i> Contact Support
+          </a>
+          <a href="tel:+911234567890" class="inline-flex items-center gap-2 bg-transparent border border-white px-6 py-3 rounded-full hover:bg-white/10 transition-all duration-300">
+            <i class="fas fa-phone"></i> +91-9032632464
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- ENHANCED CONTACT SECTION -->
+  <section id="contact" class="py-12 sm:py-16 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-center">
+  <div class="container mx-auto px-4 sm:px-6">
+    <div class="fade-up">
+      <h2 class="text-2xl md:text-3xl font-bold mb-2">Start your project with SMB</h2>
+      <p class="mb-6 max-w-2xl mx-auto opacity-90 text-base">Tell us about your requirements — meters, erection, or manpower. We'll propose a scope, timeline and estimate.</p>
+    </div>
+
+    <div class="max-w-3xl mx-auto bg-white rounded-2xl p-5 sm:p-6 text-left shadow-2xl fade-up delay-200">
+      <form id="contactForm" novalidate>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+          <div>
+            <label for="name" class="block text-xs font-medium text-gray-700 mb-1.5">Name *</label>
+            <input id="name" name="name" required
+              class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 placeholder-gray-500 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300" />
+            <p class="text-[11px] mt-1 text-red-600 hidden" id="err-name">Please enter your name.</p>
+          </div>
+
+          <div>
+            <label for="company" class="block text-xs font-medium text-gray-700 mb-1.5">Company</label>
+            <input id="company" name="company"
+              class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 placeholder-gray-500 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300" />
+          </div>
+
+          <div>
+            <label for="email" class="block text-xs font-medium text-gray-700 mb-1.5">Email *</label>
+            <input id="email" name="email" type="email" required
+              pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+              inputmode="email"
+              placeholder="your@email.com"
+              class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 placeholder-gray-500 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300" />
+            <p class="text-[11px] mt-1 text-red-600 hidden" id="err-email">Enter a valid email address.</p>
+          </div>
+
+          <div>
+            <label for="phone" class="block text-xs font-medium text-gray-700 mb-1.5">Phone</label>
+            <input id="phone" name="phone" type="tel" maxlength="15"
+              pattern="[0-9]{10,15}"
+              inputmode="numeric"
+              placeholder="Enter phone number"
+              oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+              class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 placeholder-gray-500 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300" />
+          </div>
+        </div>
+
+        <div class="mt-5">
+          <label for="services" class="block text-xs font-medium text-gray-700 mb-1.5">Interested In</label>
+          <select id="services" name="services"
+            class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300">
+            <option>Smart meters & Manufacturing</option>
+            <option>Infrastructure Erection</option>
+            <option>Manpower & Training</option>
+            <option>Maintenance & O&M</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="mt-5">
+          <label for="message" class="block text-xs font-medium text-gray-700 mb-1.5">Project details</label>
+          <textarea id="message" name="message" rows="5"
+            class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2.5 text-gray-900 placeholder-gray-500 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300"></textarea>
+        </div>
+
+        <div class="mt-6 flex items-center gap-3">
+          <button type="submit"
+            class="btn-enhanced bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold px-6 py-3 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl">
+            Request a Quote
+          </button>
+          <span id="formStatus" class="text-sm text-gray-600"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- ENHANCED STATS STRIP -->
+  <section class="py-8 sm:py-12">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div class="card bg-blue-600 text-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300"> 
+          <div class="text-2xl sm:text-3xl font-bold">50k+</div>
+          <div class="text-sm sm:text-base opacity-90">Meters Supplied</div>
+        </div>
+        <div class="card bg-green-600 text-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300"> 
+          <div class="text-2xl sm:text-3xl font-bold">200+</div>
+          <div class="text-sm sm:text-base opacity-90">Projects</div>
+        </div>
+        <div class="card bg-indigo-600 text-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300"> 
+          <div class="text-2xl sm:text-3xl font-bold">120+</div>
+          <div class="text-sm sm:text-base opacity-90">Clients</div>
+        </div>
+        <div class="card bg-gray-800 text-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300"> 
+          <div class="text-2xl sm:text-3xl font-bold">24/7</div>
+          <div class="text-sm sm:text-base opacity-90">Support</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ENHANCED FOOTER -->
+<footer class="bg-gradient-to-br from-gray-900 to-gray-800 text-gray-300 relative overflow-hidden">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-10 left-10 w-32 h-32 border border-gray-600 rounded-full"></div>
+    <div class="absolute bottom-20 right-16 w-40 h-40 border border-gray-600 rounded-full"></div>
+    <div class="absolute top-1/2 left-1/3 w-24 h-24 border border-gray-600 rounded-full"></div>
+  </div>
+
+  <div class="relative container mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      
+      <!-- Company Info -->
+      <div class="lg:col-span-2 fade-up">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="relative">
+            <img src="asset/SMB logo.png" alt="SMB Logo" class="w-16 sm:w-20 h-16 sm:h-20 object-contain shadow-lg rounded-lg" />
+            <div class="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full animate-pulse"></div>
+          </div>
+          <div>
+            <h3 class="text-white font-bold text-xl sm:text-2xl">SMB Smart Solution</h3>
+            <p class="text-gray-400 text-sm">Powering Tomorrow's World</p>
+          </div>
+        </div>
+        <p class="text-sm sm:text-base mb-4 leading-relaxed">
+          Smart Meter Manufacturing · Electrical Infrastructure Erection · Manpower Management
+        </p>
+        <p class="text-sm text-gray-400 mb-6">
+          Leading the electrical industry with innovative solutions and unmatched expertise since our founding.
+        </p>
+        <div class="flex space-x-4">
+          <a href="#" class="card bg-gray-700 hover:bg-blue-600 p-3 rounded-full transition-all duration-300 transform hover:scale-110">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="card bg-gray-700 hover:bg-blue-400 p-3 rounded-full transition-all duration-300 transform hover:scale-110">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="card bg-gray-700 hover:bg-blue-700 p-3 rounded-full transition-all duration-300 transform hover:scale-110">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="card bg-gray-700 hover:bg-pink-600 p-3 rounded-full transition-all duration-300 transform hover:scale-110">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="fade-up delay-100">
+        <h3 class="text-white font-bold mb-6 text-lg">Quick Links</h3>
+        <ul class="space-y-3">
+          <li><a href="index.html" class="text-blue-400 hover:text-blue-300 transition-all duration-300 hover:translate-x-2 inline-block">Home</a></li>
+          <li><a href="about.html" class="hover:text-white transition-all duration-300 hover:translate-x-2 inline-block">About</a></li>
+          <li><a href="services.html" class="hover:text-white transition-all duration-300 hover:translate-x-2 inline-block">Services</a></li>
+          <li><a href="projects.html" class="hover:text-white transition-all duration-300 hover:translate-x-2 inline-block">Projects</a></li>
+          <li><a href="#contact" class="hover:text-white transition-all duration-300 hover:translate-x-2 inline-block">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info --t>
+      <div class="fade-up delay-200">
+        <h3 class="text-white font-bold mb-6 text-lg">Get In Touch</h3>
+        <div class="space-y-4">
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-envelope text-blue-400 w-5"></i>
+            <span class="text-sm">smbsmartmd@gmail.com</span>
+          </div>
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-phone text-green-400 w-5"></i>
+            <span class="text-sm">+91-9032632464</span>
+          </div>
+          <div class="flex items-start space-x-3">
+            <i class="fas fa-map-marker-alt text-red-400 w-5 mt-1"></i>
+            <span class="text-sm">123 Industrial Park, City, India</span>
+          </div>
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-clock text-purple-400 w-5"></i>
+            <span class="text-sm">24/7 Support Available</span>
+          </div>
+        </div>
+
+        <!-- Contact Info -->
+      <div class="fade-up delay-200">
+        <h3 class="text-white font-bold mb-6 text-lg">Get In Touch</h3>
+        <div class="space-y-4">
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-envelope text-blue-400 w-5"></i>
+            <span class="text-sm">smbsmartmd@gmail.com</span>
+          </div>
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-phone text-green-400 w-5"></i>
+            <span class="text-sm">+91 9032632464</span>
+          </div>
+          <div class="flex items-start space-x-3">
+            <i class="fas fa-map-marker-alt text-red-400 w-5 mt-1"></i>
+            <span class="text-sm">405, 5th floor, AIMS Business Center, Botcha square, Murali Nagar, Visakhapatnam - 530007</span>
+          </div>
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-clock text-purple-400 w-5"></i>
+            <span class="text-sm">24/7 Support Available</span>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="border-t border-gray-700 mt-12 pt-8 text-center fade-up delay-300">
+  <p class="text-sm text-gray-400">
+    &copy; 2025 SMB Smart Electrical Solutions. All rights reserved. | 
+    <a href="#" class="hover:text-white transition-colors duration-300">Privacy Policy</a> | 
+    <a href="#" class="hover:text-white transition-colors duration-300">Terms of Service</a> |
+    <span class="text-gray-400">Designed by <a href="#" class="text-blue-400 hover:text-white font-medium transition-colors duration-300">Yaway Technologies</a></span>
+  </p>
+</div>
+
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button id="backToTop" aria-label="Back to top" class="fixed right-4 sm:right-6 bottom-4 sm:bottom-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 hidden">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- Newsletter Modal -->
+<div id="newsletterModal" class="fixed inset-0 bg-black/60 flex items-center justify-center hidden z-50" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="bg-white rounded-3xl max-w-md w-full mx-4 p-6 sm:p-8">
+    <div class="flex justify-between items-start mb-4">
+      <h3 class="text-xl font-bold text-gray-800">Subscribe to Updates</h3>
+      <button id="closeNewsletter" aria-label="Close" class="text-gray-500 hover:text-gray-700 transition-colors duration-300">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+    </div>
+    <p class="text-sm text-gray-600 mt-2 mb-6">Get release notes, datasheets and project announcements.</p>
+    <form id="newsletterForm" class="space-y-4" novalidate>
+      <input id="newsEmail" type="email" placeholder="Email address" required class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300" />
+      <div class="flex justify-end gap-3">
+        <button type="button" id="cancelNews" class="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors duration-300">Cancel</button>
+        <button type="submit" class="btn-enhanced bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold px-6 py-2 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300">Subscribe</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ENHANCED JAVASCRIPT -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // --- Helper ---
+  const safe = (fn) => { try { fn(); } catch (e) { /* swallow safely */ } };
+
+  // ---------- Mobile Menu ----------
+  safe(() => {
+    const mobileBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const closeMobileMenu = document.getElementById("close-menu-btn");
+    
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("open");
+        document.body.style.overflow = mobileMenu.classList.contains("open") ? "hidden" : "auto";
+      });
+    }
+
+    if (closeMobileMenu && mobileMenu) {
+      closeMobileMenu.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        document.body.style.overflow = "auto";
+      });
+    }
+
+    // Close mobile menu when clicking outside
+    mobileMenu?.addEventListener("click", (e) => {
+      if (e.target === mobileMenu) {
+        mobileMenu.classList.remove("open");
+        document.body.style.overflow = "auto";
+      }
+    });
+  });
+
+  // ---------- Back to Top ----------
+  safe(() => {
+    const backToTop = document.getElementById("backToTop");
+    if (backToTop) {
+      const check = () => {
+        if (window.scrollY > 600) backToTop.classList.remove("hidden");
+        else backToTop.classList.add("hidden");
+      };
+      window.addEventListener("scroll", check);
+      check();
+      backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+    }
+  });
+
+  // ---------- Newsletter Modal ----------
+  safe(() => {
+    const openNewsletter = document.getElementById("openNewsletter");
+    const newsletterModal = document.getElementById("newsletterModal");
+    const closeNewsletter = document.getElementById("closeNewsletter");
+    const cancelNews = document.getElementById("cancelNews");
+    
+    if (closeNewsletter && newsletterModal) {
+      closeNewsletter.addEventListener("click", () => {
+        newsletterModal.classList.add("hidden");
+        newsletterModal.setAttribute("aria-hidden", "true");
+      });
+    }
+    if (cancelNews && newsletterModal) {
+      cancelNews.addEventListener("click", () => {
+        newsletterModal.classList.add("hidden");
+        newsletterModal.setAttribute("aria-hidden", "true");
+      });
+    }
+    
+    const newsletterForm = document.getElementById("newsletterForm");
+    if (newsletterForm && newsletterModal) {
+      newsletterForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const v = (document.getElementById("newsEmail") || {}).value || "";
+        if (!/^\S+@\S+\.\S+$/.test(v)) { alert("Enter a valid email"); return; }
+        alert("Thanks for subscribing!");
+        newsletterModal.classList.add("hidden");
+        if (document.getElementById("newsEmail")) document.getElementById("newsEmail").value = "";
+      });
+    }
+  });
+
+  // ---------- Typewriter (safe) ----------
+  safe(() => {
+    const textEl = document.getElementById("type-text");
+    const typeElContainer = document.getElementById("typewriter");
+    if (!textEl || !typeElContainer) return;
+    const phrases = [
+      "Smart Meter Manufacturing",
+      "Turnkey Electrical Infrastructure",
+      "Reliable Manpower Management",
+      "Compliance & Safety First"
+    ];
+    let idx = 0, char = 0, forward = true, pause = false;
+
+    function step() {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        textEl.textContent = phrases[0];
+        return;
+      }
+      if (pause) { setTimeout(step, 350); return; }
+      const current = phrases[idx];
+      if (forward) {
+        char++;
+        textEl.textContent = current.slice(0, char);
+        if (char === current.length) { forward = false; pause = true; setTimeout(()=>pause=false, 900); }
+      } else {
+        char--;
+        textEl.textContent = current.slice(0, char);
+        if (char === 0) { forward = true; idx = (idx+1) % phrases.length; }
+      }
+      setTimeout(step, forward ? 60 : 30);
+    }
+
+    // start when visible OR immediately if IntersectionObserver not available
+    if ("IntersectionObserver" in window) {
+      const obs = new IntersectionObserver((entries, o) => {
+        if (entries[0].isIntersecting) { step(); o.disconnect(); }
+      }, { threshold: 0.25 });
+      obs.observe(typeElContainer);
+    } else {
+      step();
+    }
+  });
+
+  // ---------- Parallax hero background (safe) ----------
+  safe(() => {
+    const bg = document.getElementById('hero-bg');
+    const home = document.getElementById('home');
+    if (!bg || !home) return;
+    const maxTranslate = 16;
+    let bound = bg.getBoundingClientRect();
+    function onMove(e) {
+      const x = (e.clientX - (bound.left + bound.width/2)) / (bound.width/2);
+      const y = (e.clientY - (bound.top + bound.height/2)) / (bound.height/2);
+      const tx = -x * maxTranslate;
+      const ty = -y * maxTranslate / 2;
+      bg.style.transform = `translate3d(${tx}px, ${ty}px, 0) scale(1.03)`;
+    }
+    function reset() { bg.style.transform = ''; }
+    window.addEventListener('resize', ()=> bound = bg.getBoundingClientRect());
+    if (!('ontouchstart' in window)) {
+      home.addEventListener('mousemove', onMove);
+      home.addEventListener('mouseleave', reset);
+    }
+  });
+
+  // ---------- Counters (IntersectionObserver safe) ----------
+  safe(() => {
+    const counters = document.querySelectorAll('.counter');
+    if (!counters.length) return;
+    function animateCounter(el, target) {
+      const duration = 1400;
+      const startTime = performance.now();
+      function frame(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const value = Math.floor(progress * target);
+        el.textContent = value.toLocaleString();
+        if (progress < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.dataset.target?.replace(/,/g,'') || "0", 10);
+            animateCounter(el, target);
+            observer.unobserve(el);
+          }
+        });
+      }, {threshold: 0.6});
+      counters.forEach(c => io.observe(c));
+    } else {
+      counters.forEach(c => {
+        const target = parseInt(c.dataset.target?.replace(/,/g,'') || "0", 10);
+        animateCounter(c, target);
+      });
+    }
+  });
+
+  // ---------- Enhanced Intersection Observer for animations ----------
+  safe(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all animated elements
+    document.querySelectorAll('.fade-up, .fade-left, .fade-right').forEach(el => {
+      observer.observe(el);
+    });
+  });
+
+  // ---------- FAQ accordion (safe) ----------
+  safe(() => {
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        const icon = btn.querySelector('i');
+        
+        // close others
+        document.querySelectorAll('.faq-btn').forEach(b => {
+          b.setAttribute('aria-expanded', 'false');
+          const bIcon = b.querySelector('i');
+          const p = b.nextElementSibling;
+          if (p) p.classList.add('hidden');
+          if (bIcon) bIcon.classList.remove('fa-chevron-up');
+          if (bIcon) bIcon.classList.add('fa-chevron-down');
+        });
+        
+        // toggle current
+        const panel = btn.nextElementSibling;
+        if (!expanded && panel) {
+          panel.classList.remove('hidden');
+          if (icon) {
+            icon.classList.remove('fa-chevron-down');
+            icon.classList.add('fa-chevron-up');
+          }
+        }
+        btn.setAttribute('aria-expanded', (!expanded).toString());
+      });
+    });
+  });
+
+  // ====== CONFIGURE THESE ======
+  const FORM_ENDPOINT = "https://formspree.io/f/your_form_id"; // or leave "" to skip Formspree
+  const WHATSAPP_NUMBER = "919032632464"; // digits only e.g., "919876543210" (country code + number)
+  // =============================
+
+  (function () {
+    const form = document.getElementById('contactForm');
+    const errName = document.getElementById('err-name');
+    const errEmail = document.getElementById('err-email');
+    const status = document.getElementById('formStatus');
+
+    function validEmail(v){ return /^\S+@\S+\.\S+$/.test(v); }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.textContent = '';
+
+      const name = document.getElementById('name').value.trim();
+      const company = document.getElementById('company').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const services = document.getElementById('services').value;
+      const message = document.getElementById('message').value.trim();
+
+      // Basic validation (same content, just enforced)
+      let ok = true;
+      if (!name) { errName.classList.remove('hidden'); ok = false; } else errName.classList.add('hidden');
+      if (!validEmail(email)) { errEmail.classList.remove('hidden'); ok = false; } else errEmail.classList.add('hidden');
+      if (!ok) return;
+
+      // Compose a single payload/message
+      const payload = {
+        name, company, email, phone, services, message,
+        page: location.href,
+        submittedAt: new Date().toISOString()
+      };
+
+      // 1) EMAIL via Formspree (no backend needed)
+      //    Create a Formspree form at https://formspree.io, copy its endpoint, and paste into FORM_ENDPOINT
+      let emailOk = false;
+      if (FORM_ENDPOINT) {
+        try {
+          const res = await fetch(FORM_ENDPOINT, {
+            method: "POST",
+            headers: { "Accept":"application/json", "Content-Type":"application/json" },
+            body: JSON.stringify(payload)
+          });
+          emailOk = res.ok;
+        } catch (_) {}
+      }
+
+      // 2) WhatsApp — open prefilled chat (replace with your number in config)
+      let waOk = false;
+      if (WHATSAPP_NUMBER) {
+        const text =
+          `New Quote Request%0A` +
+          `Name: ${encodeURIComponent(name)}%0A` +
+          `Company: ${encodeURIComponent(company)}%0A` +
+          `Email: ${encodeURIComponent(email)}%0A` +
+          `Phone: ${encodeURIComponent(phone)}%0A` +
+          `Interested In: ${encodeURIComponent(services)}%0A` +
+          `Message: ${encodeURIComponent(message)}%0A` +
+          `Page: ${encodeURIComponent(location.href)}`;
+        const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+        // Open in a new tab/pop (user action already happened)
+        const win = window.open(url, "_blank");
+        waOk = !!win;
+      }
+
+      // Feedback
+      if (emailOk || waOk) {
+        status.textContent = "Thanks! We’ll get back to you shortly.";
+        form.reset();
+      } else {
+        status.textContent = "Couldn’t send right now. Please try again or contact us directly.";
+      }
+    });
+  })();
+
+  // ---------- Quick contact (safe) ----------
+  safe(() => {
+    const quickForm = document.getElementById('quickContact');
+    const qcStatus = document.getElementById('qcStatus');
+    if (quickForm && qcStatus) {
+      quickForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        qcStatus.textContent = 'Sending...';
+        setTimeout(() => {
+          qcStatus.textContent = 'Thank you — we will respond within one business day.';
+          quickForm.reset();
+        }, 900);
+      });
+    }
+  });
+
+  // ---------- Contact form validation (safe) ----------
+  safe(() => {
+    const contactForm = document.getElementById('contactForm');
+    if (!contactForm) return;
+    const name = document.getElementById('name');
+    const email = document.getElementById('email');
+    const errName = document.getElementById('err-name');
+    const errEmail = document.getElementById('err-email');
+    const status = document.getElementById('formStatus');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let ok = true;
+      if (name && errName) {
+        if (!name.value.trim()) { errName.classList.remove('hidden'); ok = false; } else errName.classList.add('hidden');
+      }
+      if (email && errEmail) {
+        if (!/^\S+@\S+\.\S+$/.test(email.value)) { errEmail.classList.remove('hidden'); ok = false; } else errEmail.classList.add('hidden');
+      }
+      if (!ok) return;
+      if (status) status.textContent = 'Submitting...';
+      setTimeout(() => {
+        if (status) status.textContent = 'Thanks! We will contact you shortly.';
+        contactForm.reset();
+      }, 900);
+    });
+  });
+
+  // ---------- Footer subscribe (safe) ----------
+  safe(() => {
+    const footerSubscribe = document.getElementById('footerSubscribe');
+    if (!footerSubscribe) return;
+    footerSubscribe.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('subsEmail');
+      if (!email) return;
+      if (!/^\S+@\S+\.\S+$/.test(email.value)) { email.focus(); return; }
+      alert('Subscribed — thank you!');
+      email.value = '';
+    });
+  });
+
+  // ---------- Footer year (safe) ----------
+  safe(() => {
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  });
+
+  // ---------- Smooth scrolling for anchor links ----------
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // ---------- Add scroll effect to navbar ----------
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    if (window.scrollY > 100) {
+      header.classList.add('bg-white/95');
+      header.classList.remove('bg-white/90');
+    } else {
+      header.classList.add('bg-white/90');
+      header.classList.remove('bg-white/95');
+    }
+  });
+
+  // ---------- Defensive Escape key handling for modal ----------
+  safe(() => {
+    const newsletterModal = document.getElementById('newsletterModal');
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && newsletterModal && !newsletterModal.classList.contains('hidden')) {
+        newsletterModal.classList.add('hidden');
+        newsletterModal.setAttribute('aria-hidden', 'true');
+      }
+    });
+  });
+});
+
+
+  (function(){
+    const btn = document.getElementById('mobile-menu-btn');
+    const closeBtn = document.getElementById('close-menu-btn');
+    const drawer = document.getElementById('mobile-menu');
+    const backdrop = document.getElementById('mobile-backdrop');
+
+    function openMenu(){
+      drawer.classList.remove('translate-x-full');
+      backdrop.classList.remove('pointer-events-none');
+      backdrop.classList.add('opacity-100');
+      document.body.style.overflow = 'hidden';
+      btn.setAttribute('aria-expanded','true');
+    }
+    function closeMenu(){
+      drawer.classList.add('translate-x-full');
+      backdrop.classList.add('pointer-events-none');
+      backdrop.classList.remove('opacity-100');
+      document.body.style.overflow = '';
+      btn.setAttribute('aria-expanded','false');
+    }
+
+    btn?.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      expanded ? closeMenu() : openMenu();
+    });
+    closeBtn?.addEventListener('click', closeMenu);
+    backdrop?.addEventListener('click', closeMenu);
+
+    // ESC to close
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeMenu(); });
+  })();
+
+
+</script>
+
+</body>
+</html>
