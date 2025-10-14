@@ -257,14 +257,43 @@ button[aria-expanded="true"] .hamb-line:nth-child(3){ transform:translateY(-6px)
   </section>
 
   <!-- FILTER -->
-  <section class="py-6 container mx-auto px-6">
-    <div class="flex justify-center gap-4 fade-up delay-200">
-      <button class="filter-btn btn-enhanced px-4 py-2 bg-blue-500 text-white rounded-full font-semibold active" data-filter="all" aria-pressed="true">All</button>
-      <button class="filter-btn btn-enhanced px-4 py-2 bg-gray-200 text-gray-700 rounded-full font-semibold" data-filter="smart-meters" aria-pressed="false">Smart Meters</button>
-      <button class="filter-btn btn-enhanced px-4 py-2 bg-gray-200 text-gray-700 rounded-full font-semibold" data-filter="substations" aria-pressed="false">Substations</button>
-      <button class="filter-btn btn-enhanced px-4 py-2 bg-gray-200 text-gray-700 rounded-full font-semibold" data-filter="manpower" aria-pressed="false">Manpower</button>
+ <section class="py-6">
+  <div class="container mx-auto px-4">
+    <!-- horizontal scroll on xs; wraps & centers from sm+ -->
+    <div class="relative -mx-4 px-4 overflow-x-auto scrollbar-hide sm:overflow-visible">
+      <div class="flex sm:flex-wrap gap-2 sm:gap-3 justify-start sm:justify-center min-w-max sm:min-w-0 snap-x snap-mandatory">
+        <button class="filter-btn btn-enhanced shrink-0 snap-start inline-flex items-center justify-center
+                       px-3 py-2 sm:px-4 sm:py-2.5 rounded-full font-semibold
+                       text-sm sm:text-base bg-blue-500 text-white active"
+                data-filter="all" aria-pressed="true">
+          All
+        </button>
+
+        <button class="filter-btn btn-enhanced shrink-0 snap-start inline-flex items-center justify-center
+                       px-3 py-2 sm:px-4 sm:py-2.5 rounded-full font-semibold
+                       text-sm sm:text-base bg-gray-200 text-gray-700"
+                data-filter="smart-meters" aria-pressed="false">
+          Smart Meters
+        </button>
+
+        <button class="filter-btn btn-enhanced shrink-0 snap-start inline-flex items-center justify-center
+                       px-3 py-2 sm:px-4 sm:py-2.5 rounded-full font-semibold
+                       text-sm sm:text-base bg-gray-200 text-gray-700"
+                data-filter="substations" aria-pressed="false">
+          Substations
+        </button>
+
+        <button class="filter-btn btn-enhanced shrink-0 snap-start inline-flex items-center justify-center
+                       px-3 py-2 sm:px-4 sm:py-2.5 rounded-full font-semibold
+                       text-sm sm:text-base bg-gray-200 text-gray-700"
+                data-filter="manpower" aria-pressed="false">
+          Manpower
+        </button>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- PROJECTS GRID -->
   <section id="projects" class="py-12 container mx-auto px-6">
